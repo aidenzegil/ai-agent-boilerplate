@@ -4,11 +4,11 @@ A compound component, a component that uses other components and a data layer to
 
 Components within this file should be structure like so
 
-/component
-/data.ts
-/component.ts
-/index.ts
-/styling.module.scss
+> Profile/  
+> &nbsp;&nbsp;data.ts  
+> &nbsp;&nbsp;component.ts  
+> &nbsp;&nbsp;index.ts  
+> &nbsp;&nbsp;styling.module.scss  
 
 The data.ts file returns a hook interface for any Component controller logic
 
