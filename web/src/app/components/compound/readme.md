@@ -5,10 +5,10 @@ A compound component, a component that uses other components and a data layer to
 Components within this file should be structure like so
 
 /component
-/data.ts
-/component.ts
-/index.ts
-/styling.module.scss
+data.ts
+component.ts
+index.ts
+styling.module.scss
 
 The data.ts file returns a hook interface for any Component controller logic
 
