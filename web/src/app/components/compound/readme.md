@@ -8,7 +8,7 @@ Components within this file should be structure like so
 > &nbsp;&nbsp;data.ts  
 > &nbsp;&nbsp;component.ts  
 > &nbsp;&nbsp;index.ts  
-> &nbsp;&nbsp;styling.module.scss  
+> &nbsp;&nbsp;styling.module.scss
 
 The data.ts file returns a hook interface for any Component controller logic
 
@@ -16,10 +16,10 @@ The component file builds the actual component with the help of the styling.scss
 
 the index file uses the data.ts to collect needed data and pass it down to the component, it also exports the final component:
 
-'''
+```
 const Profile = ({ ...props }) => {
 const data = useProfileState(props);
 
 return <Component {...props} {...data} />
 }
-'''
+```
