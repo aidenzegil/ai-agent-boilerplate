@@ -3,7 +3,7 @@
 * Molecules relating to responsive adjustments
 ********************************************************************************************************/
 
-@use "#v2-components/atoms/breakpoints" as br;
+@use "../atoms/breakpoints" as br;
 
 $breakpoints: (
     "xs": br.$break-point-xs,

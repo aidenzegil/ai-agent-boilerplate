@@ -1,5 +1,5 @@
-@use "#v2-components/atoms/typography" as t;
-@use "#v2-components/atoms/colors" as c;
+@use "../atoms/typography" as t;
+@use "../atoms/colors" as c;
 
 $sizes: (
     "header-0": t.$font-scale-9p5,
