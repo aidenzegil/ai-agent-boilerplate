@@ -23,3 +23,5 @@ const data = useProfileState(props);
 return <Component {...props} {...data} />
 }
 ```
+
+/test
