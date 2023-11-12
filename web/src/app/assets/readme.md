@@ -20,3 +20,5 @@ In the SCSS file:
     }
 }
 ```
+
+Please import colors as "c", breakpoints as "breakpoint" and text as "text" to keep everything standard
