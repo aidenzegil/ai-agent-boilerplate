@@ -1,0 +1,40 @@
+/********************************************************************************************************
+* Typography
+********************************************************************************************************/
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Font Families ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+/* mono */
+$mono-font-family: "Matter Mono", Menlo, Consolas, "Ubuntu Mono", "Roboto Mono",
+    "DejaVu Sans Mono", monospace;
+
+/* standard */
+$matter-font-family: "MatterSQ", Helvetica, Arial, sans-serif;
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Font Scales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+$font-scale-12: 11.9rem; // inferred
+$font-scale-11: 8.9rem; // inferred
+$font-scale-10: 6.7rem; // inferred
+$font-scale-9p5: 6rem; // half-step, perfect would be 58
+$font-scale-9: 4.8rem; // perfect would be 50
+$font-scale-8p5: 4rem; // half-step, perfect would be 37
+$font-scale-8: 2.8rem; // perfect
+$font-scale-7: 2rem; // perfect
+$font-scale-6: 1.6rem; // perfect, base, or "body-1" should always be scale step 6
+$base: $font-scale-6; // convienience value
+$font-scale-5: 1.4rem; // perfect
+$font-scale-4: 1.2rem; // perfect
+$font-scale-3: 0.9rem; // inferred
+$font-scale-2: 0.6rem; // inferred
+$font-scale-1: 0.5rem; // inferred
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Line Height Scales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ **/
+$line-height-scale-12: 8.5rem;
+$line-height-scale-11: 6.4rem;
+$line-height-scale-10: 5.4rem;
+$line-height-scale-9: 4.6rem;
+$line-height-scale-8: 3.6rem;
+$line-height-scale-7: 2.8rem;
+$line-height-scale-6: 2.4rem;
+$line-height-scale-5: 2rem;
+$line-height-scale-4: 1.8rem;
+$line-height-scale-3: 1rem;

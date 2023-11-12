@@ -1,0 +1,148 @@
+@use "#v2-components/atoms/typography" as t;
+@use "#v2-components/atoms/colors" as c;
+
+$sizes: (
+    "header-0": t.$font-scale-9p5,
+    "header-1": t.$font-scale-9,
+    "header-2": t.$font-scale-8p5,
+    "header-3": t.$font-scale-8,
+    "header-4": t.$font-scale-7,
+    "body-1": t.$font-scale-6,
+    "body-2": t.$font-scale-5,
+    "disclaimer": t.$font-scale-4,
+    "mono": t.$font-scale-5,
+);
+
+$line-heights: (
+    "header-0": t.$line-height-scale-11,
+    "header-1": t.$line-height-scale-10,
+    "header-2": t.$line-height-scale-9,
+    "header-3": t.$line-height-scale-8,
+    "header-4": t.$line-height-scale-7,
+    "body-1": t.$line-height-scale-6,
+    "body-2": t.$line-height-scale-5,
+    "disclaimer": t.$line-height-scale-4,
+    "mono": t.$line-height-scale-5,
+);
+
+/* extra large header */
+@mixin header-0($color: c.$charcoal-600) {
+    $name: "header-0";
+    font-family: t.$matter-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.header0 {
+    @include header-0();
+}
+
+/* large header */
+@mixin header-1($color: c.$charcoal-600) {
+    $name: "header-1";
+    font-family: t.$matter-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.header1 {
+    @include header-1();
+}
+
+/* medium header */
+@mixin header-2($color: c.$charcoal-600) {
+    $name: "header-2";
+    font-family: t.$matter-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.header2 {
+    @include header-2();
+}
+
+/* small header */
+@mixin header-3($color: c.$charcoal-600) {
+    $name: "header-3";
+    font-family: t.$matter-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.header3 {
+    @include header-3();
+}
+
+/* extra small header */
+@mixin header-4($color: c.$charcoal-600) {
+    $name: "header-4";
+    font-family: t.$matter-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.header4 {
+    @include header-4();
+}
+
+/* medium body */
+@mixin body-1($color: c.$charcoal-600) {
+    $name: "body-1";
+    font-family: t.$matter-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.body1 {
+    @include body-1();
+}
+
+/* small body */
+@mixin body-2($color: c.$charcoal-600) {
+    $name: "body-2";
+    font-family: t.$matter-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.body2 {
+    @include body-2();
+}
+
+/* disclaimer */
+@mixin disclaimer($color: c.$charcoal-600) {
+    $name: "disclaimer";
+    font-family: t.$matter-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.disclaimer {
+    @include disclaimer();
+}
+
+/* mono */
+@mixin mono($color: c.$charcoal-600) {
+    $name: "mono";
+    font-family: t.$mono-font-family;
+    color: $color;
+    font-size: map-get($sizes, $name);
+    line-height: map-get($line-heights, $name);
+}
+
+.mono {
+    @include mono();
+}
+
+.test {
+    @include header-0();
+    color: c.$charcoal-200;
+}

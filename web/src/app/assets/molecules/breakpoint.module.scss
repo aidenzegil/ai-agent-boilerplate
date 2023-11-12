@@ -1,0 +1,56 @@
+/********************************************************************************************************
+* Breakpoint
+* Molecules relating to responsive adjustments
+********************************************************************************************************/
+
+@use "#v2-components/atoms/breakpoints" as br;
+
+$breakpoints: (
+    "xs": br.$break-point-xs,
+    "s": br.$break-point-s,
+    "s-m": br.$break-point-s-m,
+    "m": br.$break-point-m,
+    "l": br.$break-point-l,
+    "xl": br.$break-point-xl,
+    ) !default;
+
+/// Mixins to manage responsive breakpoints
+/// original @author Kitty Giraudel
+/// modified from https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin display-to($breakpoint) {
+
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+
+        // Prints a media query based on the value
+        @media (max-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Breakpoint `#{$breakpoint}` does not exist. "
+        +"Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
+
+@mixin display-from($breakpoint) {
+
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+
+        // Prints a media query based on the value
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Breakpoint `#{$breakpoint}` does not exist. "
+        +"Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
