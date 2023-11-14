@@ -1,0 +1,20 @@
+@use "@/app/assets/atoms/colors" as c;
+
+.container {
+    height: 32px;
+    padding-left: 15px;
+    padding-right: 10px;
+    background-color: rgba(c.$pink, 0.55);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-width: 1px;
+    border-color: c.$pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    color: c.$pink;
+    text-align: center;
+}
