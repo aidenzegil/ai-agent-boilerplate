@@ -1,5 +1,5 @@
 import React from 'react'
-import { LeafCardProps } from './data'
+import { LeafCardProps } from './types'
 import s from "./styles.module.scss"
 
 const LeafCard = ({children}: LeafCardProps) => {
