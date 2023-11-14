@@ -1,4 +1,3 @@
-import CatTag from "./components/common/inputs/CatTag/component";
 
 
 export default function Home() {
