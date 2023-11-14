@@ -1,0 +1,12 @@
+@use "@/app/assets/atoms/colors" as c;
+
+
+.container {
+    background-color: c.$charcoal-450;
+    box-shadow: 0 2px 10px -3px c.$pink;
+    border-top-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    width: 352px;
+    height: 209px;
+    padding: 15px;
+}
