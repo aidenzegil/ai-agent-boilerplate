@@ -1,0 +1,7 @@
+{
+  "title": "User ID",
+  "description": "A Wetpages user uniquie identifier.",
+  "type": "string",
+  "example": "cb7035e4-366f-4c05-99d1-e49c94569762",
+  "x-tags": ["Common"]
+}

@@ -1,0 +1,32 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "User",
+    "description": "Wetpages's User API. This API validates offer terms for applications created externally.",
+    "termsOfService": "https://dev.velocity.baby/termsOfService",
+    "contact": {
+      "name": "Wetpages API Support",
+      "url": "https://wetpages.com/support",
+      "email": "support@Wetpages.com"
+    },
+    "license": {
+      "name": "None"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/test": { "$ref": "./test.json" }
+  },
+  "servers": [
+    {
+      "url": "https://{env}.wetpages.com/user",
+      "description": "Wetpages User API",
+      "variables": {
+        "env": {
+          "default": "dev",
+          "description": "This value is used to determine the test environment"
+        }
+      }
+    }
+  ]
+}

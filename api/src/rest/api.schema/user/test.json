@@ -1,0 +1,65 @@
+{
+  "post": {
+    "tags": ["User"],
+    "summary": "Validate Offer",
+    "description": "This path validates a single offer for an application.",
+    "operationId": "validateOffer",
+    "parameters": [],
+    "requestBody": {
+      "description": "Test Body",
+      "content": {
+        "application/json": {
+          "schema": {
+            "properties": {
+              "identifier": {
+                "title": "User Identifier",
+                "description": "One of the following identifiers must be present to ID the application",
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "userId": {
+                    "$ref": "../common/types/userId.json"
+                  },
+                  "email": {
+                    "$ref": "../common/types/email.json"
+                  }
+                }
+              }
+            },
+            "required": ["identifier"],
+            "type": "object"
+          }
+        }
+      },
+      "required": true
+    },
+    "responses": {
+      "200": {
+        "description": "Expected response to a valid request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "user": {
+                  "$ref": "../common/models/user.json"
+                }
+              },
+              "required": ["user"],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "default": {
+        "description": "An unexpected error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../common/error.json"
+            }
+          }
+        }
+      }
+    }
+  }
+}
