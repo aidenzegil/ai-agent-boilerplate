@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { UserApi } from 'src/services/user/api.interface';
-import { params } from 'src/services/user/api.params';
-import { User } from 'src/services/user/models/user';
+import { Injectable } from "@nestjs/common";
+import { UserApi } from "src/services/user/api.interface";
+import { params } from "src/services/user/api.params";
+import { User } from "src/services/user/models/user";
 
 const mockUser: User = {
-  id: '1',
-  username: 'user1',
-  email: 'jordon@wetpages.com',
-  profilePictureUrl: 'someimage.com',
+  id: "1",
+  username: "user1",
+  email: "jordon@wetpages.com",
+  profilePictureUrl: "someimage.com",
 };
 
 @Injectable()

@@ -6,14 +6,14 @@ import {
   Param,
   Post,
   Put,
-} from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
-import { User } from 'src/services/user/models/user';
-import { UserService } from 'src/services/user/user.service';
-import * as InputDto from './dto/input.dto';
+} from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
+import { User } from "src/services/user/models/user";
+import { UserService } from "src/services/user/user.service";
+import * as InputDto from "./dto/input.dto";
 
-@ApiTags('users')
-@Controller('users')
+@ApiTags("users")
+@Controller("users")
 export class UsersController {
   constructor(private readonly userService: UserService) {}
 
@@ -31,16 +31,16 @@ export class UsersController {
     return users;
   }
 
-  @Get(':userId')
-  findOne(@Param('userId') userId: string) {
-    const user = this.userService.GetUser({ discriminator: 'id', id: userId });
+  @Get(":userId")
+  findOne(@Param("userId") userId: string) {
+    const user = this.userService.GetUser({ discriminator: "id", id: userId });
     /** TODO: outputDto */
     return user;
   }
 
-  @Put(':userId')
+  @Put(":userId")
   update(
-    @Param('userId') userId: string,
+    @Param("userId") userId: string,
     @Body() inputDto: InputDto.UpdateUser,
   ) {
     const user = this.userService.UpdateUser({ id: userId, ...inputDto });
@@ -48,8 +48,8 @@ export class UsersController {
     return user;
   }
 
-  @Delete(':userId')
-  remove(@Param('userId') userId: string) {
+  @Delete(":userId")
+  remove(@Param("userId") userId: string) {
     const user = this.userService.DeleteUser({ id: userId });
     /** TODO: outputDto */
     return user;

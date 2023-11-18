@@ -1,12 +1,12 @@
-import { applyDecorators } from '@nestjs/common';
-import { ApiProperty } from '@nestjs/swagger';
+import { applyDecorators } from "@nestjs/common";
+import { ApiProperty } from "@nestjs/swagger";
 import {
   IsEmail,
   IsNotEmpty,
   IsOptional,
   IsString,
   IsUrl,
-} from 'class-validator';
+} from "class-validator";
 
 type Params = {
   optional?: boolean;
@@ -17,8 +17,8 @@ export function IsApiEmail(params?: Params) {
   return applyDecorators(
     IsEmail(),
     ApiProperty({
-      description: 'An email address',
-      example: 'jordon@wetpages.com',
+      description: "An email address",
+      example: "jordon@wetpages.com",
       type: String,
       required,
     }),
@@ -31,8 +31,8 @@ export function IsApiString(params?: Params) {
   return applyDecorators(
     IsString(),
     ApiProperty({
-      description: 'A non-empty string',
-      example: 'some string',
+      description: "A non-empty string",
+      example: "some string",
       type: String,
       required,
     }),
@@ -45,8 +45,8 @@ export function IsApiUrl(params?: Params) {
   return applyDecorators(
     IsUrl(),
     ApiProperty({
-      description: 'A valid URL',
-      example: 'www.wetpages.com',
+      description: "A valid URL",
+      example: "www.wetpages.com",
       type: String,
       required,
     }),

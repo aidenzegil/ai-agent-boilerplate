@@ -27,14 +27,14 @@ export namespace params {
 }
 
 type GetUserById = {
-  discriminator: 'id';
+  discriminator: "id";
   id: string;
 };
 type GetUserByEmail = {
-  discriminator: 'email';
+  discriminator: "email";
   email: string;
 };
 type GetUserByUsername = {
-  discriminator: 'username';
+  discriminator: "username";
   username: string;
 };

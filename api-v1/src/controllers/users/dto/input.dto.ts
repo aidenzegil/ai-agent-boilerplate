@@ -2,7 +2,7 @@ import {
   IsApiEmail,
   IsApiString,
   IsApiUrl,
-} from 'src/common/decorators/validation';
+} from "src/common/decorators/validation";
 
 export class CreateUser {
   @IsApiEmail()
