@@ -6,9 +6,7 @@ const CatTag = ({name}: CatTagProps) => {
 
   return (
     <div className={s.container}>
-        <div className={s.text}>
             { name }
-        </div>
     </div>
   )
 }
