@@ -1,6 +1,8 @@
 import { ValidationPipe } from "@nestjs/common";
-import { NestFactory } from "@nestjs/core";
+import { HttpAdapterHost, NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { PrismaExceptionsFilter } from "src/controllers/middleware/prismaExceptionFilter";
+import { AllExceptionsFilter } from "src/controllers/middleware/safetyNet";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
@@ -17,6 +19,11 @@ async function bootstrap() {
   SwaggerModule.setup("api", app, document);
   /** End Open API documentation  */
 
+  /** Error Handling */
+  const host = app.get(HttpAdapterHost);
+  /** More specific handlers go towards the bottom */
+  app.useGlobalFilters(new AllExceptionsFilter(host));
+  app.useGlobalFilters(new PrismaExceptionsFilter(host));
   await app.listen(3001);
 }
 bootstrap();
