@@ -1,7 +1,0 @@
-{
-  "title": "Email",
-  "description": "An email address.",
-  "type": "string",
-  "example": "jordon@wetpages.com",
-  "x-tags": ["Common"]
-}
