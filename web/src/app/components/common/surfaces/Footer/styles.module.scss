@@ -1,0 +1,16 @@
+@use "@/app/assets/atoms/colors" as c;
+
+
+.container {
+    background-color: c.$charcoal-450;
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 -2px 10px -3px c.$pink;
+    transition: transform 0.3s ease-out;
+} 
+
+.container.hidden {
+    transform: translateY(100%);
+}
