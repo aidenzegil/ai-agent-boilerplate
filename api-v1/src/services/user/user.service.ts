@@ -1,20 +1,13 @@
 import { Injectable } from "@nestjs/common";
+import NotFoundError from "src/common/errors/NotFoundError";
 import { wetDBClient } from "src/lib/wetDBClient";
 import { UserApi } from "src/services/user/api.interface";
 import { params } from "src/services/user/api.params";
 import { User } from "src/services/user/models/user";
 
-const mockUser: User = {
-  id: "1",
-  username: "user1",
-  email: "jordon@wetpages.com",
-  profilePictureUrl: "someimage.com",
-};
-
 @Injectable()
 export class UserService implements UserApi {
   CreateUser: (params: params.CreateUser) => Promise<User> = async (params) => {
-    console.log("CreateUser");
     const user = await wetDBClient.user.create({
       data: {
         username: params.username,
@@ -22,29 +15,74 @@ export class UserService implements UserApi {
         profilePictureUrl: params.profilePictureUrl,
       },
     });
-    console.log({ user });
+
     return user;
   };
 
   SearchUsers: (params: params.SearchUsers) => Promise<User[]> = async (
     params,
   ) => {
+    /** TODO: Pagination */
     console.log(params);
-    return [mockUser];
+    const users = await wetDBClient.user.findMany({});
+
+    return users;
   };
 
   GetUser: (params: params.GetUser) => Promise<User> = async (params) => {
-    console.log(params);
-    return mockUser;
+    switch (params.discriminator) {
+      case "email":
+        return this.getUserByEmail(params.email);
+      case "id":
+        return this.getUserById(params.id);
+      case "username":
+        return this.getUserByUsername(params.username);
+    }
   };
 
   UpdateUser: (params: params.UpdateUser) => Promise<User> = async (params) => {
-    console.log(params);
-    return mockUser;
+    const updatedUser = await wetDBClient.user.update({
+      where: { id: params.id },
+      data: {
+        email: params.email,
+        username: params.username,
+        profilePictureUrl: params.profilePictureUrl,
+      },
+    });
+    return updatedUser;
   };
 
   DeleteUser: (params: params.DeleteUser) => Promise<User> = async (params) => {
+    const deletedUser = await wetDBClient.user.delete({
+      where: { id: params.id },
+    });
     console.log(params);
-    return mockUser;
+    return deletedUser;
+  };
+
+  private getUserByEmail: (email: string) => Promise<User> = async (email) => {
+    const user = await wetDBClient.user.findUnique({ where: { email } });
+    if (!user) {
+      throw new NotFoundError({ message: "User not found" });
+    }
+    return user;
+  };
+
+  private getUserById: (id: string) => Promise<User> = async (id) => {
+    const user = await wetDBClient.user.findUnique({ where: { id } });
+    if (!user) {
+      throw new NotFoundError({ message: "User not found" });
+    }
+    return user;
+  };
+
+  private getUserByUsername: (username: string) => Promise<User> = async (
+    username,
+  ) => {
+    const user = await wetDBClient.user.findUnique({ where: { username } });
+    if (!user) {
+      throw new NotFoundError({ message: "User not found" });
+    }
+    return user;
   };
 }
