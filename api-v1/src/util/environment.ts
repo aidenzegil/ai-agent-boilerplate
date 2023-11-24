@@ -1,7 +1,7 @@
 const getEnvironmentName = () => {
   const environmentName = process.env.ENV;
   if (environmentName === undefined) {
-    throw new Error("Environment name cannot be undefined: process.env");
+    throw new Error("Environment name cannot be undefined: process.env.ENV");
   }
   return environmentName;
 };
