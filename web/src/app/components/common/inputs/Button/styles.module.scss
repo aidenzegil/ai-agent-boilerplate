@@ -1,0 +1,40 @@
+@use "@/app/assets/atoms/colors" as c;
+@use "@/app/assets/molecules/text" as text;
+@use "@/app/assets/molecules/breakpoint" as breakpoint;
+
+.base {
+    border-radius: 25% / 100%;
+    height: min-content;
+    border: none;
+}
+
+.large {
+    padding: 16px 28px;
+    @include text.body-1
+}
+
+.medium {
+    padding: 8px 16px;
+    @include text.body-2
+}
+
+.small {
+    padding: 4px 12px;
+    @include text.disclaimer
+}
+
+.primaryFilled {
+    color: c.$charcoal-450;
+    background: c.$pink;
+}
+
+.primaryOutlined {
+    border: 1px solid c.$pink;
+    background-color: transparent;
+    color: c.$pink
+}
+
+.sudoLink {
+    color: c.$pink;
+    background: transparent;
+}
