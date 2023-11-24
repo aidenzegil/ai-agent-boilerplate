@@ -10,6 +10,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Chapter {
+  id           String        @id @default(nanoid())
+  title        String
+  content      String
+  ChapterStory ChapterStory?
+}
+
+model ChapterStory {
+  id        String @id @default(nanoid())
+  chapterId String @unique
+  storyId   String
+
+  chapter Chapter @relation(onDelete: Cascade, fields: [chapterId], references: [id])
+  story   Story   @relation(onDelete: Cascade, fields: [storyId], references: [id])
+}
+
+model Story {
+  id    String @id @default(nanoid())
+  title String
+  likes Int    @default(0)
+
+  StoryUser    StoryUser?
+  ChapterStory ChapterStory[]
+}
+
+model StoryUser {
+  id      String @id @default(nanoid())
+  storyId String @unique
+  userId  String
+
+  story Story @relation(onDelete: Cascade, fields: [storyId], references: [id])
+  user  User  @relation(onDelete: Cascade, fields: [userId], references: [id])
+}
+
 model User {
   id       String @id @default(nanoid())
   username String @unique
@@ -17,6 +51,7 @@ model User {
 
   profilePictureUrl String?
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  StoryUser StoryUser[]
 }
