@@ -2,7 +2,14 @@ import { ButtonProps, ButtonSize, ButtonVariant } from "./types";
 import s from "./styles.module.scss";
 import classNames from "classnames";
 
-const Button = ({ size, variant, children, onClick }: ButtonProps) => {
+const Button = ({
+  size,
+  variant,
+  children,
+  onClick,
+  className,
+  ...otherProps
+}: ButtonProps) => {
   const sizeClassName = (() => {
     switch (size) {
       case ButtonSize.LARGE:
@@ -31,8 +38,9 @@ const Button = ({ size, variant, children, onClick }: ButtonProps) => {
 
   return (
     <button
-      className={classNames(s.base, sizeClassName, variantClassName)}
+      className={classNames(s.base, sizeClassName, variantClassName, className)}
       onClick={onClick}
+      {...otherProps}
     >
       {children}
     </button>

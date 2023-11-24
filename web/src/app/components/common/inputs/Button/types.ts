@@ -1,4 +1,4 @@
-export type ButtonProps = {
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &  {
     children: JSX.Element | string
     onClick: () => void;
     variant?: ButtonVariant
