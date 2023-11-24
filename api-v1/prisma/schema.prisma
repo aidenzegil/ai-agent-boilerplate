@@ -10,11 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum AuthProvider {
+  Firebase
+}
+
+enum Opinion {
+  Dislike
+  Like
+  None
+}
+
 model Chapter {
   id           String        @id @default(nanoid())
   title        String
   content      String
   ChapterStory ChapterStory?
+
+  @@map("chapter")
 }
 
 model ChapterStory {
@@ -24,15 +36,33 @@ model ChapterStory {
 
   chapter Chapter @relation(onDelete: Cascade, fields: [chapterId], references: [id])
   story   Story   @relation(onDelete: Cascade, fields: [storyId], references: [id])
+
+  @@map("chapter_story")
 }
 
 model Story {
   id    String @id @default(nanoid())
   title String
-  likes Int    @default(0)
 
-  StoryUser    StoryUser?
-  ChapterStory ChapterStory[]
+  StoryUser     StoryUser?
+  ChapterStory  ChapterStory[]
+  StoryReaction StoryReaction[]
+
+  @@map("story")
+}
+
+model StoryReaction {
+  id      String @id @default(nanoid())
+  storyId String
+  userId  String
+
+  opinion Opinion
+
+  story Story @relation(onDelete: Cascade, fields: [storyId], references: [id])
+  user  User  @relation(onDelete: Cascade, fields: [userId], references: [id])
+
+  @@unique([storyId, userId])
+  @@map("story_reaction")
 }
 
 model StoryUser {
@@ -42,6 +72,8 @@ model StoryUser {
 
   story Story @relation(onDelete: Cascade, fields: [storyId], references: [id])
   user  User  @relation(onDelete: Cascade, fields: [userId], references: [id])
+
+  @@map("story_user")
 }
 
 model User {
@@ -51,7 +83,24 @@ model User {
 
   profilePictureUrl String?
 
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  StoryUser StoryUser[]
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  StoryUser          StoryUser[]
+  StoryReaction      StoryReaction[]
+  UserAuthentication UserAuthentication[]
+
+  @@map("user")
+}
+
+model UserAuthentication {
+  id         String       @id @default(nanoid())
+  externalId String
+  provider   AuthProvider
+  userId     String
+
+  user User @relation(onDelete: Cascade, fields: [userId], references: [id])
+
+  @@unique([externalId, provider])
+  @@unique([userId, provider])
+  @@map("user_authentication")
 }
