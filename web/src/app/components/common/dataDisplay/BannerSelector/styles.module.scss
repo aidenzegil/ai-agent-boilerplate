@@ -1,0 +1,61 @@
+@use "@/app/assets/atoms/colors" as c;
+
+.container {
+    width: 100vw;
+    align-items: center;
+    display: flex;
+    justify-content: right;
+}
+
+.likesCount {
+    color: c.$white;
+    margin-right: 10px;
+    
+}
+
+.heartIcon {
+    color: c.$pink;
+    height: 26px;
+    width: 26px;
+    
+}
+
+.infoContainer {
+    display: flex;
+    height: 64px;
+    width: 65%;
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
+    box-shadow: 0 1px 10px -5px c.$pink;
+    background-color: c.$charcoal-450;
+    margin-left: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.authorContainer {
+    color: c.$white;
+    margin-left: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.authorInfo {
+    height: 41px;
+    width: 41px;
+    box-shadow: 0 1px 10px -5px c.$pink;
+    border-radius: 50%;
+    border-width: 0;
+
+}
+
+.titleInfo {
+    color: c.$white;
+    margin-left: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
