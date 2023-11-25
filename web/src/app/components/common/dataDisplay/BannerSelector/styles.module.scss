@@ -1,7 +1,7 @@
 @use "@/app/assets/atoms/colors" as c;
 
 .container {
-    width: 100vw;
+    width: 100%;
     align-items: center;
     display: flex;
     justify-content: right;
@@ -43,7 +43,7 @@
 
 }
 
-.authorInfo {
+.authorPic {
     height: 41px;
     width: 41px;
     box-shadow: 0 1px 10px -5px c.$pink;
