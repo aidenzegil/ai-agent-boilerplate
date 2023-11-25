@@ -5,11 +5,8 @@ import { PrismaExceptionsFilter } from "src/controllers/middleware/prismaExcepti
 import { AllExceptionsFilter } from "src/controllers/middleware/safetyNet";
 import { AppModule } from "./app.module";
 
-const appModule = NestFactory.create(AppModule);
-
 async function bootstrap() {
-  const app = await appModule;
-
+  const app = await NestFactory.create(AppModule);
   /** Validation Middleware */
   app.useGlobalPipes(new ValidationPipe());
   /** Open API documentation */
@@ -30,5 +27,3 @@ async function bootstrap() {
   await app.listen(3001);
 }
 bootstrap();
-
-export default appModule;
