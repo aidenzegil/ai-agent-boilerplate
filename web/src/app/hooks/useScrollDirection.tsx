@@ -1,7 +1,7 @@
 // To use this hook:
 // in page.tsx: import useScrollController, { ScrollDirection, } from "./hooks/useScrollDirection";
 // in page.tsx function: const { scrollDirection } = useScrollController();
-// in page.tsx set component prop visible to visible={scrollDirection === ScrollDirection.Up/Down}
+// in page.tsx set component (NavBar and Footer) prop visible to visible={scrollDirection === ScrollDirection.Up}
 
 // useEffect requires client-side
 "use client";
@@ -23,10 +23,10 @@ type ScrollControllerParams = {
 // scroll controller hook
 const useScrollController = (
   { defaultDirection }: ScrollControllerParams = {
-    defaultDirection: ScrollDirection.Down,
+    defaultDirection: ScrollDirection.Up,
   }
 ) => {
-  // initialize state variables for screen position and visibility of footer
+  // initialize state variables for screen position and visibility
   const [scrollPos, setScrollPos] = useState(0);
   const [scrollDirection, setScrollDirection] = useState(defaultDirection);
 

@@ -1,0 +1,65 @@
+@use "@/app/assets/atoms/colors" as c;
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: c.$charcoal-450;
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 2px 10px -3px c.$pink;
+    transition: transform 0.3s ease-out;
+} 
+
+.container.hidden {
+    transform: translateY(-100%);
+}
+
+.leftContainer {
+    color: c.$white;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.logo {
+    height: 41px;
+    width: 41px;
+}
+
+.title {
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.rightContainer {
+    color: c.$white;
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    margin-right: 10px;
+    box-shadow: 0 0 10px -3px c.$pink;
+    border-radius: 50%;
+    border-width: 3px;
+}
+
+.searchLogo {
+    height: 33px;
+    width: 33px;
+}
+
+.profile {
+    border-radius: 50%;
+    box-shadow: 0 0 10px -3px c.$pink;
+    margin-right: 10px;
+}
+
+.profileLogo {
+    height: 41px;
+    width: 41px;
+}
