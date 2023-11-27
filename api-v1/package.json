@@ -1,32 +1,5 @@
 {
-  "scripts": {
-    "add:controller": "scripts/bash/createController.zsh",
-    "add:service": "scripts/bash/createService.zsh",
-    "build": "nest build",
-    "db:generate": "npm run env:local -- npx prisma generate --schema prisma/schema.prisma",
-    "db:migrate": "npm run env:local -- npx prisma migrate dev --schema prisma/schema.prisma && npm run env:local -- npm run db:generate",
-    "db:push": "npm run env:local -- npx prisma migrate deploy --schema prisma/schema.prisma && npm run db:generate",
-    "db:reset": "npm run db:push && npm run db:seed",
-    "db:seed": "npm run env:local -- npx prisma db seed",
-    "env:local": "dotenv -e .env.local --",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "npm run env:local -- nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/src/main.js",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
-  },
-  "name": "api",
-  "version": "0.0.1",
-  "description": "Wetpages API",
   "author": "jordon",
-  "private": true,
-  "license": "UNLICENSED",
   "dependencies": {
     "@nestjs/common": "^10.2.10",
     "@nestjs/core": "^10.2.10",
@@ -39,6 +12,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
   },
+  "description": "Wetpages API",
   "devDependencies": {
     "@nestjs/cli": "^10.2.1",
     "@nestjs/schematics": "^10.0.3",
@@ -70,23 +44,49 @@
     "typescript-transform-paths": "^3.4.6"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
     "moduleFileExtensions": [
       "js",
       "json",
       "ts"
     ],
     "rootDir": "src",
+    "testEnvironment": "node",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    }
   },
+  "license": "UNLICENSED",
+  "name": "api",
   "prisma": {
     "seed": "ts-node prisma/seed"
-  }
+  },
+  "private": true,
+  "scripts": {
+    "add:controller": "scripts/bash/createController.zsh",
+    "add:service": "scripts/bash/createService.zsh",
+    "build": "nest build",
+    "db:generate": "npm run env:local -- npx prisma generate --schema prisma/schema.prisma",
+    "db:migrate": "npm run env:local -- npx prisma migrate dev --schema prisma/schema.prisma && npm run env:local -- npm run db:generate",
+    "db:push": "npm run env:local -- npx prisma migrate deploy --schema prisma/schema.prisma && npm run db:generate",
+    "db:reset": "npm run db:push && npm run db:seed",
+    "db:seed": "npm run env:local -- npx prisma db seed",
+    "env:local": "dotenv -e .env.local --",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "start": "nest start",
+    "start:debug": "nest start --debug --watch",
+    "start:dev": "npm run env:local -- nest start --watch",
+    "start:prod": "node dist/src/main.js",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:watch": "jest --watch"
+  },
+  "version": "0.0.1"
 }
