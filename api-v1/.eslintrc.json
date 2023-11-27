@@ -5,7 +5,6 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "project": "./tsconfig.json",
-    "tsconfigRootDir": "__dirname",
     "sourceType": "module"
   },
   "plugins": [
@@ -14,6 +13,7 @@
     "sort-keys-fix",
     "unused-imports"
   ],
+  "root": true,
   "rules": {
     // Formatting
     "array-bracket-spacing": [

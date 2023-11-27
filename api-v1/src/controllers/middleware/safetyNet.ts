@@ -1,7 +1,8 @@
-import {
+import type {
   ArgumentsHost,
+  ExceptionFilter } from "@nestjs/common";
+import {
   Catch,
-  ExceptionFilter,
   HttpException,
   HttpStatus,
 } from "@nestjs/common";
@@ -30,9 +31,9 @@ export class AllExceptionsFilter implements ExceptionFilter {
     console.error(json);
     const responseBody = {
       error: isProduction() ? { message: "Internal Server Error" } : json,
+      path: httpAdapter.getRequestUrl(ctx.getRequest()),
       statusCode: httpStatus,
       timestamp: new Date().toISOString(),
-      path: httpAdapter.getRequestUrl(ctx.getRequest()),
     };
 
     httpAdapter.reply(ctx.getResponse(), responseBody, httpStatus);

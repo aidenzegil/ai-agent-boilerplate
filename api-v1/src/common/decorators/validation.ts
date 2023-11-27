@@ -19,8 +19,8 @@ export function IsApiEmail(params?: Params) {
     ApiProperty({
       description: "An email address",
       example: "jordon@wetpages.com",
-      type: String,
       required,
+      type: String,
     }),
     required ? IsNotEmpty() : IsOptional(),
   );
@@ -33,8 +33,8 @@ export function IsApiString(params?: Params) {
     ApiProperty({
       description: "A non-empty string",
       example: "some string",
-      type: String,
       required,
+      type: String,
     }),
     required ? IsNotEmpty() : IsOptional(),
   );
@@ -47,8 +47,8 @@ export function IsApiUrl(params?: Params) {
     ApiProperty({
       description: "A valid URL",
       example: "www.wetpages.com",
-      type: String,
       required,
+      type: String,
     }),
     required ? IsNotEmpty() : IsOptional(),
   );

@@ -1,12 +1,13 @@
-import {
+import type {
   ArgumentsHost,
+  ExceptionFilter } from "@nestjs/common";
+import {
   Catch,
-  ExceptionFilter,
   HttpException,
   HttpStatus,
 } from "@nestjs/common";
 import { HttpAdapterHost } from "@nestjs/core";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import type { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { isProduction } from "src/util/environment";
 import { AnsiForeground, deepLog } from "src/util/logging/deepLog";
 
@@ -52,9 +53,9 @@ export class PrismaExceptionsFilter implements ExceptionFilter {
         ? { message: "Internal Server Error" }
         : JSON.parse(json),
       message: prismaErr.message,
+      path: httpAdapter.getRequestUrl(ctx.getRequest()),
       statusCode: statusCode,
       timestamp: new Date().toISOString(),
-      path: httpAdapter.getRequestUrl(ctx.getRequest()),
     };
 
     httpAdapter.reply(ctx.getResponse(), responseBody, statusCode);

@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import type { AxiosError } from "axios";
 import { inspect } from "util";
 
 export enum AnsiBackground {
@@ -49,12 +49,12 @@ export const deepLog = (
     console.log(
       inspect(
         { axiosError: { ...jsonErr, resData: err.response?.data } },
-        { showHidden: false, depth: null, colors: false },
+        { colors: false, depth: null, showHidden: false },
       ),
     );
   } else {
     console.log(
-      inspect(source, { showHidden: false, depth: null, colors: false }),
+      inspect(source, { colors: false, depth: null, showHidden: false }),
     );
   }
   console.log("\n", "\u001b[0;0m");

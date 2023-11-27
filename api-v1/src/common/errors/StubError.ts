@@ -1,4 +1,5 @@
-import ApplicationError, { ParamsOrError } from "./ApplicationError";
+import type { ParamsOrError } from "./ApplicationError";
+import ApplicationError from "./ApplicationError";
 /**
  * This error is for unimplemented functions for services that are
  * under construction or don't support an interface method

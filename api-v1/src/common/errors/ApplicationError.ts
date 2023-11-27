@@ -1,7 +1,8 @@
-export type ParamsOrError = { message: string; name?: string } | Error;
+export type ParamsOrError = Error | { message: string; name?: string };
 
 class ApplicationError extends Error {
   code: number;
+
   public: boolean;
 
   originalError?: Error;

@@ -1,4 +1,5 @@
-import ApplicationError, { ParamsOrError } from "./ApplicationError";
+import type { ParamsOrError } from "./ApplicationError";
+import ApplicationError from "./ApplicationError";
 
 class AuthenticationError extends ApplicationError {
   constructor(data: ParamsOrError, error?: Error | null) {

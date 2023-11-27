@@ -11,7 +11,7 @@ export namespace params {
     limit?: number;
   };
 
-  export type GetUser = GetUserById | GetUserByEmail | GetUserByUsername;
+  export type GetUser = GetUserByEmail | GetUserById | GetUserByUsername;
 
   export type UpdateUser = {
     id: string;

@@ -8,8 +8,9 @@ import {
   Put,
 } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { User } from "src/services/user/models/user";
+import type { User } from "src/services/user/models/user";
 import { UserService } from "src/services/user/user.service";
+
 import * as InputDto from "./dto/input.dto";
 
 @ApiTags("users")
@@ -32,14 +33,14 @@ export class UsersController {
   }
 
   @Get(":userId")
-  findOne(@Param("userId") userId: string) {
+  async findOne(@Param("userId") userId: string) {
     const user = this.userService.GetUser({ discriminator: "id", id: userId });
     /** TODO: outputDto */
     return user;
   }
 
   @Put(":userId")
-  update(
+  async update(
     @Param("userId") userId: string,
     @Body() inputDto: InputDto.UpdateUser,
   ) {
@@ -49,7 +50,7 @@ export class UsersController {
   }
 
   @Delete(":userId")
-  remove(@Param("userId") userId: string) {
+  async remove(@Param("userId") userId: string) {
     const user = this.userService.DeleteUser({ id: userId });
     /** TODO: outputDto */
     return user;

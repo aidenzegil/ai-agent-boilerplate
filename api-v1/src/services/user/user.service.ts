@@ -1,18 +1,18 @@
 import { Injectable } from "@nestjs/common";
 import NotFoundError from "src/common/errors/NotFoundError";
 import { wetDBClient } from "src/lib/wetDBClient";
-import { UserApi } from "src/services/user/api.interface";
-import { params } from "src/services/user/api.params";
-import { User } from "src/services/user/models/user";
+import type { UserApi } from "src/services/user/api.interface";
+import type { params } from "src/services/user/api.params";
+import type { User } from "src/services/user/models/user";
 
 @Injectable()
 export class UserService implements UserApi {
   CreateUser: (params: params.CreateUser) => Promise<User> = async (params) => {
     const user = await wetDBClient.user.create({
       data: {
-        username: params.username,
         email: params.email,
         profilePictureUrl: params.profilePictureUrl,
+        username: params.username,
       },
     });
 
@@ -42,12 +42,12 @@ export class UserService implements UserApi {
 
   UpdateUser: (params: params.UpdateUser) => Promise<User> = async (params) => {
     const updatedUser = await wetDBClient.user.update({
-      where: { id: params.id },
       data: {
         email: params.email,
-        username: params.username,
         profilePictureUrl: params.profilePictureUrl,
+        username: params.username,
       },
+      where: { id: params.id },
     });
     return updatedUser;
   };

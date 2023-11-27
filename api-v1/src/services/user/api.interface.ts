@@ -1,5 +1,5 @@
-import { params } from "src/services/user/api.params";
-import { User } from "src/services/user/models/user";
+import type { params } from "src/services/user/api.params";
+import type { User } from "src/services/user/models/user";
 
 export interface UserApi {
   CreateUser: (params: params.CreateUser) => Promise<User>;

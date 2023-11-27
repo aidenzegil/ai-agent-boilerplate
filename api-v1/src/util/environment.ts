@@ -14,7 +14,7 @@ const isLocal = () => {
 };
 
 export const environment = {
-  name: getEnvironmentName(),
-  isProduction,
   isLocal,
+  isProduction,
+  name: getEnvironmentName(),
 };

@@ -3,6 +3,7 @@ import { HttpAdapterHost, NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { PrismaExceptionsFilter } from "src/controllers/middleware/prismaExceptionFilter";
 import { AllExceptionsFilter } from "src/controllers/middleware/safetyNet";
+
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
