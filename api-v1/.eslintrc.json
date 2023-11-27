@@ -1,6 +1,6 @@
 {
   "env": { "es2021": true, "node": true },
-  "extends": ["eslint:recommended", "./configs/eslint/ts.eslintrc.json"],
+  "extends": ["eslint:recommended", "./config/eslint/ts.eslintrc.json"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
