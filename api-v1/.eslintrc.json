@@ -1,0 +1,81 @@
+{
+  "env": { "es2021": true, "node": true },
+  "extends": ["eslint:recommended", "./configs/eslint/ts.eslintrc.json"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "__dirname",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "simple-import-sort",
+    "sort-keys-fix",
+    "unused-imports"
+  ],
+  "rules": {
+    // Formatting
+    "array-bracket-spacing": [
+      "warn",
+      "never",
+      { "arraysInArrays": false, "objectsInArrays": false }
+    ],
+    "arrow-parens": ["warn", "always"],
+    "arrow-spacing": ["warn"],
+    "block-spacing": "warn",
+    "brace-style": "warn",
+    "comma-dangle": ["warn", "always-multiline"],
+    "comma-spacing": "warn",
+    "eol-last": "warn",
+    "indent": [
+      "warn",
+      2,
+      { "offsetTernaryExpressions": true, "SwitchCase": 1 }
+    ],
+    "linebreak-style": ["warn", "unix"],
+    "lines-between-class-members": "warn",
+    "object-curly-spacing": ["warn", "always"],
+    "no-case-declarations": "off",
+    "no-extra-boolean-cast": "warn",
+    "no-extra-semi": "warn",
+    "no-extra-parens": "warn",
+    "no-inner-declarations": "warn",
+    "no-multi-spaces": "warn",
+    "no-var": "warn",
+    "no-trailing-spaces": "warn",
+    "quotes": ["warn", "double"],
+    "semi": ["warn", "always"],
+    // "space-before-blocks": "warn",
+    // Logic
+    "no-await-in-loop": "warn",
+    "no-constant-condition": "warn",
+    "no-duplicate-case": "warn",
+    "no-empty-pattern": "warn",
+    "no-prototype-builtins": "warn",
+    "no-self-assign": "warn",
+    "no-unreachable": "warn",
+    "no-unneeded-ternary": "warn",
+    "no-unsafe-optional-chaining": "warn",
+    "no-unused-expressions": "warn",
+    "no-useless-catch": "warn",
+    "no-useless-escape": "warn",
+    "prefer-const": "warn",
+    "simple-import-sort/imports": "warn",
+    "sort-keys": "warn",
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "unused-imports/no-unused-imports": "error",
+    // Note: you must disable the base rule as it can report incorrect errors
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "ignorePatterns": ["*.test.ts", "*mock*", "*dist*"]
+}

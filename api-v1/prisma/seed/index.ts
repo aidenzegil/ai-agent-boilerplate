@@ -1,5 +1,6 @@
-import { wetDBClient } from "src/lib/wetDBClient";
+import { wetDBClient } from "../../src/lib/wetDBClient";
 import seedUsers from "./users/seedUsers";
+
 const seed = async () => {
   // seed the users
   await seedUsers(wetDBClient);
