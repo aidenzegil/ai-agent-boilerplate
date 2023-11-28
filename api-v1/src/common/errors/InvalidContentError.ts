@@ -1,7 +1,7 @@
 import type { ParamsOrError } from "./ApplicationError";
-import ApplicationError from "./ApplicationError";
+import { ApplicationError } from "./ApplicationError";
 
-class InvalidContentError extends ApplicationError {
+export class InvalidContentError extends ApplicationError {
   constructor(data: ParamsOrError, error?: Error | null) {
     // eslint-disable-next-line no-param-reassign
     data.message = data.message || "Unprocessable Content Error";
@@ -12,5 +12,3 @@ class InvalidContentError extends ApplicationError {
     this.public = true;
   }
 }
-
-export default InvalidContentError;

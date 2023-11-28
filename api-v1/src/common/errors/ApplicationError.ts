@@ -1,6 +1,6 @@
 export type ParamsOrError = Error | { message: string; name?: string };
 
-class ApplicationError extends Error {
+export class ApplicationError extends Error {
   code: number;
 
   public: boolean;
@@ -50,5 +50,3 @@ class ApplicationError extends Error {
     }
   }
 }
-
-export default ApplicationError;

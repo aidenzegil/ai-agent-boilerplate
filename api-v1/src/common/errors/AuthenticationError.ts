@@ -1,7 +1,7 @@
 import type { ParamsOrError } from "./ApplicationError";
-import ApplicationError from "./ApplicationError";
+import { ApplicationError } from "./ApplicationError";
 
-class AuthenticationError extends ApplicationError {
+export class AuthenticationError extends ApplicationError {
   constructor(data: ParamsOrError, error?: Error | null) {
     // eslint-disable-next-line no-param-reassign
     data.message = data.message || "Authentication Error";
@@ -12,5 +12,3 @@ class AuthenticationError extends ApplicationError {
     this.public = true;
   }
 }
-
-export default AuthenticationError;

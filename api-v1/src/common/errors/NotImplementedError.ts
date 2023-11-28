@@ -1,10 +1,10 @@
 import type { ParamsOrError } from "./ApplicationError";
-import ApplicationError from "./ApplicationError";
+import { ApplicationError } from "./ApplicationError";
 /**
  * This error is for unimplemented functions for services that are
  * under construction or don't support an interface method
  */
-class NotImplementedError extends ApplicationError {
+export class NotImplementedError extends ApplicationError {
   constructor(
     data: ParamsOrError = { message: "This method is not implemented" },
     error?: Error | null,
@@ -17,5 +17,3 @@ class NotImplementedError extends ApplicationError {
     this.public = true;
   }
 }
-
-export default NotImplementedError;
