@@ -3,7 +3,11 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "./config/eslint/ts.eslintrc.json"],
+  "extends": [
+    "eslint:recommended",
+    "./config/eslint/ts.eslintrc.json",
+    "./config/eslint/style.eslintrc.json"
+  ],
   "ignorePatterns": ["*.test.ts", "*mock*", "*dist*"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -34,16 +38,16 @@
     "comma-dangle": ["warn", "always-multiline"],
     "comma-spacing": "warn",
     "eol-last": "warn",
-    "indent": [
-      "warn",
-      2,
-      {
-        "SwitchCase": 1,
-        "offsetTernaryExpressions": true
-      }
-    ],
-    "linebreak-style": ["warn", "unix"],
-    "lines-between-class-members": "warn",
+    // "indent": [
+    //   "warn",
+    //   2,
+    //   {
+    //     "SwitchCase": 1,
+    //     "offsetTernaryExpressions": true
+    //   }
+    // ],
+    // "linebreak-style": ["warn", "unix"],
+    // "lines-between-class-members": "warn",
     "no-await-in-loop": "warn",
     "no-case-declarations": "off",
     "no-constant-condition": "warn",

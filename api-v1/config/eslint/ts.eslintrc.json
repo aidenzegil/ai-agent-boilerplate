@@ -146,7 +146,7 @@
     "@typescript-eslint/naming-convention": [
       "warn",
       {
-        "format": ["camelCase"],
+        "format": ["camelCase", "PascalCase"],
         "selector": "default"
       },
       {
