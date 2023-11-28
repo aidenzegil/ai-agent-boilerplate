@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import type { AxiosError } from "axios";
 import { inspect } from "util";
 
@@ -39,7 +42,7 @@ export const deepLog = (
   source: any,
   foreground?: AnsiForeground,
   background?: AnsiBackground,
-) => {
+): void => {
   console.log(
     `\u001b[${foreground || 0}${background ? ";" + background : ""}m\n`,
   );

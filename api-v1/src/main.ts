@@ -6,7 +6,7 @@ import { AllExceptionsFilter } from "src/controllers/middleware/safetyNet";
 
 import { AppModule } from "./app.module";
 
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
   /** Validation Middleware */
   app.useGlobalPipes(new ValidationPipe());
@@ -27,4 +27,5 @@ async function bootstrap() {
   app.useGlobalFilters(new PrismaExceptionsFilter(host));
   await app.listen(3001);
 }
-bootstrap();
+
+void bootstrap();
