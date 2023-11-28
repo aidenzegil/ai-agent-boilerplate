@@ -1,4 +1,4 @@
-import type { User } from "#services/user/models/user";
+import type { User } from "domain/user/models/user";
 
 export class UserOutputDto {
   email: string;

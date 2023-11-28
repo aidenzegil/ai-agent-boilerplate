@@ -1,12 +1,11 @@
 import { Injectable } from "@nestjs/common";
+import { mutations } from "domain/user/data/mutations";
+import { queries } from "domain/user/data/queries";
+import { transform } from "domain/user/transform";
 import { NotFoundError } from "src/common/errors/NotFoundError";
-import type { UserApi } from "src/services/user/api.interface";
-import type { params } from "src/services/user/api.params";
-import type { User } from "src/services/user/models/user";
-
-import { mutations } from "#services/user/data/mutations";
-import { queries } from "#services/user/data/queries";
-import { transform } from "#services/user/transform";
+import type { UserApi } from "src/services/domain/user/api.interface";
+import type { params } from "src/services/domain/user/api.params";
+import type { User } from "src/services/domain/user/models/user";
 
 @Injectable()
 export class UserService implements UserApi {
@@ -15,13 +14,11 @@ export class UserService implements UserApi {
     const user = transform.user(dbUser);
     return user;
   };
-
   DeleteUser: (params: params.DeleteUser) => Promise<User> = async (params) => {
     const dbUser = await mutations.deleteUser(params);
     const user = transform.user(dbUser);
     return user;
   };
-
   GetUser: (params: params.GetUser) => Promise<User> = async (params) => {
     const dbUser = await (async () => {
       switch (params.discriminator) {
@@ -39,7 +36,6 @@ export class UserService implements UserApi {
     const user = transform.user(dbUser);
     return user;
   };
-
   SearchUsers: (params: params.SearchUsers) => Promise<User[]> = async (
     params,
   ) => {
@@ -47,7 +43,6 @@ export class UserService implements UserApi {
     const users = dbUsers.map(transform.user);
     return users;
   };
-
   UpdateUser: (params: params.UpdateUser) => Promise<User> = async (params) => {
     const updatedUser = await mutations.updateUser(params);
 

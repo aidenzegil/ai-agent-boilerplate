@@ -1,5 +1,6 @@
+import type { DBUser } from "domain/user/data/user";
+
 import { wetDBClient } from "#lib/wetDBClient";
-import type { DBUser } from "#services/user/data/user";
 
 export const queries = {
   getUserByEmail: async (email: string): Promise<DBUser | null> => {

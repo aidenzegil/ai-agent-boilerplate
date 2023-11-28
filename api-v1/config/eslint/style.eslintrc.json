@@ -1,12 +1,12 @@
 {
   "plugins": ["@stylistic/js", "@stylistic/ts"],
   "rules": {
-    "@stylistic/ts/indent": [
+    "@stylistic/js/indent": [
       "warn",
       2,
       {
-        "MemberExpression": { "parameters": "first" },
         "FunctionDeclaration": { "parameters": "first" },
+        "FunctionExpression": { "parameters": "first" },
         "SwitchCase": 1,
         "offsetTernaryExpressions": true
       }

@@ -8,7 +8,7 @@ import {
   Put,
 } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { UserService } from "src/services/user/user.service";
+import { UserService } from "src/services/domain/user/user.service";
 
 import { ApiResponse } from "#controllers/types/response.dto";
 

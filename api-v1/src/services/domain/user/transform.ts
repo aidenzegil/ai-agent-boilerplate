@@ -1,5 +1,5 @@
-import type { DBUser } from "#services/user/data/user";
-import type { User } from "#services/user/models/user";
+import type { DBUser } from "domain/user/data/user";
+import type { User } from "domain/user/models/user";
 
 export const transform = {
   user: (source: DBUser): User => {

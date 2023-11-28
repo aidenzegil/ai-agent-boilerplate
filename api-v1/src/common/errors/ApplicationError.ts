@@ -2,9 +2,7 @@ export type ParamsOrError = Error | { message: string; name?: string };
 
 export class ApplicationError extends Error {
   code: number;
-
   public: boolean;
-
   originalError?: Error;
 
   /**

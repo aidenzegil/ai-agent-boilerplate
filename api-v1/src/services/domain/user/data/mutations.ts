@@ -1,6 +1,7 @@
+import type { params } from "domain/user/api.params";
+import type { DBUser } from "domain/user/data/user";
+
 import { wetDBClient } from "#lib/wetDBClient";
-import type { params } from "#services/user/api.params";
-import type { DBUser } from "#services/user/data/user";
 
 export const mutations = {
   createUser: async (params: params.CreateUser): Promise<DBUser> => {
