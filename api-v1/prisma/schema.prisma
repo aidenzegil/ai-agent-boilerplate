@@ -30,13 +30,15 @@ model Chapter {
 }
 
 model ChapterStory {
-  id        String @id @default(nanoid())
-  chapterId String @unique
-  storyId   String
+  id           String @id @default(nanoid())
+  chapterId    String @unique
+  chapterIndex Int
+  storyId      String
 
   chapter Chapter @relation(onDelete: Cascade, fields: [chapterId], references: [id])
   story   Story   @relation(onDelete: Cascade, fields: [storyId], references: [id])
 
+  @@unique([chapterIndex, storyId])
   @@map("chapter_story")
 }
 
