@@ -7,16 +7,16 @@ export namespace params {
   };
 
   export type SearchUsers = {
-    page?: number;
     limit?: number;
+    page?: number;
   };
 
   export type GetUser = GetUserByEmail | GetUserById | GetUserByUsername;
 
   export type UpdateUser = {
-    id: string;
     email?: string;
     firebaseId?: string;
+    id: string;
     profilePictureUrl?: string;
     username?: string;
   };

@@ -6,28 +6,22 @@ import {
 
 export class CreateUser {
   @IsApiEmail()
-    email: string;
-
+    email!: string;
   @IsApiString()
-    firebaseId: string;
-
+    firebaseId!: string;
   @IsApiUrl()
-    profilePictureUrl: string;
-
+    profilePictureUrl!: string;
   @IsApiString()
-    username: string;
+    username!: string;
 }
 
 export class UpdateUser {
   @IsApiEmail({ optional: true })
-    email: string;
-
+    email?: string;
   @IsApiString({ optional: true })
-    firebaseId: string;
-
+    firebaseId?: string;
   @IsApiUrl({ optional: true })
-    profilePictureUrl: string;
-
+    profilePictureUrl?: string;
   @IsApiString({ optional: true })
-    username: string;
+    username?: string;
 }
