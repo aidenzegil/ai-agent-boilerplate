@@ -1,3 +1,9 @@
-import type { User } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
-export type DBUser = User
+export const typesafeUser = Prisma.validator<Prisma.UserDefaultArgs>()({
+  include: {
+    UserAuthentication: true,
+  },
+});
+
+export type DBUser = Prisma.UserGetPayload<typeof typesafeUser>;
