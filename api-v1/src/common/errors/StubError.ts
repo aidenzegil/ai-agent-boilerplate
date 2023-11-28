@@ -9,7 +9,7 @@ export class StubError extends ApplicationError {
     data: ParamsOrError = { message: "This function is under construction" },
     error?: Error | null,
   ) {
-    data.message = data.message;
+    data.message = data.message || "This function is under construction";
 
     super(data, error);
     this.name = data.name || "Stub Error";

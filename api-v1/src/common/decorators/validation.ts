@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { applyDecorators } from "@nestjs/common";
 import { ApiProperty } from "@nestjs/swagger";
 import {
@@ -12,7 +13,14 @@ type Params = {
   optional?: boolean;
 };
 
-export function IsApiEmail(params?: Params) {
+// eslint-disable-next-line @typescript-eslint/ban-types
+type ApplyDecorator = <TFunction extends Function, Y>(
+  target: TFunction | object,
+  propertyKey?: string | symbol | undefined,
+  descriptor?: TypedPropertyDescriptor<Y> | undefined,
+) => void;
+
+export function IsApiEmail(params?: Params): ApplyDecorator {
   const required = !params?.optional;
   return applyDecorators(
     IsEmail(),
@@ -26,7 +34,7 @@ export function IsApiEmail(params?: Params) {
   );
 }
 
-export function IsApiString(params?: Params) {
+export function IsApiString(params?: Params): ApplyDecorator {
   const required = !params?.optional;
   return applyDecorators(
     IsString(),
@@ -40,7 +48,7 @@ export function IsApiString(params?: Params) {
   );
 }
 
-export function IsApiUrl(params?: Params) {
+export function IsApiUrl(params?: Params): ApplyDecorator {
   const required = !params?.optional;
   return applyDecorators(
     IsUrl(),

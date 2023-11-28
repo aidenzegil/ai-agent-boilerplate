@@ -2,8 +2,8 @@ export type ParamsOrError = Error | { message: string; name?: string };
 
 export class ApplicationError extends Error {
   code: number;
-  public: boolean;
   originalError?: Error;
+  public: boolean;
 
   /**
    * You can either pass in an object containing a message, or an Error to

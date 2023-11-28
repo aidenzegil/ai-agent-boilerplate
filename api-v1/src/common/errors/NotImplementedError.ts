@@ -9,7 +9,7 @@ export class NotImplementedError extends ApplicationError {
     data: ParamsOrError = { message: "This method is not implemented" },
     error?: Error | null,
   ) {
-    data.message = data.message;
+    data.message = data.message || "This method is not implemented";
 
     super(data, error);
     this.name = data.name || "Not Implemented Error";
