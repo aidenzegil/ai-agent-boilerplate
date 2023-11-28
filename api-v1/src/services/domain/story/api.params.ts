@@ -1,5 +1,8 @@
+import type { Opinion } from "#common/types/enums/opinion";
+
 export namespace params {
   export type CreateStory = {
+    authorUserId: string;
     title: string;
   };
 
@@ -8,6 +11,11 @@ export namespace params {
   };
 
   export type GetStory = { id: string };
+
+  export type ReactToStory = {
+    opinion: Opinion;
+    userId: string;
+  };
 
   export type SearchStories = {
     limit?: number;
