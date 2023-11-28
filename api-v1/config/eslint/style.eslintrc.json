@@ -5,6 +5,8 @@
       "warn",
       2,
       {
+        "MemberExpression": { "parameters": "first" },
+        "FunctionDeclaration": { "parameters": "first" },
         "SwitchCase": 1,
         "offsetTernaryExpressions": true
       }
