@@ -3,28 +3,27 @@ import { BannerProps } from "./types";
 import s from "./styles.module.scss";
 import { IoHeartSharp } from "react-icons/io5";
 
-// BannerProps type includes storyId and chapterId optional props
 const BannerSelector = ({
   likes,
   title,
-  authorPic,
-  storyId,
-  chapterId,
+  active,
+  authorPicUrl,
+  onClick,
 }: BannerProps) => {
   return (
-    <div className={s.container}>
+    <div className={`${s.container} ${active && s.activeContainer}`}>
       <div className={s.likesCount}>{likes}</div>
       <IoHeartSharp className={s.heartIcon} />
-      <div className={s.infoContainer}>
+      <div className={s.infoContainer} onClick={onClick}>
         <div className={s.authorContainer}>
           <img
-            src={authorPic}
+            src={authorPicUrl}
             alt="Author Profile Picture"
             className={s.authorPic}
           />
         </div>
 
-        <div className={s.titleInfo}>{title}</div>
+        <h1 className={s.titleInfo}>{title}</h1>
       </div>
     </div>
   );
