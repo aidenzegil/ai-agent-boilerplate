@@ -11,8 +11,8 @@ import { useState, useEffect } from "react";
 
 // enum to hold scroll direction
 export enum ScrollDirection {
-  Up,
-  Down,
+  Up = "Up",
+  Down = "Down",
 }
 
 // initialize direction type

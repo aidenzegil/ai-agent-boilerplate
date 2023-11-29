@@ -2,12 +2,10 @@ import React from "react";
 import s from "./styles.module.scss";
 import { LuBook } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
+import { Fields } from "./types";
 // import { MdOutlineSearch } from "react-icons/md";
-import { NavBarProps } from "./types";
 
-const NavBar = ({ visible }: NavBarProps) => {
-  // TODO: Search Functionality
-  console.log(visible);
+const Component = ({ visible }: Fields) => {
   return (
     <div className={`${s.container} ${!visible && s.hidden}`}>
       <div className={s.leftContainer}>
@@ -38,4 +36,4 @@ const NavBar = ({ visible }: NavBarProps) => {
   );
 };
 
-export default NavBar;
+export default Component;
