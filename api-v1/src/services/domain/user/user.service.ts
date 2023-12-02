@@ -44,8 +44,8 @@ export class UserService implements UserApi {
     return users;
   };
   UpdateUser: (params: params.UpdateUser) => Promise<User> = async (params) => {
-    const updatedUser = await mutations.updateUser(params);
-
-    return updatedUser;
+    const dbUser = await mutations.updateUser(params);
+    const user = transform.user(dbUser);
+    return user;
   };
 }
