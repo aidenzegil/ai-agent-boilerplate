@@ -15,10 +15,12 @@ export namespace params {
   export type SearchChapters = {
     limit?: number;
     page?: number;
+    storyId?: string;
   };
 
   export type UpdateChapter = {
     content?: string;
+    id: string;
     index?: number;
     title?: string;
   };
