@@ -1,13 +1,10 @@
-import type { Opinion } from "#common/types/enums/opinion";
+import type { StoryReaction } from "domain/story/models/storyReaction";
 
-type Reaction = {
-  opinion: Opinion;
-  userId: string;
-};
+
 export type Story = {
   authorUserId: string;
   chapters: string[];
   id: string;
-  reactions: Reaction[];
+  reactions: StoryReaction[];
   title: string;
 };
