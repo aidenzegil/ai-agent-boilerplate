@@ -5,4 +5,5 @@ import s from "./styles.module.scss";
 const LeafCard = ({ children }: LeafCardProps) => {
   return <div className={s.container}>{children}</div>;
 };
+
 export default LeafCard;
