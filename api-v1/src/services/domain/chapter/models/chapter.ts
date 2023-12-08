@@ -1,4 +1,3 @@
-
 export type Chapter = {
   content: string;
   id: string;
