@@ -5,7 +5,7 @@ import type { Story } from "domain/story/models/story";
 import { StoryService } from "domain/story/story.service";
 import type { LiteratureApi } from "orchestration/literature/api.interface";
 import type { params } from "orchestration/literature/api.params";
-import type { OrchestratedStory } from "orchestration/literature/models/completeStory";
+import type { OrchestratedStory } from "orchestration/literature/models/orchestratedStory";
 import { transform } from "orchestration/literature/transform";
 
 @Injectable()
