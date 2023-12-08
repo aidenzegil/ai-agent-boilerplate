@@ -35,8 +35,10 @@ model ChapterStory {
   chapterIndex Int
   storyId      String
 
+  // If a chapter is deleted, the join is deleted as well
   chapter Chapter @relation(onDelete: Cascade, fields: [chapterId], references: [id])
-  story   Story   @relation(onDelete: Cascade, fields: [storyId], references: [id])
+  // A story cannot be deleted if it has chapters
+  story   Story   @relation(onDelete: Restrict, fields: [storyId], references: [id])
 
   @@unique([chapterIndex, storyId])
   @@map("chapter_story")

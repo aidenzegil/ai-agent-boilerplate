@@ -10,6 +10,8 @@ export namespace params {
     id: string;
   };
 
+  export type DeleteChapters = DeleteChaptersByIds | DeleteChaptersByStory;
+
   export type GetChapter = { id: string };
 
   export type SearchChapters = {
@@ -25,3 +27,13 @@ export namespace params {
     title?: string;
   };
 }
+
+type DeleteChaptersByStory = {
+  discriminator: "storyId";
+  storyId: string;
+};
+
+type DeleteChaptersByIds = {
+  discriminator: "ids";
+  ids: string[];
+};
