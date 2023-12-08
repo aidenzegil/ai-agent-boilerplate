@@ -1,12 +1,8 @@
 # Wet Pages API
 
-### Column Name
-
-- Better Error Handling
-- Authentication Middleware
-- Some way to host profile pics (maybe options)
-- StorybookAi
-
-### Completed Column ✓
-
-- MVP API
+| TODO                                          | -   | Completed |
+| --------------------------------------------- | --- | --------- |
+| Better Error Handling                         | -   | MVP API   |
+| Authentication Middleware                     | -   |           |
+| Some way to host profile pics (maybe options) | -   |           |
+| StorybookAi                                   | -   |           |
