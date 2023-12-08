@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import type { PrismaClient, User } from "@prisma/client";
 
 const users = [
   {
@@ -18,26 +18,29 @@ const users = [
   },
 ];
 
-const seed = async (prismaClient: PrismaClient): Promise<void> => {
-  await Promise.all(
-    users.map((user) => {
+const seed = async (prismaClient: PrismaClient): Promise<User[]> => {
+  console.log("Seeding users");
+  const dbUsers = await Promise.all(
+    users.map(async (user) => {
       const username = `${user.firstName}_${user.lastName}`;
       const email = `${user.firstName}@wetpages.com`;
       return prismaClient.user.upsert({
-        where: {
-          username,
-        },
         create: {
-          username,
           email,
+          username,
         },
         update: {
-          username,
           email,
+          username,
+        },
+        where: {
+          username,
         },
       });
     }),
   );
+
+  return dbUsers;
 };
 
 export default seed;
