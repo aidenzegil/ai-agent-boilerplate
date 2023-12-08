@@ -9,6 +9,7 @@ import {
   Put,
   Query,
 } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import type { Story } from "domain/story/models/story";
 import { LiteratureService } from "orchestration/literature/service";
 
@@ -17,6 +18,7 @@ import { StoryOutputDto } from "#controllers/stories/dto/output.dto";
 
 import * as InputDto from "./dto/input.dto";
 
+@ApiTags("stories")
 @Controller("stories")
 export class StoriesController {
   constructor(private readonly service: LiteratureService) {}
