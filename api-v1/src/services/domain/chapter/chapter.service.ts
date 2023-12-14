@@ -11,6 +11,7 @@ import type { Chapter } from "#services/domain/chapter/models/chapter";
 
 @Injectable()
 export class ChapterService implements ChapterApi {
+  /** Create a chapter */
   CreateChapter: (params: params.CreateChapter) => Promise<Chapter> = async (
     params,
   ) => {
@@ -18,6 +19,7 @@ export class ChapterService implements ChapterApi {
     const chapter = transform.chapter(dbChapter);
     return chapter;
   };
+  /** Delete a chapter */
   DeleteChapter: (params: params.DeleteChapter) => Promise<Chapter> = async (
     params,
   ) => {
@@ -25,6 +27,7 @@ export class ChapterService implements ChapterApi {
     const chapter = transform.chapter(dbChapter);
     return chapter;
   };
+  /** Delete multiple chapters */
   DeleteChapters: (params: params.DeleteChapters) => Promise<BatchCount> =
     async (params) => {
       const response = await (async () => {
@@ -37,6 +40,7 @@ export class ChapterService implements ChapterApi {
       })();
       return response;
     };
+  /** Get a chapter */
   GetChapter: (params: params.GetChapter) => Promise<Chapter> = async (
     params,
   ) => {
@@ -47,12 +51,14 @@ export class ChapterService implements ChapterApi {
     const chapter = transform.chapter(dbChapter);
     return chapter;
   };
+  /** Get multiple chapters */
   SearchChapters: (params: params.SearchChapters) => Promise<Chapter[]> =
     async (params) => {
       const dbChapters = await queries.searchChapters(params);
       const chapters = dbChapters.map(transform.chapter);
       return chapters;
     };
+  /** Update a chapter */
   UpdateChapter: (params: params.UpdateChapter) => Promise<Chapter> = async (
     params,
   ) => {

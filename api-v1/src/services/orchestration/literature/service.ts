@@ -14,20 +14,24 @@ export class LiteratureService implements LiteratureApi {
     private readonly chapterService: ChapterService,
     private readonly storyService: StoryService,
   ) {}
+  /** Create a chapter */
   CreateChapter: (params: params.CreateChapter) => Promise<Chapter> = async (params) => {
     const chapter = await this.chapterService.CreateChapter(params);
     return chapter;
   };
+  /** Create a story */
   CreateStory: (params: params.CreateStory) => Promise<OrchestratedStory> = async (
     params,
   ) => {
     const story = await this.storyService.CreateStory(params);
     return transform.orchestratedStory(story, []);
   };
+  /** Delete a chapter */
   DeleteChapter: (params: params.DeleteChapter) => Promise<void> = async (params) => {
     await this.chapterService.DeleteChapter(params);
     return;
   };
+  /** Delete a story*/
   DeleteStory: (params: params.DeleteStory) => Promise<void> = async (params) => {
     await this.chapterService.DeleteChapters({
       discriminator: "storyId",
@@ -36,10 +40,12 @@ export class LiteratureService implements LiteratureApi {
     await this.storyService.DeleteStory(params);
     return;
   };
+  /** Get a chapter */
   GetChapter: (params: params.GetChapter) => Promise<Chapter> = async (params) => {
     const chapter = await this.chapterService.GetChapter(params);
     return chapter;
   };
+  /** Get a story */
   GetStory: (params: params.GetStory) => Promise<OrchestratedStory> = async (params) => {
     const story = await this.storyService.GetStory(params);
     const chapters = await this.chapterService.SearchChapters({
@@ -47,6 +53,7 @@ export class LiteratureService implements LiteratureApi {
     });
     return transform.orchestratedStory(story, chapters);
   };
+  /** Create or update a story reaction */
   ReactToStory: (params: params.ReactToStory) => Promise<OrchestratedStory> = async (
     params,
   ) => {
@@ -56,14 +63,17 @@ export class LiteratureService implements LiteratureApi {
     });
     return transform.orchestratedStory(story, chapters);
   };
+  /** Search stories */
   SearchStories: (params: params.SearchStories) => Promise<Story[]> = async (params) => {
     const stories = await this.storyService.SearchStories(params);
     return stories;
   };
+  /** Update a chapter */
   UpdateChapter: (params: params.UpdateChapter) => Promise<Chapter> = async (params) => {
     const chapter = await this.chapterService.UpdateChapter(params);
     return chapter;
   };
+  /** Update a story */
   UpdateStory: (params: params.UpdateStory) => Promise<OrchestratedStory> = async (
     params,
   ) => {
