@@ -1,4 +1,5 @@
 import type { Chapter } from "domain/chapter/models/chapter";
+import type { Story } from "domain/story/models/story";
 import type { StoryReaction } from "domain/story/models/storyReaction";
 import type { OrchestratedStory } from "orchestration/literature/models/orchestratedStory";
 
@@ -40,6 +41,24 @@ export class StoryOutputDto {
     this.chapters = source.chapters.map(
       (chapter) => new ChapterOutputDto(chapter),
     );
+    this.id = source.id;
+    this.reactions = source.reactions.map(
+      (reaction) => new StoryReactionOutputDto(reaction),
+    );
+    this.title = source.title;
+  }
+}
+
+export class StoryListItemOutputDto {
+  authorUserId: string;
+  chapterIds: string[];
+  id: string;
+  reactions: StoryReactionOutputDto[];
+  title: string;
+
+  constructor(source: Story) {
+    this.authorUserId = source.authorUserId;
+    this.chapterIds = source.chapters;
     this.id = source.id;
     this.reactions = source.reactions.map(
       (reaction) => new StoryReactionOutputDto(reaction),

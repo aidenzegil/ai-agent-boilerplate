@@ -10,11 +10,15 @@ import {
   Query,
 } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import type { Story } from "domain/story/models/story";
 import { LiteratureService } from "orchestration/literature/service";
 
-import { ChapterOutputDto } from "#controllers/stories/dto/output.dto";
+import { ResponseStatus } from "#common/types/enums/responseStatus";
+import {
+  ChapterOutputDto,
+  StoryListItemOutputDto,
+} from "#controllers/stories/dto/output.dto";
 import { StoryOutputDto } from "#controllers/stories/dto/output.dto";
+import { ApiResponse } from "#controllers/types/response.dto";
 
 import * as InputDto from "./dto/input.dto";
 
@@ -26,52 +30,62 @@ export class StoriesController {
   @Post("chapter")
   async CreateChapter(
     @Body() inputDto: InputDto.CreateChapter,
-  ): Promise<ChapterOutputDto> {
+  ): ApiResponse<ChapterOutputDto> {
     const chapter = await this.service.CreateChapter({
       content: inputDto.content,
       index: inputDto.index,
       storyId: inputDto.storyId,
       title: inputDto.title,
     });
-    return new ChapterOutputDto(chapter);
+    const dto = new ChapterOutputDto(chapter);
+    return { data: dto };
   }
 
   @Post()
   async CreateStory(
     @Headers("userId") userId: string,
     @Body() inputDto: InputDto.CreateStory,
-  ): Promise<StoryOutputDto> {
+  ): ApiResponse<StoryOutputDto> {
     const story = await this.service.CreateStory({
       authorUserId: userId,
       title: inputDto.title,
     });
-    return new StoryOutputDto(story);
+    const dto = new StoryOutputDto(story);
+    return { data: dto };
   }
 
   @Delete("/chapter/:chapterId")
-  async DeleteChapter(@Param("chapterId") chapterId: string): Promise<void> {
+  async DeleteChapter(
+    @Param("chapterId") chapterId: string,
+  ): ApiResponse<ResponseStatus> {
     await this.service.DeleteChapter({ id: chapterId });
-    return;
+    return { data: ResponseStatus.SUCCESS };
   }
 
   @Delete(":storyId")
-  async DeleteStory(@Param("storyId") storyId: string): Promise<void> {
+  async DeleteStory(
+    @Param("storyId") storyId: string,
+  ): ApiResponse<ResponseStatus> {
     await this.service.DeleteStory({ id: storyId });
-    return;
+    return { data: ResponseStatus.SUCCESS };
   }
 
   @Get("/chapter/:chapterId")
   async GetChapter(
     @Param("chapterId") chapterId: string,
-  ): Promise<ChapterOutputDto> {
+  ): ApiResponse<ChapterOutputDto> {
     const chapter = await this.service.GetChapter({ id: chapterId });
-    return new ChapterOutputDto(chapter);
+    const dto = new ChapterOutputDto(chapter);
+    return { data: dto };
   }
 
   @Get(":storyId")
-  async GetStory(@Param("storyId") storyId: string): Promise<StoryOutputDto> {
+  async GetStory(
+    @Param("storyId") storyId: string,
+  ): ApiResponse<StoryOutputDto> {
     const story = await this.service.GetStory({ id: storyId });
-    return new StoryOutputDto(story);
+    const dto = new StoryOutputDto(story);
+    return { data: dto };
   }
 
   @Put(":storyId/react")
@@ -79,50 +93,54 @@ export class StoriesController {
     @Headers("userId") userId: string,
     @Param("storyId") storyId: string,
     @Body() inputDto: InputDto.ReactToStory,
-  ): Promise<StoryOutputDto> {
+  ): ApiResponse<StoryOutputDto> {
     const story = await this.service.ReactToStory({
       opinion: inputDto.opinion,
       storyId,
       userId,
     });
-    return new StoryOutputDto(story);
+    const dto = new StoryOutputDto(story);
+    return { data: dto };
   }
 
   @Get()
   async SearchStories(
     @Query("page") page?: number,
     @Query("limit") limit?: number,
-  ): Promise<Story[]> {
+  ): ApiResponse<StoryListItemOutputDto[]> {
     const stories = await this.service.SearchStories({
       limit,
       page,
     });
-    return stories;
+    const dto = stories.map((story) => new StoryListItemOutputDto(story));
+    return { data: dto };
   }
 
   @Put("/chapter/:chapterId")
   async UpdateChapter(
     @Param("chapterId") chapterId: string,
     @Body() inputDto: InputDto.UpdateChapter,
-  ): Promise<ChapterOutputDto> {
+  ): ApiResponse<ChapterOutputDto> {
     const chapter = await this.service.UpdateChapter({
       content: inputDto.content,
       id: chapterId,
       index: inputDto.index,
       title: inputDto.title,
     });
-    return new ChapterOutputDto(chapter);
+    const dto = new ChapterOutputDto(chapter);
+    return { data: dto };
   }
 
   @Put(":storyId")
   async UpdateStory(
     @Param("storyId") storyId: string,
     @Body() inputDto: InputDto.UpdateStory,
-  ): Promise<StoryOutputDto> {
+  ): ApiResponse<StoryOutputDto> {
     const story = await this.service.UpdateStory({
       id: storyId,
       title: inputDto.title,
     });
-    return new StoryOutputDto(story);
+    const dto = new StoryOutputDto(story);
+    return { data: dto };
   }
 }
