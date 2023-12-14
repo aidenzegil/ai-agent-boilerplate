@@ -2,18 +2,27 @@ import type { PrismaClient, User } from "@prisma/client";
 
 const users = [
   {
-    firstName: "jake",
-    lastName: "zegil",
+    firebaseId: "fake-firebase-1",
+    firstName: "papa",
+    lastName: "bigBalls",
     title: "engineering",
   },
   {
-    firstName: "jordon",
-    lastName: "waters",
+    firebaseId: "fake-firebase-2",
+    firstName: "jojo",
+    lastName: "johnson",
     title: "engineering",
   },
   {
-    firstName: "aiden",
-    lastName: "zegil",
+    firebaseId: "fake-firebase-3",
+    firstName: "dorito",
+    lastName: "goodbody",
+    title: "engineering",
+  },
+  {
+    firebaseId: "fake-firebase-4",
+    firstName: "dr",
+    lastName: "bruh",
     title: "engineering",
   },
 ];
@@ -27,10 +36,12 @@ const seed = async (prismaClient: PrismaClient): Promise<User[]> => {
       return prismaClient.user.upsert({
         create: {
           email,
+          firebaseId: user.firebaseId,
           username,
         },
         update: {
           email,
+          firebaseId: user.firebaseId,
           username,
         },
         where: {
