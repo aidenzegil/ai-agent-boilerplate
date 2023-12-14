@@ -10,10 +10,6 @@ datasource db {
   url      = env("DB_URL")
 }
 
-enum AuthProvider {
-  Firebase
-}
-
 enum Opinion {
   Dislike
   Like
