@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+enum Opinion {
+  Dislike
+  Like
+  None
+}
+
+model Chapter {
+  // metadata
+  id           String        @id @default(nanoid())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @default(now()) @updatedAt
+  // fields
+  title        String
+  content      String
+  // relations
+  ChapterStory ChapterStory?
+
+  @@map("chapter")
+}
+
+model ChapterStory {
+  // metadata
+  id           String @id @default(nanoid())
+  chapterId    String @unique
+  storyId      String
+  // fields
+  chapterIndex Int
+
+  // relations
+  // If a chapter is deleted, the join is deleted as well
+  chapter Chapter @relation(onDelete: Cascade, fields: [chapterId], references: [id])
+  // A story cannot be deleted if it has chapters
+  story   Story   @relation(onDelete: Restrict, fields: [storyId], references: [id])
+
+  @@unique([chapterIndex, storyId])
+  @@map("chapter_story")
+}
+
+model Story {
+  // metadata
+  id            String          @id @default(nanoid())
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now()) @updatedAt
+  // fields
+  title         String
+  // relations
+  StoryUser     StoryUser?
+  ChapterStory  ChapterStory[]
+  StoryReaction StoryReaction[]
+
+  @@map("story")
+}
+
+model StoryReaction {
+  // metadata
+  id        String   @id @default(nanoid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  storyId   String
+  userId    String
+  // fields
+  opinion   Opinion
+  // relations
+  story     Story    @relation(onDelete: Cascade, fields: [storyId], references: [id])
+  user      User     @relation(onDelete: Cascade, fields: [userId], references: [id])
+
+  @@unique([storyId, userId])
+  @@map("story_reaction")
+}
+
+model StoryUser {
+  // metadata
+  id      String @id @default(nanoid())
+  storyId String @unique
+  userId  String
+  // relations
+  story   Story  @relation(onDelete: Cascade, fields: [storyId], references: [id])
+  user    User   @relation(onDelete: Cascade, fields: [userId], references: [id])
+
+  @@map("story_user")
+}
+
+model User {
+  // metadata
+  id                String          @id @default(nanoid())
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @default(now()) @updatedAt
+  // fields
+  username          String          @unique
+  email             String          @unique
+  firebaseId        String          @unique
+  profilePictureUrl String?
+  // relations
+  StoryUser         StoryUser[]
+  StoryReaction     StoryReaction[]
+
+  @@map("user")
+}
