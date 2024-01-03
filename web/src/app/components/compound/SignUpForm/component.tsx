@@ -13,11 +13,23 @@ const Component = ({ onSubmit, form }: Fields) => {
       <LuBook className={s.logo} />
       <Form className={s.form} onSubmit={onSubmit}>
         <label className={s.label}>EMAIL</label>
-        <Input className={s.inputs} register={register("email")} />
+        <Input
+          placeholder="example@email.com"
+          className={s.inputs}
+          register={register("email")}
+        />
         <label className={s.label}>USERNAME</label>
-        <Input className={s.inputs} register={register("username")} />
+        <Input
+          placeholder="6 character min"
+          className={s.inputs}
+          register={register("username")}
+        />
         <label className={s.label}>PASSWORD</label>
-        <Input className={s.inputs} register={register("password")} />
+        <Input
+          placeholder="8 character min"
+          className={s.inputs}
+          register={register("password")}
+        />
         <Button className={s.button} type="submit">
           Sign Up
         </Button>
