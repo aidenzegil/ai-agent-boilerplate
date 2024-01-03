@@ -35,12 +35,12 @@ export const useSignUpFormState = ({
   return { onSubmit, errors };
 };
 
+/* NOTE: config should include form: "". However, currently it works without it */
 export const formConfig = {
   defaultValues: {
     email: "blah",
     password: "blah",
     username: "blah",
-    form: "",
   },
   mode: "onChange",
   resolver: yupResolver(
