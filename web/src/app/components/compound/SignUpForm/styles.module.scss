@@ -1,9 +1,6 @@
 @use "@/app/assets/atoms/colors" as c;
 @use "@/app/assets/molecules/text" as text;
 @use "@/app/assets/molecules/breakpoint" as breakpoint;
-@use "@/app/components/common/inputs/Input/styles.module.scss" as inputExtension;
-@use "@/app/components/common/inputs/Button/styles.module.scss" as
-  buttonExtension;
 
 .container {
   display: flex;
@@ -13,7 +10,7 @@
   flex-direction: column;
   align-items: center;
 
-  // @include breakpoint.$break-point-m {
+  // @include breakpoint.display-to("m") {
   //   position: relative;
   // }
 
@@ -32,12 +29,10 @@
       color: c.$pink;
     }
     .inputs {
-      @extend .input;
       margin-bottom: 1rem;
       padding: 4px;
     }
     .button {
-      @extend .base;
       width: 100%;
       border-radius: 25px;
       margin-top: 1rem;
