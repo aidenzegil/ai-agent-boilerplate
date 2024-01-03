@@ -7,7 +7,6 @@ export type Fields = {
       password: string;
       username: string;
     },
-    any,
     undefined
   >;
   onSubmit: () => void;

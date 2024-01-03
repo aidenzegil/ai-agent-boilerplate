@@ -34,6 +34,7 @@
     .inputs {
       @extend .input;
       margin-bottom: 1rem;
+      padding: 4px;
     }
     .button {
       @extend .base;

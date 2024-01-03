@@ -11,7 +11,6 @@ export const useSignUpFormState = ({
       password: string;
       username: string;
     },
-    any,
     undefined
   >;
 }) => {
