@@ -21,6 +21,11 @@ import {
   linkDialogPlugin,
   CreateLink,
   MDXEditor,
+  quotePlugin,
+  headingsPlugin,
+  linkPlugin,
+  tablePlugin,
+  markdownShortcutPlugin,
   type MDXEditorMethods,
   type MDXEditorProps,
 } from "@mdxeditor/editor";
@@ -55,10 +60,15 @@ export default function InitializedMDXEditor({
           ),
         }),
         listsPlugin(),
+        quotePlugin(),
+        headingsPlugin({ allowedHeadingLevels: [1, 2, 3] }),
+        linkPlugin(),
         linkDialogPlugin(),
+        imagePlugin(),
+        tablePlugin(),
         thematicBreakPlugin(),
         diffSourcePlugin(),
-        imagePlugin(),
+        markdownShortcutPlugin(),
       ]}
       {...props}
       ref={editorRef}
