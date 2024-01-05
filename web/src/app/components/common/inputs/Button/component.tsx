@@ -38,9 +38,9 @@ const Button = ({
 
   return (
     <button
-      className={classNames(s.base, sizeClassName, variantClassName, className)}
       onClick={onClick}
       {...otherProps}
+      className={classNames(s.base, sizeClassName, variantClassName, className)}
     >
       {children}
     </button>
