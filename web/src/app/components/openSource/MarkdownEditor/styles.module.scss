@@ -1,0 +1,7 @@
+@use "@/app/assets/atoms/colors" as c;
+@use "@/app/assets/molecules/text" as text;
+
+.editor {
+  background-color: c.$white;
+  padding: 10px;
+}
