@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Component from "./component";
+import { newMarkdown } from "./data";
 
 const MarkdownEditor = () => {
-  const [markdown, setMarkdown] = useState("");
-  console.log(markdown);
+  const { onChange, markdown } = newMarkdown();
   return (
     <div>
-      <Component
-        onChange={(markdown: string) => setMarkdown(markdown)}
-        value={markdown}
-      />
+      <Component onChange={onChange} value={markdown} />
     </div>
   );
 };

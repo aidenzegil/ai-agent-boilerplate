@@ -1,7 +1,10 @@
-// import { MarkdownProps } from "./types";
+import { useState } from "react";
 
-// export const setNewMarkdown = ({ getMarkdown, setMarkdown }: MarkdownProps) => {
-//   const markdown: string = getMarkdown();
-//   const newMarkdown = setMarkdown(markdown);
-//   return console.log(newMarkdown);
-// };
+export const newMarkdown = () => {
+  const [markdown, setMarkdown] = useState("");
+  // console.log(markdown);
+  const onChange = (markdown: string) => {
+    setMarkdown(markdown);
+  };
+  return { onChange, markdown };
+};

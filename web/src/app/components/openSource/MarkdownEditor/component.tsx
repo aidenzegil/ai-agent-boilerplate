@@ -6,7 +6,11 @@ import { Fields } from "./types";
 const Component = ({ onChange, value }: Fields) => {
   return (
     <div className={s.container}>
-      <ForwardRefEditor onChange={onChange} markdown={value} />
+      <ForwardRefEditor
+        onChange={onChange}
+        markdown={value}
+        placeholder="Create a Story"
+      />
     </div>
   );
 };
