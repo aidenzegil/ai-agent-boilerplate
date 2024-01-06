@@ -1,13 +1,14 @@
 import React from "react";
 import { ForwardRefEditor } from "./utils/ForwardRefEditor";
 import s from "./styles.module.scss";
+import { Fields } from "./types";
 
-const MarkdownEditor = () => {
+const Component = ({ onChange, value }: Fields) => {
   return (
     <div className={s.container}>
-      <ForwardRefEditor markdown="Create a Story" />
+      <ForwardRefEditor onChange={onChange} markdown={value} />
     </div>
   );
 };
 
-export default MarkdownEditor;
+export default Component;
