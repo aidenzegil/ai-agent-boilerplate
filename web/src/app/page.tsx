@@ -4,7 +4,7 @@ import MarkdownEditor from "./components/openSource/MarkdownEditor/index";
 
 export default function Home() {
   return (
-    <main style={{ height: "100vh", width: "100%" }}>
+    <main style={{ width: "100%" }}>
       <MarkdownEditor />
     </main>
   );
