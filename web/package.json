@@ -14,7 +14,6 @@
     "@hookform/resolvers": "^3.3.3",
     "@mdxeditor/editor": "^2.0.0",
     "@mui/material": "^5.14.17",
-    "@radix-ui/colors": "^3.0.0",
     "classnames": "^2.5.0",
     "lodash": "^4.17.21",
     "next": "14.0.1",
