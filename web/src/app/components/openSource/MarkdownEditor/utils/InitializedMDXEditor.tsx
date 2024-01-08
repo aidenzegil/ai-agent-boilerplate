@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ForwardedRef } from "react";
+import { type ForwardedRef } from "react";
 
 import s from "@/app/components/openSource/MarkdownEditor/styles.module.scss";
 
