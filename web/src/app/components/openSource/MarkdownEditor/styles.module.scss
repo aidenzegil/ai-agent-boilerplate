@@ -45,4 +45,11 @@
     font-style: italic;
     quotes: "\201C" "\201D" "\2018" "\2019";
   }
+
+  a {
+    span {
+      color: steelblue;
+      text-decoration: underline;
+    }
+  }
 }
