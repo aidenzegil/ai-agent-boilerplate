@@ -21,5 +21,8 @@ The markdown prop, which contains the initial text shown in the editor and is a 
 3. Toolbar all set up?! But not working? You have to style the headings, blockquote, lists, and paragraph features. Look at /styles.module.scss for an example. You may need to style more features than the ones we styled for your project!
 
 4. How to access the value of the markdown:
+
    1. The documentation defines types for a getMarkdown function and a setMarkdown function. It doesn't actually import those functions anywhere, therefore we must define our own.
    2. Refer to data.ts for our solution.
+
+5. The editor may duplicate itself. To fix this, reference .\_popupContainer_11eqz_1170 in this project's globals.css file.
