@@ -11,3 +11,15 @@ export type Fields = {
   >;
   onSubmit: () => void;
 };
+
+export type UseSignUpFormStateParams = {
+  form: UseFormReturn<
+    {
+      email: string;
+      password: string;
+      username: string;
+    },
+    undefined
+  >;
+  signUp: (email: string, password: string) => Promise<void>;
+};

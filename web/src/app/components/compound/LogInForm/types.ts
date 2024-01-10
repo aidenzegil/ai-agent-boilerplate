@@ -10,3 +10,14 @@ export type Fields = {
   >;
   onSubmit: () => void;
 };
+
+export type UseLogInFormState = {
+  form: UseFormReturn<
+    {
+      email: string;
+      password: string;
+    },
+    undefined
+  >;
+  logIn: (email: string, password: string) => Promise<void>;
+};
