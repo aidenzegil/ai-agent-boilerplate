@@ -1,0 +1,60 @@
+@use "@/app/assets/atoms/colors" as c;
+@use "@/app/assets/molecules/text" as text;
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.editor {
+  background-color: transparent;
+  border-bottom-style: dashed;
+  border-bottom-width: 0.15rem;
+  border-bottom-color: c.$charcoal-450;
+  width: 100%;
+  overflow: scroll;
+  padding: 0.5rem;
+  // Subject to change:
+  height: 80vh;
+
+  p {
+    @include text.body-2(c.$white);
+  }
+  h1 {
+    @include text.header-1(c.$white);
+  }
+  h2 {
+    @include text.header-2(c.$white);
+  }
+  h3 {
+    @include text.header-3(c.$white);
+  }
+  h4 {
+    @include text.header-4(c.$white);
+  }
+  ul {
+    list-style-type: disc;
+    @include text.body-2(c.$white);
+    padding-left: 1rem;
+  }
+  ol {
+    list-style-type: decimal;
+    @include text.body-2(c.$white);
+    padding-left: 1.2rem;
+  }
+  blockquote {
+    border-left: 0.25rem solid c.$charcoal-400;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    @include text.body-2(c.$white);
+    font-style: italic;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+  }
+
+  a {
+    span {
+      color: steelblue;
+      text-decoration: underline;
+    }
+  }
+}

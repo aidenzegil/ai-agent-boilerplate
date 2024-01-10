@@ -1,10 +1,13 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities"; 
+@import '../../../node_modules/@mdxeditor/editor/dist/style.css';
 
-
-
-
+._popupContainer_11eqz_1170 {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -28,4 +31,5 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    min-height: 100vh;
 }
