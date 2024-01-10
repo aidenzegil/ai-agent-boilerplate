@@ -8,7 +8,7 @@ import {
 export default function Home() {
   return (
     <AuthContextProvider>
-      <main style={{ height: "100vh", width: "100%" }}>
+      <main style={{ width: "100%" }}>
         <Thing />
       </main>
     </AuthContextProvider>
