@@ -1,5 +1,6 @@
 "use client";
 
+import NavBar from "./components/compound/NavBar";
 import {
   AuthContextProvider,
   useAuthContext,
@@ -9,20 +10,21 @@ export default function Home() {
   return (
     <AuthContextProvider>
       <main style={{ width: "100%" }}>
-        <Thing />
+        {/* <Thing /> */}
+        <NavBar />
       </main>
     </AuthContextProvider>
   );
 }
 
-const Thing = () => {
-  const { authFunctions } = useAuthContext();
-  return (
-    <button
-      style={{ backgroundColor: "white" }}
-      onClick={() => authFunctions.signInWithGoogle()}
-    >
-      sign in with google
-    </button>
-  );
-};
+// const Thing = () => {
+//   const { authFunctions } = useAuthContext();
+//   return (
+//     <button
+//       style={{ backgroundColor: "white" }}
+//       onClick={() => authFunctions.signInWithGoogle()}
+//     >
+//       sign in with google
+//     </button>
+//   );
+// };
