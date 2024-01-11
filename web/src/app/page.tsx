@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "./components/common/presentational/SectionHeader/component";
 import NavBar from "./components/compound/NavBar";
 import {
   AuthContextProvider,
@@ -12,6 +13,7 @@ export default function Home() {
       <main style={{ width: "100%" }}>
         {/* <Thing /> */}
         <NavBar />
+        <SectionHeader children="Popular Titles" />
       </main>
     </AuthContextProvider>
   );
