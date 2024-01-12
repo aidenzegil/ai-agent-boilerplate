@@ -1,5 +1,6 @@
 "use client";
 
+import BannerSelector from "./components/common/dataDisplay/BannerSelector/component";
 import SectionHeader from "./components/common/presentational/SectionHeader/component";
 import NavBar from "./components/compound/NavBar";
 import {
@@ -14,6 +15,13 @@ export default function Home() {
         {/* <Thing /> */}
         <NavBar />
         <SectionHeader children="Popular Titles" />
+
+        <BannerSelector
+          likes={333}
+          title="this story about this"
+          onClick={() => console.log("hello")}
+          active={false}
+        />
       </main>
     </AuthContextProvider>
   );

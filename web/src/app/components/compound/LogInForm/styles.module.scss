@@ -14,10 +14,14 @@
   //   position: relative;
   // }
 
-  .logo {
-    color: c.$white;
+  .link {
     height: 25%;
     width: 50%;
+  }
+  .logo {
+    color: c.$white;
+    height: 100%;
+    width: 100%;
   }
   .form {
     display: flex;

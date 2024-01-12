@@ -5,12 +5,15 @@ import { LuBook } from "react-icons/lu";
 import Button from "../../common/inputs/Button/component";
 import Input from "../../common/inputs/Input/component";
 import Form from "../../common/forms/SignUp/component";
+import Link from "next/link";
 
 const Component = ({ onSubmit, form }: Fields) => {
   const { register } = form;
   return (
     <div className={s.container}>
-      <LuBook className={s.logo} />
+      <Link className={s.link} href={"/"}>
+        <LuBook className={s.logo} />
+      </Link>
       <Form className={s.form} onSubmit={onSubmit}>
         <label className={s.label}>EMAIL</label>
         <Input
