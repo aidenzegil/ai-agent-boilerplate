@@ -4,8 +4,9 @@ import React from "react";
 import NavBar from "../../compound/NavBar";
 import SectionHeader from "../../common/presentational/SectionHeader/component";
 import BannerSelector from "../../common/dataDisplay/BannerSelector/component";
+import { BannerFields, StoryFields, UserFields } from "./types";
 
-const Component = () => {
+const Component = ({ active, onClick }: BannerFields) => {
   return (
     <div>
       <NavBar />
@@ -15,15 +16,15 @@ const Component = () => {
       <BannerSelector
         likes={333}
         title="this story about something"
-        onClick={() => console.log("hello")}
-        active={false}
+        onClick={onClick}
+        active={active}
       />
       <SectionHeader children="Liked Stories" />
       <BannerSelector
         likes={333}
         title="this story about something"
-        onClick={() => console.log("hello")}
-        active={false}
+        onClick={onClick}
+        active={active}
       />
     </div>
   );

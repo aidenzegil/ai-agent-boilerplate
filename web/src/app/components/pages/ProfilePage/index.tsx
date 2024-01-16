@@ -1,10 +1,15 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Component from "./component";
 
 const ProfilePage = () => {
+  const [active, setActive] = useState(false);
+  const toggleActive = () => {
+    setActive(!active);
+  };
   return (
     <div>
-      <Component />
+      <Component active={active} onClick={toggleActive} />
     </div>
   );
 };
