@@ -1,13 +1,16 @@
 @use "@/app/assets/atoms/colors" as c;
+@use "@/app/assets/molecules/text" as text;
 
 .container {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 1rem;
 }
 
 .text {
+  @include text.body-2(c.$white);
   color: c.$white;
   padding-left: 19px;
   max-width: 90%;
