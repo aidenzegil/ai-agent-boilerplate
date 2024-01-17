@@ -1,13 +1,7 @@
-export type UserFields = {
-  profilePictureUrl: string | null;
-  username: string;
-};
-
-export type StoryFields = {
-  title: string;
-};
-
-export type BannerFields = {
+export type ProfilePageFields = {
   active: boolean;
   onClick: () => void;
+  title: string;
+  profilePictureUrl: string | null;
+  username: string;
 };

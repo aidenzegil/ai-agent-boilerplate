@@ -7,9 +7,16 @@ const ProfilePage = () => {
   const toggleActive = () => {
     setActive(!active);
   };
+
   return (
     <div>
-      <Component active={active} onClick={toggleActive} />
+      <Component
+        profilePictureUrl="/fakeProfilePicture.png"
+        username="this person"
+        title="this title"
+        active={active}
+        onClick={toggleActive}
+      />
     </div>
   );
 };
