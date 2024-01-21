@@ -1,0 +1,25 @@
+@use "@/app/assets/atoms/colors" as c;
+@use "@/app/assets/molecules/text" as text;
+@use "@/app/assets/molecules/breakpoint" as breakpoint;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  .userProfile {
+    border-radius: 50%;
+    box-shadow: 0 5px 10px -3px c.$pink;
+    width: 12rem;
+  }
+
+  .username {
+    @include text.body-2(c.$white);
+    padding-top: 1rem;
+  }
+
+  .button {
+    margin-top: 1.5rem;
+  }
+}
