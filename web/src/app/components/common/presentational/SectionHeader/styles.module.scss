@@ -10,7 +10,7 @@
 }
 
 .text {
-  @include text.body-2(c.$white);
+  @include text.body-2();
   color: c.$white;
   padding-left: 19px;
   max-width: 90%;

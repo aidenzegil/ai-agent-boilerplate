@@ -7,19 +7,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 2rem;
+  padding-top: 32px;
   .userProfile {
     border-radius: 50%;
     box-shadow: 0 5px 10px -3px c.$pink;
-    width: 12rem;
+    width: 192px;
   }
 
   .username {
     @include text.body-2(c.$white);
-    padding-top: 1rem;
+    padding-top: 16px;
   }
 
   .button {
-    margin-top: 1.5rem;
+    margin-top: 24px;
   }
 }

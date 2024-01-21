@@ -9,11 +9,11 @@
 .editor {
   background-color: transparent;
   border-bottom-style: dashed;
-  border-bottom-width: 0.15rem;
+  border-bottom-width: 2.4px;
   border-bottom-color: c.$charcoal-450;
   width: 100%;
   overflow: scroll;
-  padding: 0.5rem;
+  padding: 8px;
   // Subject to change:
   height: 80vh;
 
@@ -35,15 +35,15 @@
   ul {
     list-style-type: disc;
     @include text.body-2(c.$white);
-    padding-left: 1rem;
+    padding-left: 16px;
   }
   ol {
     list-style-type: decimal;
     @include text.body-2(c.$white);
-    padding-left: 1.2rem;
+    padding-left: 19.2px;
   }
   blockquote {
-    border-left: 0.25rem solid c.$charcoal-400;
+    border-left: 4px solid c.$charcoal-400;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
     @include text.body-2(c.$white);
