@@ -8,21 +8,19 @@ import {
 export default function Home() {
   return (
     <AuthContextProvider>
-      <main style={{ width: "100%" }}>
-        <Thing />
-      </main>
+      <main style={{ width: "100%" }}>{/* <Thing /> */}</main>
     </AuthContextProvider>
   );
 }
 
-const Thing = () => {
-  const { authFunctions } = useAuthContext();
-  return (
-    <button
-      style={{ backgroundColor: "white" }}
-      onClick={() => authFunctions.signInWithGoogle()}
-    >
-      sign in with google
-    </button>
-  );
-};
+// const Thing = () => {
+//   const { authFunctions } = useAuthContext();
+//   return (
+//     <button
+//       style={{ backgroundColor: "white" }}
+//       onClick={() => authFunctions.signInWithGoogle()}
+//     >
+//       sign in with google
+//     </button>
+//   );
+// };

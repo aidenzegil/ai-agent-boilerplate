@@ -1,9 +1,7 @@
 export type BannerProps = {
-    likes: number,
-    title: string,
-    active: boolean,
-    onClick: () => void,
-    authorPicUrl?: string,
-}
-
-
+  likes: number;
+  title: string;
+  active: boolean;
+  onClick: () => void;
+  authorPicUrl?: string;
+};
