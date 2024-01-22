@@ -9,6 +9,7 @@ import s from "./styles.module.scss";
 import Button from "../../common/inputs/Button/component";
 import { Opinion } from "@/app/fakeObjects/fakeStory";
 import { ButtonSize } from "../../common/inputs/Button/types";
+import Link from "next/link";
 
 const Component = ({
   activeStoryId,
@@ -27,15 +28,11 @@ const Component = ({
         />
         <div className={s.username}>{currentUser.username}</div>
         {/* TODO: Make button link to create story page */}
-        <Button
-          size={ButtonSize.MEDIUM}
-          className={s.button}
-          onClick={() => {
-            console.log("naviage to create a story page");
-          }}
-        >
-          Create a Story
-        </Button>
+        <Link href={"/pages/editstory"}>
+          <Button size={ButtonSize.MEDIUM} className={s.button}>
+            Create a Story
+          </Button>
+        </Link>
       </div>
       <SectionHeader children="My Stories" />
       {authoredStories.map((story) => (
