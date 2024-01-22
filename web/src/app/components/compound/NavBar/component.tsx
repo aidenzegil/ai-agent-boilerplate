@@ -3,23 +3,18 @@ import s from "./styles.module.scss";
 import { LuBook } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
 import { Fields } from "./types";
+import Link from "next/link";
 // import { MdOutlineSearch } from "react-icons/md";
 
 const Component = ({ visible }: Fields) => {
   return (
     <div className={`${s.container} ${!visible && s.hidden}`}>
-      <div className={s.leftContainer}>
-        <LuBook
-          className={s.logo}
-          onClick={() => console.log("navigate to homepage")}
-        />
-        <a
-          className={s.title}
-          onClick={() => console.log("navigate to homepage")}
-        >
-          Wet Pages
-        </a>
-      </div>
+      <Link href={"/pages/homepage"}>
+        <div className={s.leftContainer}>
+          <LuBook className={s.logo} />
+          <div className={s.title}>Wet Pages</div>
+        </div>
+      </Link>
 
       <div className={s.rightContainer}>
         {/* <div className={s.search}>
