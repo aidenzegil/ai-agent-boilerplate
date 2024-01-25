@@ -1,9 +1,11 @@
-import { ScrollDirection } from "@/app/hooks/useScrollDirection"
+import { FakeUser } from "@/app/fakeObjects/fakeUser";
+import { ScrollDirection } from "@/app/hooks/useScrollDirection";
 
 export type NavBarStateProps = {
-    scrollDirection?: ScrollDirection
-}
+  scrollDirection?: ScrollDirection;
+};
 
 export type Fields = {
-    visible: boolean
-}
+  visible: boolean;
+  currentUser: FakeUser;
+};
