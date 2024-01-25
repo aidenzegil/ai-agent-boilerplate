@@ -4,6 +4,7 @@ import { LuBook } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
 import { Fields } from "./types";
 import Link from "next/link";
+
 // import { MdOutlineSearch } from "react-icons/md";
 
 const Component = ({ visible }: Fields) => {
