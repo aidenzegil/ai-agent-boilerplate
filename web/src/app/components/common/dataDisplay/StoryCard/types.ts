@@ -1,4 +1,4 @@
-export type BannerProps = {
+export type StoryCardProps = {
   likes: number;
   title: string;
   active: boolean;

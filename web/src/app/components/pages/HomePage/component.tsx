@@ -1,5 +1,5 @@
 import React from "react";
-import BannerSelector from "../../common/dataDisplay/BannerSelector/component";
+import StoryCard from "../../common/dataDisplay/StoryCard/component";
 import SectionHeader from "../../common/presentational/SectionHeader/component";
 import NavBar from "../../compound/NavBar";
 import { Opinion } from "@/app/fakeObjects/fakeStory";
@@ -12,7 +12,7 @@ const Component = ({ popularStories, onClick, activeStoryId }: FIELDS) => {
       <SectionHeader children="Popular Titles" />
 
       {popularStories.map((story) => (
-        <BannerSelector
+        <StoryCard
           key={story.id}
           likes={
             story.reactions.filter(

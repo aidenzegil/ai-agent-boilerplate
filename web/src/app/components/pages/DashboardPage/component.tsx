@@ -3,7 +3,7 @@
 import React from "react";
 import NavBar from "../../compound/NavBar";
 import SectionHeader from "../../common/presentational/SectionHeader/component";
-import BannerSelector from "../../common/dataDisplay/BannerSelector/component";
+import StoryCard from "../../common/dataDisplay/StoryCard/component";
 import { Fields } from "./types";
 import s from "./styles.module.scss";
 import Button from "../../common/inputs/Button/component";
@@ -36,7 +36,7 @@ const Component = ({
       </div>
       <SectionHeader children="My Stories" />
       {authoredStories.map((story) => (
-        <BannerSelector
+        <StoryCard
           key={story.id}
           likes={
             story.reactions.filter(
@@ -50,7 +50,7 @@ const Component = ({
       ))}
       <SectionHeader children="Liked Stories" />
       {likedStories.map((story) => (
-        <BannerSelector
+        <StoryCard
           key={story.id}
           likes={
             story.reactions.filter(

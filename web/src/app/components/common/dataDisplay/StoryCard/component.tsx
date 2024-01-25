@@ -1,16 +1,16 @@
 import React from "react";
-import { BannerProps } from "./types";
+import { StoryCardProps } from "./types";
 import s from "./styles.module.scss";
 import { IoHeartSharp } from "react-icons/io5";
 import Button from "../../inputs/Button/component";
 
-const BannerSelector = ({
+const StoryCard = ({
   likes,
   title,
   active,
   authorPicUrl,
   onClick,
-}: BannerProps) => {
+}: StoryCardProps) => {
   return (
     <div className="card w-96 bg-primary shadow-xl">
       <div className="card-body ">
@@ -45,4 +45,4 @@ const BannerSelector = ({
   );
 };
 
-export default BannerSelector;
+export default StoryCard;
