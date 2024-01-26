@@ -8,6 +8,7 @@
   align-items: center;
   flex-direction: row;
   padding-top: 32px;
+  padding-bottom: 32px;
   grid-gap: 32px;
 
   @include breakpoint.display-from("s") {
@@ -29,6 +30,9 @@
       padding-top: 16px;
     }
   }
+}
+
+.divider {
 }
 
 .mapContainer {

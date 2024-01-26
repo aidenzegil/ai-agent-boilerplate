@@ -11,8 +11,6 @@
   margin-bottom: 19px;
 
   .text {
-    @include text.body-2();
-    color: c.$white;
     padding-left: 19px;
     max-width: 90%;
     white-space: normal;
@@ -26,23 +24,5 @@
     height: 6px;
     min-width: 10%;
     margin-left: 35px;
-  }
-
-  @include breakpoint.display-from("s") {
-    margin-top: 32px;
-    margin-bottom: 32px;
-
-    .text {
-      padding-right: 19px;
-    }
-
-    .fillerLeft {
-      display: flex;
-      flex: 1;
-      background-color: c.$pink;
-      height: 6px;
-      min-width: 10%;
-      margin-right: 35px;
-    }
   }
 }
