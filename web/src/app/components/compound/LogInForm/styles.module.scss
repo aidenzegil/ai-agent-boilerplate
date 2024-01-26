@@ -7,16 +7,15 @@
   width: 100%;
   height: 100%;
   justify-content: space-around;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 
-  // @include breakpoint.display-to("m") {
-  //   position: relative;
-  // }
+  @include breakpoint.display-to("s") {
+    flex-direction: column;
+  }
 
   .link {
     height: 25%;
-    width: 50%;
   }
   .logo {
     color: c.$white;
