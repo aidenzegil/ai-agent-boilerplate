@@ -22,23 +22,4 @@
     height: 100%;
     width: 100%;
   }
-  .form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    align-items: center;
-    .label {
-      width: 100%;
-      color: c.$pink;
-    }
-    .inputs {
-      margin-bottom: 16px;
-      padding: 4px;
-    }
-    .button {
-      width: 100%;
-      border-radius: 25px;
-      margin-top: 16px;
-    }
-  }
 }
