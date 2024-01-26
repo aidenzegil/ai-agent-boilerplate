@@ -1,5 +1,17 @@
 @use "@/app/assets/atoms/colors" as c;
 
+.likes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.heartIcon {
+  color: c.$pink;
+  height: 26px;
+  width: 26px;
+  margin-right: 4px;
+}
+
 // .container {
 //   width: 100%;
 //   align-items: center;
