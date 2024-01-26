@@ -11,7 +11,7 @@ const Component = ({ onSubmit, form }: Fields) => {
   const { register } = form;
   return (
     <div className={s.container}>
-      <Link className={s.link} href={"/homepage"}>
+      <Link className={s.link} href={"/"}>
         <LuBook className={s.logo} />
       </Link>
       <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

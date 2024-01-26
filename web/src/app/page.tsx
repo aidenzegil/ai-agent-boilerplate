@@ -1,5 +1,6 @@
 "use client";
 
+import HomePage from "./components/pages/HomePage";
 import {
   AuthContextProvider,
   useAuthContext,
@@ -8,7 +9,9 @@ import {
 export default function Home() {
   return (
     <AuthContextProvider>
-      <main style={{ width: "100%" }}>{/* <Thing /> */}</main>
+      <main>
+        {/* <Thing /> */} <HomePage />
+      </main>
     </AuthContextProvider>
   );
 }
