@@ -5,7 +5,7 @@ const Input = ({ register, ...otherProps }: InputProps) => {
   return (
     <input
       {...otherProps}
-      className={` input input-bordered ${otherProps.className}`}
+      className={`input input-bordered ${otherProps.className}`}
       {...register}
     />
   );
