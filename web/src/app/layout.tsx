@@ -19,11 +19,11 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
 
-        {/* <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+        <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded mt-8">
           <nav className="grid grid-flow-col gap-4">
             <a className="link link-hover">About us</a>
             <a className="link link-hover">Contact</a>
-            <a className="link link-hover">Jobs</a>
+            <a className="link link-hover">Buy the Devs a Coffee</a>
             <a className="link link-hover">Advertising</a>
           </nav>
           <nav>
@@ -65,10 +65,10 @@ export default function RootLayout({
           </nav>
           <aside>
             <p>
-              Copyright © 2024 - All right reserved by American Made Code Ltd
+              Copyright © 2024 - All right reserved by American Made Code LLC
             </p>
           </aside>
-        </footer> */}
+        </footer>
       </body>
     </html>
   );
