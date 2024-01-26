@@ -36,8 +36,9 @@ const Component = ({
           </Link>
         </div>
       </div>
-      {/* <SectionHeader children="My Stories" /> */}
-      <div className="divider divider-start mx-10">My Stories</div>
+
+      <SectionHeader children="My Stories" />
+
       <div className={s.mapContainer}>
         {authoredStories.map((story) => (
           <StoryCard
@@ -53,8 +54,9 @@ const Component = ({
           />
         ))}
       </div>
-      {/* <SectionHeader children="Liked Stories" /> */}
-      <div className="divider divider-start mx-10 mt-10">Liked Stories</div>
+
+      <SectionHeader children="Liked Stories" />
+
       <div className={s.mapContainer}>
         {likedStories.map((story) => (
           <StoryCard
