@@ -14,11 +14,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const templateStyling: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+    justifyContent: "space-between",
+  };
+
   return (
     <html data-theme="retro" lang="en">
       <body className={inter.className}>
         {children}
-
         <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded mt-8">
           <nav className="grid grid-flow-col gap-4">
             <a className="link link-hover">About us</a>

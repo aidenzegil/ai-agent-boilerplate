@@ -9,9 +9,7 @@ import {
 export default function Home() {
   return (
     <AuthContextProvider>
-      <main>
-        {/* <Thing /> */} <HomePage />
-      </main>
+      {/* <Thing /> */} <HomePage />
     </AuthContextProvider>
   );
 }

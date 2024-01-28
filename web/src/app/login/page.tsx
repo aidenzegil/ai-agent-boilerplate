@@ -1,13 +1,13 @@
 "use client";
 
-import LogInForm from "@/app/components/compound/LogInForm";
+import NavBar from "../components/compound/NavBar";
+import LogInPage from "../components/pages/LogInPage";
 
 export default function Page() {
-  // TODO: functionality to go back to landing page when user clicks logo on login page
-
   return (
-    <main style={{ height: "100vh" }}>
-      <LogInForm />
-    </main>
+    <div>
+      <NavBar />
+      <LogInPage />
+    </div>
   );
 }

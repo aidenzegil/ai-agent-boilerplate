@@ -1,13 +1,13 @@
 "use client";
 
-import SignUpForm from "@/app/components/compound/SignUpForm";
+import NavBar from "../components/compound/NavBar";
+import SignUpPage from "../components/pages/SignUpPage";
 
 export default function Page() {
-  // TODO: functionality to go back to landing page when user clicks logo on signup page
-
   return (
-    <main style={{ height: "100vh" }}>
-      <SignUpForm />
-    </main>
+    <div>
+      <NavBar />
+      <SignUpPage />
+    </div>
   );
 }
