@@ -9,6 +9,7 @@ import EditStoryForm from "../../compound/EditStoryForm";
 const Component = ({}: FIELDS) => {
   return (
     <div>
+      <NavBar />
       <EditStoryForm />
     </div>
   );
