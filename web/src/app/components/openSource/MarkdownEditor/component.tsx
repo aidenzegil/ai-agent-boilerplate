@@ -9,7 +9,7 @@ const Component = ({ onChange, value }: Fields) => {
       <ForwardRefEditor
         onChange={onChange}
         markdown={value}
-        placeholder="Create a Story"
+        placeholder="Begin typing..."
       />
     </div>
   );
