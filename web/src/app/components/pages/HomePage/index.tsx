@@ -4,14 +4,10 @@ import { useHomePageData } from "./data";
 import { FAKE_STORY_LIST } from "@/app/fakeObjects/fakeStory";
 
 const HomePage = () => {
-  const { onClick, activeStoryId } = useHomePageData();
+  const { onClick } = useHomePageData();
   return (
     <div>
-      <Component
-        onClick={onClick}
-        popularStories={FAKE_STORY_LIST}
-        activeStoryId={activeStoryId}
-      />
+      <Component onClick={onClick} popularStories={FAKE_STORY_LIST} />
     </div>
   );
 };

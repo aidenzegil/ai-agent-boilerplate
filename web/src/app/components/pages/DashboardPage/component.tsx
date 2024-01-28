@@ -6,13 +6,10 @@ import SectionHeader from "../../common/presentational/SectionHeader/component";
 import StoryCard from "../../common/dataDisplay/StoryCard/component";
 import { Fields } from "./types";
 import s from "./styles.module.scss";
-import Button from "../../common/inputs/Button/component";
 import { Opinion } from "@/app/fakeObjects/fakeStory";
-import { ButtonSize } from "../../common/inputs/Button/types";
 import Link from "next/link";
 
 const Component = ({
-  activeStoryId,
   currentUser,
   likedStories,
   authoredStories,
@@ -50,7 +47,6 @@ const Component = ({
             }
             title={story.title}
             onClick={() => onClick(story.id)}
-            active={story.id === activeStoryId}
           />
         ))}
       </div>
@@ -68,7 +64,6 @@ const Component = ({
             }
             title={story.title}
             onClick={() => onClick(story.id)}
-            active={story.id === activeStoryId}
           />
         ))}
       </div>

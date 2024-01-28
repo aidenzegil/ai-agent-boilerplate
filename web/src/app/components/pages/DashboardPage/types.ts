@@ -6,5 +6,4 @@ export type Fields = {
   likedStories: StoryListItemOutputDto[];
   authoredStories: StoryListItemOutputDto[];
   onClick: (storyId: string) => void;
-  activeStoryId?: string;
 };

@@ -6,7 +6,7 @@ import { Opinion } from "@/app/fakeObjects/fakeStory";
 import { FIELDS } from "./types";
 import s from "./styles.module.scss";
 
-const Component = ({ popularStories, onClick, activeStoryId }: FIELDS) => {
+const Component = ({ popularStories, onClick }: FIELDS) => {
   return (
     <div>
       <NavBar />
@@ -22,7 +22,6 @@ const Component = ({ popularStories, onClick, activeStoryId }: FIELDS) => {
             }
             title={story.title}
             onClick={() => onClick(story.id)}
-            active={story.id === activeStoryId}
           />
         ))}
       </div>
