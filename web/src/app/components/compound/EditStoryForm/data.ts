@@ -1,5 +1,4 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UseFormReturn } from "react-hook-form";
 import { object, string } from "yup";
 import { UseEditStoryFormState } from "./types";
 
