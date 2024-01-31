@@ -1,28 +1,3 @@
 @use "@/app/assets/atoms/colors" as c;
 @use "@/app/assets/molecules/text" as text;
-
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 16px;
-}
-
-.text {
-  @include text.body-2();
-  color: c.$white;
-  padding-left: 19px;
-  max-width: 90%;
-  white-space: normal;
-  word-break: break-all;
-}
-
-.filler {
-  display: flex;
-  flex: 1;
-  background-color: c.$pink;
-  height: 6px;
-  min-width: 10%;
-  margin-left: 35px;
-}
+@use "@/app/assets/molecules/breakpoint" as breakpoint;

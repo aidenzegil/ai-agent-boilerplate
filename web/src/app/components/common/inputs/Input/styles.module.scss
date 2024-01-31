@@ -1,10 +1,2 @@
 @use "@/app/assets/atoms/colors" as c;
 @use "@/app/assets/molecules/text" as text;
-
-.input {
-  background-color: c.$charcoal-450;
-  width: 100%;
-  @include text.body-2;
-  color: c.$white;
-  border-radius: 8px;
-}
