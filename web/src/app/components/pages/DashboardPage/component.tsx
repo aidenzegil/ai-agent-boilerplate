@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import NavBar from "../../compound/NavBar";
-import SectionHeader from "../../common/presentational/SectionHeader/component";
-import StoryCard from "../../common/dataDisplay/StoryCard/component";
+import NavBar from "@/app/components/compound/NavBar";
+import SectionHeader from "@/app/components/common/presentational/SectionHeader/component";
+import StoryCard from "@/app/components/common/dataDisplay/StoryCard/component";
 import { Fields } from "./types";
 import s from "./styles.module.scss";
 import { Opinion } from "@/app/fakeObjects/fakeStory";

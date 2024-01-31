@@ -1,11 +1,7 @@
 "use client";
 
-import LogInForm from "@/app/components/compound/LogInForm";
+import LogInPage from "../components/pages/LogInPage";
 
 export default function Page() {
-  return (
-    <main style={{ height: "100vh" }}>
-      <LogInForm />
-    </main>
-  );
+  return <LogInPage />;
 }

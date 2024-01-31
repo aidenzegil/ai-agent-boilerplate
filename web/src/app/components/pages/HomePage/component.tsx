@@ -1,7 +1,7 @@
 import React from "react";
-import StoryCard from "../../common/dataDisplay/StoryCard/component";
-import SectionHeader from "../../common/presentational/SectionHeader/component";
-import NavBar from "../../compound/NavBar";
+import StoryCard from "@/app/components/common/dataDisplay/StoryCard/component";
+import SectionHeader from "@/app/components/common/presentational/SectionHeader/component";
+import NavBar from "@/app/components/compound/NavBar";
 import { Opinion } from "@/app/fakeObjects/fakeStory";
 import { FIELDS } from "./types";
 import s from "./styles.module.scss";

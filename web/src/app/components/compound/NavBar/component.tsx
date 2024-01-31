@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./styles.module.scss";
-
 import { Fields } from "./types";
 import Link from "next/link";
 

@@ -1,11 +1,7 @@
 "use client";
 
-import SignUpForm from "@/app/components/compound/SignUpForm";
+import SignUpPage from "../components/pages/SignUpPage";
 
 export default function Page() {
-  return (
-    <main style={{ height: "100vh" }}>
-      <SignUpForm />
-    </main>
-  );
+  return <SignUpPage />;
 }

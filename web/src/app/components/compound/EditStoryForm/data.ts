@@ -1,24 +1,23 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string } from "yup";
-import { UseSignUpFormDataParams } from "./types";
+import { UseEditStoryFormData } from "./types";
 
-export const useSignUpFormData = ({
+export const useEditStoryFormData = ({
   form,
-  signUp,
-}: UseSignUpFormDataParams) => {
+  editStory,
+}: UseEditStoryFormData) => {
   const errors = form.formState.errors;
 
   const fireOffForm = async ({
-    email,
-    password,
-    username,
+    storyTitle,
+    chapterTitle,
+    markdown,
   }: {
-    email: string;
-    password: string;
-    username: string;
+    storyTitle: string;
+    chapterTitle: string;
+    markdown: string;
   }) => {
-    // TODO: Include username here as well
-    await signUp(email, password);
+    await editStory(storyTitle, chapterTitle, markdown);
   };
 
   const onSubmit = async () => {
@@ -31,16 +30,16 @@ export const useSignUpFormData = ({
 /* NOTE: config should include form: "". However, currently it works without it */
 export const formConfig = {
   defaultValues: {
-    email: "",
-    password: "",
-    username: "",
+    storyTitle: "",
+    chapterTitle: "",
+    markdown: "",
   },
   mode: "onChange",
   resolver: yupResolver(
     object({
-      email: string().trim().email().required(),
-      password: string().trim().required().min(8),
-      username: string().min(6).required(),
+      storyTitle: string().trim().required().min(1),
+      chapterTitle: string().trim().required().min(1),
+      markdown: string().trim().required().min(1),
     })
   ),
 } as const;

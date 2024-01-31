@@ -25,4 +25,4 @@ The markdown prop, which contains the initial text shown in the editor and is a 
    1. The documentation defines types for a getMarkdown function and a setMarkdown function. It doesn't actually import those functions anywhere, therefore we must define our own.
    2. Refer to data.ts for our solution.
 
-5. The editor may duplicate itself. To fix this, reference .\_popupContainer_11eqz_1170 in this project's globals.css file.
+5. The editor may duplicate itself. To fix this, reference .popupContainer_11eqz_1170 in this project's globals.css file.

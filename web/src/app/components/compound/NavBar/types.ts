@@ -1,7 +1,7 @@
 import { FakeUser } from "@/app/fakeObjects/fakeUser";
 import { ScrollDirection } from "@/app/hooks/useScrollDirection";
 
-export type NavBarStateProps = {
+export type UseNavBarDataProps = {
   scrollDirection?: ScrollDirection;
 };
 

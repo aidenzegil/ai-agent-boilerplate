@@ -1,8 +1,7 @@
 import React from "react";
 import { LuBook } from "react-icons/lu";
-import Form from "../../common/forms/LogIn/component";
-import Input from "../../common/inputs/Input/component";
-import Button from "../../common/inputs/Button/component";
+import Form from "@/app/components/common/forms/GenericForm/component";
+import Input from "@/app/components/common/inputs/Input/component";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
 import Link from "next/link";
