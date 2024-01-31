@@ -14,13 +14,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const templateStyling: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    minHeight: "100vh",
-    justifyContent: "space-between",
-  };
-
   return (
     <html data-theme="retro" lang="en">
       <body className={inter.className}>

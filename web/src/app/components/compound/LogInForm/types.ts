@@ -11,7 +11,7 @@ export type Fields = {
   onSubmit: () => void;
 };
 
-export type UseLogInFormState = {
+export type UseLogInFormData = {
   form: UseFormReturn<
     {
       email: string;

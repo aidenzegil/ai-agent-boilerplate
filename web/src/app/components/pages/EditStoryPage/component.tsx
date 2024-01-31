@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import NavBar from "../../compound/NavBar";
+import NavBar from "@/app/components/compound/NavBar";
 
-import EditStoryForm from "../../compound/EditStoryForm";
+import EditStoryForm from "@/app/components/compound/EditStoryForm";
 
 const Component = () => {
   return (

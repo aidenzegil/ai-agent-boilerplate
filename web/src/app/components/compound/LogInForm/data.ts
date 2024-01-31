@@ -1,9 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UseFormReturn } from "react-hook-form";
 import { object, string } from "yup";
-import { UseLogInFormState } from "./types";
+import { UseLogInFormData } from "./types";
 
-export const useLogInFormState = ({ form, logIn }: UseLogInFormState) => {
+export const useLogInFormData = ({ form, logIn }: UseLogInFormData) => {
   const errors = form.formState.errors;
 
   const fireOffForm = async ({

@@ -1,11 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string } from "yup";
-import { UseEditStoryFormState } from "./types";
+import { UseEditStoryFormData } from "./types";
 
-export const useEditStoryFormState = ({
+export const useEditStoryFormData = ({
   form,
   editStory,
-}: UseEditStoryFormState) => {
+}: UseEditStoryFormData) => {
   const errors = form.formState.errors;
 
   const fireOffForm = async ({

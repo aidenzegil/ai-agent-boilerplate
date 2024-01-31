@@ -12,7 +12,7 @@ export type Fields = {
   onSubmit: () => void;
 };
 
-export type UseSignUpFormStateParams = {
+export type UseSignUpFormDataParams = {
   form: UseFormReturn<
     {
       email: string;

@@ -12,7 +12,7 @@ export type Fields = {
   onSubmit: () => void;
 };
 
-export type UseEditStoryFormState = {
+export type UseEditStoryFormData = {
   form: UseFormReturn<
     {
       storyTitle: string;

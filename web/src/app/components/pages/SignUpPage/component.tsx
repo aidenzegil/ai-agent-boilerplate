@@ -1,6 +1,6 @@
 import React from "react";
-import SignUpForm from "../../compound/SignUpForm";
-import NavBar from "../../compound/NavBar";
+import SignUpForm from "@/app/components/compound/SignUpForm";
+import NavBar from "@/app/components/compound/NavBar";
 
 const Component = () => {
   return (

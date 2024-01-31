@@ -2,8 +2,8 @@ import React from "react";
 import { Fields } from "./types";
 import s from "./styles.module.scss";
 import { LuBook } from "react-icons/lu";
-import Input from "../../common/inputs/Input/component";
-import Form from "../../common/forms/SignUp/component";
+import Input from "@/app/components/common/inputs/Input/component";
+import Form from "@/app/components/common/forms/GenericForm/component";
 import Link from "next/link";
 
 const Component = ({ onSubmit, form }: Fields) => {

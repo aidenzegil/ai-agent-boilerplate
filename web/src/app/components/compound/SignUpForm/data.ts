@@ -1,12 +1,11 @@
-import { UseFormReturn, ValidationMode } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string } from "yup";
-import { UseSignUpFormStateParams } from "./types";
+import { UseSignUpFormDataParams } from "./types";
 
-export const useSignUpFormState = ({
+export const useSignUpFormData = ({
   form,
   signUp,
-}: UseSignUpFormStateParams) => {
+}: UseSignUpFormDataParams) => {
   const errors = form.formState.errors;
 
   const fireOffForm = async ({

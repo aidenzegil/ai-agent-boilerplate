@@ -1,8 +1,7 @@
 import { ScrollDirection } from "@/app/hooks/useScrollDirection";
-import { NavBarStateProps } from "./types";
+import { UseNavBarDataProps } from "./types";
 
-export const useNavBarState = ({scrollDirection}: NavBarStateProps ) => {
-  const visible = scrollDirection === ScrollDirection.Up || !scrollDirection
-  return {visible}
-}
-
+export const useNavBarData = ({ scrollDirection }: UseNavBarDataProps) => {
+  const visible = scrollDirection === ScrollDirection.Up || !scrollDirection;
+  return { visible };
+};

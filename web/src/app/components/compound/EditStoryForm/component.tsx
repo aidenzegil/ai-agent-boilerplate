@@ -1,9 +1,9 @@
 import React from "react";
-import Form from "../../common/forms/LogIn/component";
-import Input from "../../common/inputs/Input/component";
+import Input from "@/app/components/common/inputs/Input/component";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
-import MarkdownEditor from "../../openSource/MarkdownEditor";
+import MarkdownEditor from "@/app/components/openSource/MarkdownEditor";
+import Form from "@/app/components/common/forms/GenericForm/component";
 
 const Component = ({ onSubmit, form }: Fields) => {
   //const { register } = form;
