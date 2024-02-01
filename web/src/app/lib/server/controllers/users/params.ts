@@ -6,6 +6,10 @@ export namespace params {
     username: string;
   };
 
+  export type GetAuthenticatedUser = {
+    firebaseId: string;
+  };
+
   export type SearchUsers = {
     limit?: number;
     page?: number;

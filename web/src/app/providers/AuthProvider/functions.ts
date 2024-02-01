@@ -9,7 +9,6 @@ import {
   User,
 } from "firebase/auth";
 import { useEffect } from "react";
-import { userController } from "@/app/lib/server/controllers/users/controller";
 import { network } from "./network";
 
 export const useAuthProviderFunctions = (
@@ -18,9 +17,10 @@ export const useAuthProviderFunctions = (
   // #region Background Actions
   const asyncAuthUpdates = async (firebaseUser: User | null) => {
     if (firebaseUser && firebaseUser.uid && firebaseUser.email) {
-      const controller = userController({ authToken: firebaseUser.uid }); // Is this right? seems wrong to me
-      const userRes = await controller.getUser({
-        id: firebaseUser.uid,
+      const authToken = await firebaseUser.getIdToken();
+      const userRes = await network.getAuthenticatedUser({
+        firebaseId: firebaseUser.uid,
+        authToken,
       });
       if (userRes.isErr()) {
         console.log("Womp Womp, user died");
@@ -62,13 +62,12 @@ export const useAuthProviderFunctions = (
         email,
         password
       );
-      const userRes = await userController({
-        authToken: firebaseUser.user.uid, // FIXME
-      }).createUser({
-        email: email,
+      const userRes = await network.createUser({
+        email,
         firebaseId: firebaseUser.user.uid,
-        username: "default",
-        profilePictureUrl: "default",
+        profilePictureUrl: "",
+        username: "",
+        authToken: await firebaseUser.user.getIdToken(),
       });
       if (userRes.isErr()) {
         await firebaseUser.user.delete();
@@ -96,8 +95,10 @@ export const useAuthProviderFunctions = (
         email,
         password
       );
-      const userRes = await network.getUser({
-        id: firebaseUser.user.uid,
+      const authToken = await firebaseUser.user.getIdToken();
+      const userRes = await network.getAuthenticatedUser({
+        firebaseId: firebaseUser.user.uid,
+        authToken,
       });
       if (userRes.isErr()) {
         console.log("Womp Womp, user died");

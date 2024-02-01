@@ -16,7 +16,7 @@ export const network = {
       username,
     });
   },
-  getUser: ({ id }: params.GetUser) => {
-    return userController({}).getUser({ id });
-  },
+  getAuthenticatedUser: ({ authToken, firebaseId }: params.GetAuthenticatedUser & { authToken: string }) => {
+    return userController({ authToken }).getUser({ id: firebaseId });
+  }
 };

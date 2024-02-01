@@ -30,7 +30,7 @@ export const useStoryProviderFunctions = (
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken(); // FIXME
+    const authToken = await firebaseUser.getIdToken();
     try {
       const res = await network.createStory({ title, authToken });
       if (res.isErr()) {
@@ -60,7 +60,7 @@ export const useStoryProviderFunctions = (
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken(); // FIXME
+    const authToken = await firebaseUser.getIdToken();
     try {
       const res = await network.createChapter({
         title,
@@ -86,7 +86,7 @@ export const useStoryProviderFunctions = (
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken(); // FIXME
+    const authToken = await firebaseUser.getIdToken();
     try {
       const res = await network.deleteStory({ id, authToken });
       if (res.isErr()) {
@@ -106,7 +106,7 @@ export const useStoryProviderFunctions = (
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken(); // FIXME
+    const authToken = await firebaseUser.getIdToken();
     try {
       const res = await network.deleteChapter({ id, authToken });
       if (res.isErr()) {
@@ -126,7 +126,7 @@ export const useStoryProviderFunctions = (
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken(); // FIXME
+    const authToken = await firebaseUser.getIdToken();
     try {
       const res = await network.updateStory({ id, title, authToken });
       if (res.isErr()) {
@@ -156,7 +156,7 @@ export const useStoryProviderFunctions = (
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken(); // FIXME
+    const authToken = await firebaseUser.getIdToken();
     try {
       const res = await network.updateChapter({
         id,
@@ -187,7 +187,7 @@ export const useStoryProviderFunctions = (
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken(); // FIXME
+    const authToken = await firebaseUser.getIdToken();
     try {
       const res = await network.reactToStory({ id, opinion, authToken });
       if (res.isErr()) {
