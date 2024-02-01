@@ -110,4 +110,14 @@ export const FAKE_STORY_LIST_ITEM_2: StoryListItemOutputDto = {
 export const FAKE_STORY_LIST: StoryListItemOutputDto[] = [
   FAKE_STORY_LIST_ITEM_1,
   FAKE_STORY_LIST_ITEM_2,
+  FAKE_STORY_LIST_ITEM_1,
+  FAKE_STORY_LIST_ITEM_2,
+  FAKE_STORY_LIST_ITEM_1,
+  FAKE_STORY_LIST_ITEM_2,
+  FAKE_STORY_LIST_ITEM_1,
+  FAKE_STORY_LIST_ITEM_2,
 ];
+
+export const EDITSTORY = async (): Promise<void> => {
+  return console.log("placeholder for story provider");
+};

@@ -1,36 +1,61 @@
 import React from "react";
 import s from "./styles.module.scss";
-import { LuBook } from "react-icons/lu";
-import { CgProfile } from "react-icons/cg";
 import { Fields } from "./types";
-// import { MdOutlineSearch } from "react-icons/md";
+import Link from "next/link";
 
-const Component = ({ visible }: Fields) => {
+const Component = ({ visible, currentUser }: Fields) => {
   return (
-    <div className={`${s.container} ${!visible && s.hidden}`}>
-      <div className={s.leftContainer}>
-        <LuBook
-          className={s.logo}
-          onClick={() => console.log("navigate to homepage")}
-        />
-        <a
-          className={s.title}
-          onClick={() => console.log("navigate to homepage")}
-        >
-          Wet Pages
+    <div
+      className={`${s.container} ${!visible && s.hidden} navbar bg-base-100`}
+    >
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a href="/">Homepage</a>
+            </li>
+            <li>
+              <a href="/signup">Sign Up</a>
+            </li>
+            <li>
+              <a href="/login">Log In</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="navbar-center">
+        <a className="btn btn-ghost text-xl" href="/">
+          WetPages
         </a>
       </div>
-
-      <div className={s.rightContainer}>
-        {/* <div className={s.search}>
-          <MdOutlineSearch className={s.searchLogo} />
-        </div> */}
-        <div className={s.profile}>
-          <CgProfile
-            onClick={() => console.log("navigate to profile")}
-            className={s.profileLogo}
-          />
-        </div>
+      <div className="navbar-end">
+        <Link href="/dashboard">
+          <button className="btn btn-ghost btn-circle">
+            <div className="indicator">
+              <img src={currentUser.profilePictureUrl || undefined} />
+              <span className="badge badge-xs badge-primary indicator-item"></span>
+            </div>
+          </button>
+        </Link>
       </div>
     </div>
   );

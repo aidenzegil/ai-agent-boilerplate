@@ -1,7 +1,7 @@
 import { forwardRef, useRef, useEffect } from "react";
-import { LogInProps } from "./types";
+import { EditStoryProps } from "./types";
 
-const Form = forwardRef<HTMLFormElement, LogInProps>(
+const Form = forwardRef<HTMLFormElement, EditStoryProps>(
   (
     {
       children,

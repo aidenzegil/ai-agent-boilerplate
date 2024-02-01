@@ -1,17 +1,15 @@
 "use client";
 
 import React from "react";
-import NavBar from "../../compound/NavBar";
-import SectionHeader from "../../common/presentational/SectionHeader/component";
-import BannerSelector from "../../common/dataDisplay/BannerSelector/component";
+import NavBar from "@/app/components/compound/NavBar";
+import SectionHeader from "@/app/components/common/presentational/SectionHeader/component";
+import StoryCard from "@/app/components/common/dataDisplay/StoryCard/component";
 import { Fields } from "./types";
 import s from "./styles.module.scss";
-import Button from "../../common/inputs/Button/component";
 import { Opinion } from "@/app/fakeObjects/fakeStory";
-import { ButtonSize } from "../../common/inputs/Button/types";
+import Link from "next/link";
 
 const Component = ({
-  activeStoryId,
   currentUser,
   likedStories,
   authoredStories,
@@ -25,46 +23,50 @@ const Component = ({
           src={currentUser.profilePictureUrl || undefined}
           className={s.userProfile}
         />
-        <div className={s.username}>{currentUser.username}</div>
-        {/* TODO: Make button link to create story page */}
-        <Button
-          size={ButtonSize.MEDIUM}
-          className={s.button}
-          onClick={() => {
-            console.log("naviage to create a story page");
-          }}
-        >
-          Create a Story
-        </Button>
+        <div className={s.secondContainer}>
+          <h1 className="text-2xl font-bold mt-2 mb-4">
+            {currentUser.username}
+          </h1>
+          {/* TODO: Make button link to create story page */}
+          <Link href={"/dashboard/editstory"}>
+            <button className="btn">Create a Story</button>
+          </Link>
+        </div>
       </div>
+
       <SectionHeader children="My Stories" />
-      {authoredStories.map((story) => (
-        <BannerSelector
-          key={story.id}
-          likes={
-            story.reactions.filter(
-              (reaction) => reaction.opinion == Opinion.LIKE
-            ).length
-          }
-          title={story.title}
-          onClick={() => onClick(story.id)}
-          active={story.id === activeStoryId}
-        />
-      ))}
+
+      <div className={s.mapContainer}>
+        {authoredStories.map((story) => (
+          <StoryCard
+            key={story.id}
+            likes={
+              story.reactions.filter(
+                (reaction) => reaction.opinion == Opinion.LIKE
+              ).length
+            }
+            title={story.title}
+            onClick={() => onClick(story.id)}
+          />
+        ))}
+      </div>
+
       <SectionHeader children="Liked Stories" />
-      {likedStories.map((story) => (
-        <BannerSelector
-          key={story.id}
-          likes={
-            story.reactions.filter(
-              (reaction) => reaction.opinion == Opinion.LIKE
-            ).length
-          }
-          title={story.title}
-          onClick={() => onClick(story.id)}
-          active={story.id === activeStoryId}
-        />
-      ))}
+
+      <div className={s.mapContainer}>
+        {likedStories.map((story) => (
+          <StoryCard
+            key={story.id}
+            likes={
+              story.reactions.filter(
+                (reaction) => reaction.opinion == Opinion.LIKE
+              ).length
+            }
+            title={story.title}
+            onClick={() => onClick(story.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
