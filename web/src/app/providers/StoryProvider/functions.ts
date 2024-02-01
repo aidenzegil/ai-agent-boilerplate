@@ -1,7 +1,7 @@
 import { auth } from "@/app/lib/firebase/config";
 import { network } from "./network";
 import { StoryProviderStateController } from "./types";
-import { Opinion } from "../../../../../api-v1/src/common/types/enums/opinion";
+import { Opinion } from "@/app/common/types/outputDtos";
 
 export const useStoryProviderFunctions = (
   stateController: StoryProviderStateController

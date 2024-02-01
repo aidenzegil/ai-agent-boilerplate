@@ -1,7 +1,7 @@
-import React from "react";
 import { StoryCardProps } from "./types";
-import s from "./styles.module.scss";
 import { IoHeartSharp } from "react-icons/io5";
+
+import s from "./styles.module.scss";
 
 const StoryCard = ({ likes, title, onClick }: StoryCardProps) => {
   return (

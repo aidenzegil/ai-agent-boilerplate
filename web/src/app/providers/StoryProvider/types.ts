@@ -1,9 +1,5 @@
+import { ChapterOutputDto, StoryListItemOutputDto, StoryOutputDto } from "@/app/common/types/outputDtos";
 import { Dispatch, SetStateAction } from "react";
-import {
-  ChapterOutputDto,
-  StoryListItemOutputDto,
-  StoryOutputDto,
-} from "../../../../../api-v1/src/controllers/stories/dto/output.dto";
 
 export type StoryProviderState = {
   likedStories: StoryListItemOutputDto[] | undefined;

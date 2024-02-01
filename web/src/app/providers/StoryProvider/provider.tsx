@@ -1,5 +1,4 @@
 import { createRegisteredContext } from "react-singleton-context";
-import { Opinion } from "../../../../../api-v1/src/common/types/enums/opinion";
 import {
   StoryProviderFunctions,
   StoryProviderLoading,
@@ -9,6 +8,7 @@ import {
 import { useStoryProviderStateController } from "./state";
 import { useStoryProviderFunctions } from "./functions";
 import { useMemo } from "react";
+import { Opinion } from "@/app/common/types/outputDtos";
 
 type StoryProviderContext = Omit<
   StoryProviderStateController,

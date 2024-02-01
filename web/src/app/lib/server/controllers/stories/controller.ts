@@ -1,13 +1,14 @@
 import { Ok, Err } from "@/app/common/types/result";
 import { POST, GET } from "../../api/axiosInstance";
 import { ApiResponse } from "../../types/apiResponse";
+
+import { params } from "./params";
 import {
   ChapterOutputDto,
+  ResponseStatus,
   StoryListItemOutputDto,
   StoryOutputDto,
-} from "../../../../../../../api-v1/src/controllers/stories/dto/output.dto";
-import { ResponseStatus } from "../../../../../../../api-v1/src/common/types/enums/responseStatus";
-import { params } from "./params";
+} from "@/app/common/types/outputDtos";
 
 interface Dependencies {
   authToken?: string;

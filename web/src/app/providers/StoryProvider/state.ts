@@ -3,7 +3,7 @@ import { PrivateUser } from "@/app/common/types/user";
 import useLocalStorage from "../utils/useLocalStorage";
 import safelyParseJSON from "../utils/safelyParseJson";
 import { StoryProviderStateController } from "./types";
-import { StoryListItemOutputDto } from "../../../../../api-v1/src/controllers/stories/dto/output.dto";
+import { StoryListItemOutputDto } from "@/app/common/types/outputDtos";
 
 export const useStoryProviderStateController =
   (): StoryProviderStateController => {
