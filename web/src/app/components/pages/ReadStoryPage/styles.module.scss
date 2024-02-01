@@ -1,0 +1,24 @@
+@use "@/app/assets/atoms/colors" as c;
+
+.readingHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.fullscreenButton {
+  height: 32px;
+  width: 32px;
+}
+
+.fullscreen {
+  height: 75%;
+  width: 75%;
+  transition: all 0.2s;
+  transform-origin: 50% 50%;
+}
+
+.fullscreen:hover {
+  transform: scale(1.1);
+}
