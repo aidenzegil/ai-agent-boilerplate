@@ -11,7 +11,7 @@ const Component = () => {
           <h2 className="card-title">Story Title</h2>
         </div>
         <div className="divider divider-horizontal"></div>
-        <div className="grid flex-grow card w-96 overflow-scroll h-fit max-h-screen bg-base-300 rounded-box place-items-center">
+        <div className="grid flex-grow card w-96 overflow-scroll h-[90vh] bg-base-300 rounded-box place-items-center">
           <div className="card-body">
             <div className={s.readingHeader}>
               <h2 className="card-title">Chapter Title</h2>
