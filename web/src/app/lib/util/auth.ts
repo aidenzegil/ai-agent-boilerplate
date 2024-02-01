@@ -14,14 +14,13 @@ import {
   type UserCredential,
 } from "firebase/auth";
 
-import { ToastKey } from "@/app/common/enums/toastKey";
 import AuthenticationError from "@/app/common/errors/AuthenticationError";
-import { activeToast } from "@/app/common/stores/activeToastStore";
 import { Ok, Err, Result } from "@/app/common/types/result";
 import { auth } from "../firebase/config";
 import { environment } from "./environment";
 import { throwExpectedError } from "./throwExpectedError";
 import WebError from "@/app/common/errors/WebError";
+import { toast } from "react-toastify";
 
 type SigninResult = Result<UserCredential, Error>;
 async function handleSignin(
@@ -29,13 +28,12 @@ async function handleSignin(
 ): Promise<SigninResult> {
   try {
     const res = await promise;
-    // activeModal.set(null);
-    activeToast.set(ToastKey.SIGNIN_SUCCESS);
+    toast("Signed in", { type: "success" });
     return Ok(res);
   } catch (e) {
     const err = e as Error;
     console.error(err);
-    activeToast.set(ToastKey.SIGNIN_ERROR);
+    toast("Error signing in", { type: "error" });
     return Err(err);
   }
 }
@@ -70,7 +68,7 @@ export const authService = {
     } catch (e) {
       const err = e as Error;
       console.error(err);
-      activeToast.set(ToastKey.SIGNIN_ERROR);
+      toast("Error sending email", { type: "error" });
       return Err(err);
     }
   },
@@ -104,7 +102,7 @@ export const authService = {
       }
       return Err(new Error("No email provided"));
     }
-    activeToast.set(ToastKey.SIGNIN_ERROR);
+    toast("Invalid signin link", { type: "error" });
     return Err(new Error("Invalid signin link"));
   },
   signinWithGoogle: async (): Promise<SigninResult> => {
@@ -113,7 +111,7 @@ export const authService = {
   },
   signout: async (): Promise<void> => {
     await signOut(auth);
-    activeToast.set(ToastKey.SIGNOUT);
+    toast("Signed out", { type: "success" });
   },
   updateEmail: async (newEmail: string): Promise<void> => {
     if (!auth.currentUser) {
@@ -138,3 +136,8 @@ export const authService = {
     await updatePassword(auth.currentUser, newPassword);
   },
 };
+
+/**
+ * This file is a utility for handling authentication with Firebase.
+ * Currently not in use but will be used in the future.
+ */
