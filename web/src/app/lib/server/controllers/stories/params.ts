@@ -1,4 +1,4 @@
-import type { Opinion } from "../../../../../../../api-v1/src/common/types/enums/opinion";
+import { Opinion } from "@/app/common/types/outputDtos";
 
 export namespace params {
   export type CreateChapter = {
