@@ -5,14 +5,18 @@ import {
   FAKE_CHAPTER_ARRAY,
   FAKE_STORY_1,
 } from "@/app/fakeObjects/fakeStory";
+import { useFullScreenHandle } from "react-full-screen";
 
 const ReadStoryPage = () => {
-  const { onClick } = useReadStoryPageData();
+  const handle = useFullScreenHandle();
+  const storyChapters = FAKE_CHAPTER_ARRAY;
+  const { onClick, sortedChapters } = useReadStoryPageData(storyChapters);
   return (
     <div>
       <Component
+        handle={handle}
         onClick={onClick}
-        storyChapters={FAKE_CHAPTER_ARRAY}
+        storyChapters={sortedChapters}
         story={FAKE_STORY_1}
         chapter={FAKE_CHAPTER_1}
       />
