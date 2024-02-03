@@ -6,12 +6,18 @@ export namespace params {
     username: string;
   };
 
+  export type GetAuthenticatedUser = {
+    firebaseId: string;
+  };
+
   export type SearchUsers = {
     limit?: number;
     page?: number;
   };
 
-  export type GetUser = GetUserByEmail | GetUserById | GetUserByUsername | GetUserByFirebaseId;
+  export type GetUser = {
+    id: string;
+  };
 
   export type UpdateUser = {
     email?: string;
@@ -24,20 +30,3 @@ export namespace params {
     id: string;
   };
 }
-
-type GetUserById = {
-  discriminator: "id";
-  id: string;
-};
-type GetUserByEmail = {
-  discriminator: "email";
-  email: string;
-};
-type GetUserByUsername = {
-  discriminator: "username";
-  username: string;
-};
-type GetUserByFirebaseId = {
-  discriminator: "firebaseId";
-  firebaseId: string;
-};
