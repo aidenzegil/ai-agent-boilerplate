@@ -1,7 +1,7 @@
 import { ChapterOutputDto, StoryOutputDto } from "@/app/fakeObjects/fakeStory";
 import { FullScreenHandle } from "react-full-screen";
 
-export type FIELDS = {
+export type Fields = {
   storyChapters: ChapterOutputDto[];
   story: StoryOutputDto;
   chapter: ChapterOutputDto;

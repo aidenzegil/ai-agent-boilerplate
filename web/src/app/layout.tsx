@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html data-theme="retro" lang="en">
+    <html data-theme="dracula" lang="en">
       <body className={inter.className}>
         {children}
         <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded mt-8">

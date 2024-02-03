@@ -3,7 +3,7 @@ import { StoryCardProps } from "./types";
 
 const StoryCard = ({ likes, title, onClick }: StoryCardProps) => {
   return (
-    <div className="card w-96 bg-primary shadow-xl">
+    <div className="card w-96 bg-secondary shadow-xl">
       <div className="card-body ">
         <h2 className="card-title ">{title}</h2>
         <p className={s.likes}>

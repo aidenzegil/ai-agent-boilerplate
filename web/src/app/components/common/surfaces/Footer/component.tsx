@@ -7,7 +7,19 @@ const Footer = ({ visible }: FooterProps) => {
 
     <div className={`${s.bottomNav} ${!visible && s.hidden} btm-nav`}>
       <button>
-        <img src="/prevChapArrow.svg" className={s.arrows} />
+        <svg
+          width="800px"
+          height="800px"
+          viewBox="0 0 1024 1024"
+          className={s.arrows}
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z"
+            fill="currentColor"
+          />
+        </svg>
       </button>
       <button className="active">
         <svg
@@ -26,7 +38,19 @@ const Footer = ({ visible }: FooterProps) => {
         </svg>
       </button>
       <button>
-        <img src="/nextChapArrow.svg" className={s.arrows} />
+        <svg
+          width="800px"
+          height="800px"
+          viewBox="0 0 1024 1024"
+          className={s.arrows}
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"
+            fill="currentColor"
+          />
+        </svg>
       </button>
     </div>
   );
