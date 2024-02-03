@@ -1,8 +1,8 @@
-import { getEnvironmentName } from "./getEnvSecret";
+import { environmentName } from "./getEnvSecret";
 
 const getDomain = (): string => {
   return (() => {
-    const environment = getEnvironmentName();
+    const environment = environmentName;
     switch (environment) {
       case "prod":
         return "https://wetpages.com";
@@ -15,11 +15,11 @@ const getDomain = (): string => {
 };
 
 const isProduction = (): boolean => {
-  return getEnvironmentName() === "prod";
+  return environmentName === "prod";
 };
 
 const isLocal = (): boolean => {
-  return getEnvironmentName() === "local";
+  return environmentName === "local";
 };
 
 export const environment = {

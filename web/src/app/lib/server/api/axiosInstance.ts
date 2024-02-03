@@ -10,7 +10,7 @@ import { Data } from "../types/apiResponse";
 import { apiUtils } from "./utils";
 
 const axiosInstance = axios.create({
-  baseURL: NEXT_PUBLIC_WET_PAGES_API(),
+  baseURL: NEXT_PUBLIC_WET_PAGES_API,
   headers: {
     "Content-Type": "application/json",
   },

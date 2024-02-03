@@ -6,7 +6,7 @@ type GetEnvSecret = (secretName: string) => () => string;
 /** Util function to get environment variables */
 const getEnvSecret: GetEnvSecret = (secretName) => {
   return () => {
-    const value = process.env[secretName];
+    const value = process.env.secretName;
     if (!value) {
       throw new Error(`process.env.${secretName} required!`);
     }
@@ -14,28 +14,12 @@ const getEnvSecret: GetEnvSecret = (secretName) => {
   };
 };
 
-export const getEnvironmentName = getEnvSecret("NEXT_PUBLIC_ENV");
-export const NEXT_PUBLIC_FIREBASE_API_KEY = getEnvSecret(
-  "NEXT_PUBLIC_FIREBASE_API_KEY"
-);
-export const NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN = getEnvSecret(
-  "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"
-);
-export const NEXT_PUBLIC_FIREBASE_PROJECT_ID = getEnvSecret(
-  "NEXT_PUBLIC_FIREBASE_PROJECT_ID"
-);
-export const NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = getEnvSecret(
-  "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET"
-);
-export const NEXT_PUBLIC_FIREBASE_APP_ID = getEnvSecret(
-  "NEXT_PUBLIC_FIREBASE_APP_ID"
-);
-export const NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID = getEnvSecret(
-  "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID"
-);
-export const NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID = getEnvSecret(
-  "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID"
-);
-export const NEXT_PUBLIC_WET_PAGES_API = getEnvSecret(
-  "NEXT_PUBLIC_WET_PAGES_API"
-);
+export const environmentName = process.env.NEXT_PUBLIC_ENVIRONMENT_NAME;
+export const NEXT_PUBLIC_FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
+export const NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN =process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
+export const NEXT_PUBLIC_FIREBASE_PROJECT_ID =process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+export const NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
+export const NEXT_PUBLIC_FIREBASE_APP_ID = process.env.NEXT_PUBLIC_FIREBASE_APP_ID;
+export const NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID = process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID;
+export const NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID = process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID;
+export const NEXT_PUBLIC_WET_PAGES_API = process.env.NEXT_PUBLIC_WET_PAGES_API;

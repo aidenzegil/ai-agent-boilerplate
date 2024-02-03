@@ -17,6 +17,6 @@ export const network = {
     });
   },
   getAuthenticatedUser: ({ authToken, firebaseId }: params.GetAuthenticatedUser & { authToken: string }) => {
-    return userController({ authToken }).getUser({ id: firebaseId });
+    return userController({ authToken }).getAuthenticatedUser({ firebaseId });
   }
 };

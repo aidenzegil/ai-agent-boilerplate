@@ -5,11 +5,14 @@ import NavBar from "@/app/components/compound/NavBar";
 import { Opinion } from "@/app/fakeObjects/fakeStory";
 import { FIELDS } from "./types";
 import s from "./styles.module.scss";
+import { useAuthContext } from "@/app/providers/AuthProvider/provider";
 
 const Component = ({ popularStories, onClick }: FIELDS) => {
+  const {authFunctions} = useAuthContext()
   return (
     <div>
       <NavBar />
+      <button onClick={() => authFunctions.logOut()}>log out</button>
       <SectionHeader children="Popular Titles" />
       <div className={s.mapContainer}>
         {popularStories.map((story) => (

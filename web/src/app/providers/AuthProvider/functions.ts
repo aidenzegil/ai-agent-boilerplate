@@ -17,7 +17,9 @@ export const useAuthProviderFunctions = (
   // #region Background Actions
   const asyncAuthUpdates = async (firebaseUser: User | null) => {
     if (firebaseUser && firebaseUser.uid && firebaseUser.email) {
+      console.log(firebaseUser.uid, firebaseUser.email, firebaseUser)
       const authToken = await firebaseUser.getIdToken();
+      console.log(authToken)
       const userRes = await network.getAuthenticatedUser({
         firebaseId: firebaseUser.uid,
         authToken,
