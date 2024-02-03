@@ -18,10 +18,7 @@ type AuthProviderContext = Omit<
 
 const defaultProvider: AuthProviderContext = {
   state: {
-    user: {
-      email: null,
-      uid: null,
-    },
+    user: undefined,
   },
   loading: {
     loading: false,
@@ -30,7 +27,6 @@ const defaultProvider: AuthProviderContext = {
     signUp: async (email: string, password: string) => {},
     logIn: async (email: string, password: string) => {},
     logOut: async () => {},
-    signInWithGoogle: async () => {},
     sendPasswordResetEmail: async (email: string) => {},
   },
 };

@@ -1,10 +1,8 @@
+import { PrivateUser } from "@/app/common/types/user";
 import { Dispatch, SetStateAction } from "react";
 
 export type AuthProviderState = {
-  user: {
-    email: string | null;
-    uid: string | null;
-  };
+  user: PrivateUser | undefined;
 };
 
 export type AuthProviderLoading = {
@@ -24,12 +22,12 @@ export type AuthProviderStateController = {
 };
 
 export type AuthProviderSet = {
-  setUser: Dispatch<SetStateAction<any | undefined>>;
+  setUser: Dispatch<SetStateAction<PrivateUser | undefined>>;
 };
 
 export type AuthProviderFunctions = {
   signUp: (email: string, password: string) => Promise<void>;
-  signInWithGoogle: () => Promise<void>;
+  // signInWithGoogle: () => Promise<void>;
   logIn: (email: string, password: string) => Promise<void>;
   logOut: () => Promise<void>;
   sendPasswordResetEmail: (email: string) => Promise<void>;

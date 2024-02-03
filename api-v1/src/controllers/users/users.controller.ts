@@ -53,6 +53,18 @@ export class UsersController {
     return { data: dto };
   }
 
+  @Get("authenticatedUser/:firebaseId")
+  async GetAuthenticatedUser(
+    @Param("firebaseId") firebaseId: string,
+  ): ApiResponse<UserOutputDto> {
+    const user = await this.userService.GetUser({
+      discriminator: "firebaseId",
+      firebaseId,
+    });
+    const dto = new UserOutputDto(user);
+    return { data: dto };
+  }
+
   @Put(":userId")
   async Update(
     @Param("userId") userId: string,

@@ -1,0 +1,7 @@
+export enum ToastKey {
+  EXAMPLE = "EXAMPLE",
+  SIGNIN_SUCCESS = "SIGNIN_SUCCESS",
+  SIGNIN_ERROR = "SIGNIN_ERROR",
+  SIGNOUT = "SIGNOUT",
+  NONE = "NONE",
+}
