@@ -15,7 +15,10 @@ const Component = ({ onClick, storyChapters, story }: Fields) => {
             <div className="collapse-content">
               <ul className="menu p-4 overflow-scroll text-base-content text-base">
                 {storyChapters.map((chapter) => (
-                  <li className="bg-base-100 rounded-box mb-3" key={chapter.id}>
+                  <li
+                    className="bg-secondary rounded-box mb-3"
+                    key={chapter.id}
+                  >
                     <a onClick={() => onClick(chapter.id)}>{chapter.title}</a>
                   </li>
                 ))}
