@@ -69,14 +69,14 @@ export const useAuthProviderFunctions = (
         email,
         password
       );
-      console.log("signed up in firebase");
-      console.log("creating user in server...");
+      const authToken = await firebaseUser.user.getIdToken();
+      console.log(authToken);
       const userRes = await network.createUser({
         email,
         firebaseId: firebaseUser.user.uid,
         profilePictureUrl: "",
         username: "",
-        authToken: await firebaseUser.user.getIdToken(),
+        authToken,
       });
       if (userRes.isErr()) {
         await firebaseUser.user.delete();
