@@ -1,10 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 import { object, string } from "yup";
 import { UseEditStoryFormData } from "./types";
 
 export const useEditStoryFormData = ({
   form,
-  editStory,
+  storyFunctions,
+  activeStory,
+  activeChapter,
 }: UseEditStoryFormData) => {
   const errors = form.formState.errors;
 
@@ -17,7 +20,17 @@ export const useEditStoryFormData = ({
     chapterTitle: string;
     markdown: string;
   }) => {
-    await editStory(storyTitle, chapterTitle, markdown);
+    if (!activeStory || !activeChapter) {
+      toast("Could not find active story or chapter, please refresh the page");
+      return;
+    }
+    await storyFunctions.updateStory({ title: storyTitle, id: activeStory.id });
+    await storyFunctions.updateChapter({
+      title: chapterTitle,
+      content: markdown,
+      index: activeChapter.index,
+      id: activeChapter.id,
+    });
   };
 
   const onSubmit = async () => {

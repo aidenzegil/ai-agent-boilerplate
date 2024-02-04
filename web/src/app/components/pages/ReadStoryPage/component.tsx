@@ -1,6 +1,7 @@
 import ChapterReader from "@/app/components/compound/ChapterReader";
 import NavBar from "@/app/components/compound/NavBar";
 import { Fields } from "@/app/components/pages/ReadStoryPage/types";
+import Link from "next/link";
 
 const Component = ({ onClick, storyChapters, story }: Fields) => {
   return (
@@ -15,13 +16,19 @@ const Component = ({ onClick, storyChapters, story }: Fields) => {
             <div className="collapse-content">
               <ul className="menu p-4 overflow-scroll text-base-content text-base">
                 {storyChapters.map((chapter) => (
-                  <li
-                    className="bg-secondary rounded-box mb-3"
+                  <button
                     key={chapter.id}
+                    className="btn btn-secondary shadow w-full place-items-center rounded-full mb-3"
+                    onClick={() => onClick(chapter.id)}
                   >
-                    <a onClick={() => onClick(chapter.id)}>{chapter.title}</a>
-                  </li>
+                    {chapter.title}
+                  </button>
                 ))}
+                <Link href="/dashboard/editstory/story/chapter">
+                  <button className="btn btn-secondary shadow w-full place-items-center rounded-full">
+                    Add Chapter +
+                  </button>
+                </Link>
               </ul>
             </div>
           </div>

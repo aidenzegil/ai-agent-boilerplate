@@ -1,14 +1,13 @@
+import { useContext, useMemo } from "react";
 import { createRegisteredContext } from "react-singleton-context";
+import { useStoryProviderFunctions } from "./functions";
+import { useStoryProviderStateController } from "./state";
 import {
   StoryProviderFunctions,
   StoryProviderLoading,
   StoryProviderState,
   StoryProviderStateController,
 } from "./types";
-import { useStoryProviderStateController } from "./state";
-import { useStoryProviderFunctions } from "./functions";
-import { useMemo } from "react";
-import { Opinion } from "@/app/common/types/outputDtos";
 
 type StoryProviderContext = Omit<
   StoryProviderStateController,
@@ -43,27 +42,17 @@ const defaultProvider: StoryProviderContext = {
     refreshLikedStories: async () => {},
     refreshAuthoredStories: async () => {},
     refreshAllStories: async () => {},
-    createStory: async (title: string) => {},
-    createChapter: async (
-      storyId: string,
-      title: string,
-      content: string,
-      index: number
-    ) => {},
-    deleteStory: async (id: string) => {},
-    deleteChapter: async (id: string) => {},
-    updateStory: async (id: string, title: string) => {},
-    updateChapter: async (
-      id: string,
-      title?: string,
-      content?: string,
-      index?: string
-    ) => {},
-    reactToStory: async (storyId: string, opinion: Opinion) => {},
+    createStory: async () => {},
+    createChapter: async () => {},
+    deleteStory: async () => {},
+    deleteChapter: async () => {},
+    updateStory: async () => {},
+    updateChapter: async () => {},
+    reactToStory: async () => {},
   },
 };
 
-const StoryConstext = createRegisteredContext<StoryProviderContext>(
+const StoryContext = createRegisteredContext<StoryProviderContext>(
   "story-provider-context",
   defaultProvider
 );
@@ -84,7 +73,7 @@ export const StoryContextProvider = ({
 
   // Wrap the children with the context provider
   return (
-    <StoryConstext.Provider value={value}>{children}</StoryConstext.Provider>
+    <StoryContext.Provider value={value}>{children}</StoryContext.Provider>
   );
 };
 
@@ -102,3 +91,5 @@ const useProviderInterface = (
     [state, loading.loading]
   );
 };
+
+export const useStoryProviderContext = () => useContext(StoryContext);

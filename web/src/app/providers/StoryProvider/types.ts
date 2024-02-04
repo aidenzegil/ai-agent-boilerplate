@@ -1,4 +1,9 @@
-import { ChapterOutputDto, StoryListItemOutputDto, StoryOutputDto } from "@/app/common/types/outputDtos";
+import {
+  ChapterOutputDto,
+  Opinion,
+  StoryListItemOutputDto,
+  StoryOutputDto,
+} from "@/app/common/types/outputDtos";
 import { Dispatch, SetStateAction } from "react";
 
 export type StoryProviderState = {
@@ -58,4 +63,41 @@ export type StoryProviderSet = {
   setActiveChapter: Dispatch<SetStateAction<string | undefined>>;
 };
 
-export type StoryProviderFunctions = {};
+export type StoryProviderFunctions = {
+  refreshLikedStories: () => Promise<void>;
+  refreshAuthoredStories: () => Promise<void>;
+  refreshAllStories: () => Promise<void>;
+  createStory: ({ title }: { title: string }) => Promise<void>;
+  createChapter: ({
+    title,
+    content,
+    storyId,
+    index,
+  }: {
+    title: string;
+    content: string;
+    storyId: string;
+    index: number;
+  }) => Promise<void>;
+  deleteStory: ({ id }: { id: string }) => Promise<void>;
+  deleteChapter: ({ id }: { id: string }) => Promise<void>;
+  updateStory: ({ id, title }: { id: string; title: string }) => Promise<void>;
+  updateChapter: ({
+    id,
+    title,
+    content,
+    index,
+  }: {
+    id: string;
+    title?: string;
+    content?: string;
+    index?: number;
+  }) => Promise<void>;
+  reactToStory: ({
+    id,
+    opinion,
+  }: {
+    id: string;
+    opinion: Opinion;
+  }) => Promise<void>;
+};
