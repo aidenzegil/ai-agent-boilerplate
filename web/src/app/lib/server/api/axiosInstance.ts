@@ -31,6 +31,7 @@ export const GET = async <T>({
   requiresAuth,
 }: GetParams): Promise<Result<T, WebError>> => {
   if (requiresAuth) {
+    console.log("authToken", authToken);
     if (!authToken) {
       return Err(
         new AuthenticationError({

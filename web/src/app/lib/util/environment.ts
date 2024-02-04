@@ -9,7 +9,7 @@ const getDomain = (): string => {
       case "local":
         return "http://localhost:3000";
       default:
-        return `https://${environment}.thinktank.com`;
+        return `https://${environment}.wetpages.com`;
     }
   })();
 };

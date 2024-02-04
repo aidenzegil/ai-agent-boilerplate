@@ -16,10 +16,14 @@ export const useAuthProviderFunctions = (
 ): AuthProviderFunctions => {
   // #region Background Actions
   const asyncAuthUpdates = async (firebaseUser: User | null) => {
-    if (firebaseUser && firebaseUser.uid && firebaseUser.email) {
-      console.log(firebaseUser.uid, firebaseUser.email, firebaseUser)
+    if (
+      firebaseUser &&
+      firebaseUser.uid &&
+      firebaseUser.email &&
+      !stateController.loading.loading
+    ) {
       const authToken = await firebaseUser.getIdToken();
-      console.log(authToken)
+      console.log("authToken", authToken);
       const userRes = await network.getAuthenticatedUser({
         firebaseId: firebaseUser.uid,
         authToken,
@@ -59,11 +63,14 @@ export const useAuthProviderFunctions = (
   const signUp = async (email: string, password: string) => {
     stateController.setLoading.setUserLoading(true);
     try {
+      console.log("signing up in firebase...");
       const firebaseUser = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
+      console.log("signed up in firebase");
+      console.log("creating user in server...");
       const userRes = await network.createUser({
         email,
         firebaseId: firebaseUser.user.uid,
@@ -76,6 +83,7 @@ export const useAuthProviderFunctions = (
         stateController.setLoading.setUserLoading(false);
         return;
       }
+      console.log("created user in server");
       const user = userRes.unwrap();
       stateController.set.setUser({
         ...user,
