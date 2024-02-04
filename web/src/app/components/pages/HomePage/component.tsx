@@ -1,14 +1,13 @@
-import React from "react";
 import StoryCard from "@/app/components/common/dataDisplay/StoryCard/component";
 import SectionHeader from "@/app/components/common/presentational/SectionHeader/component";
 import NavBar from "@/app/components/compound/NavBar";
 import { Opinion } from "@/app/fakeObjects/fakeStory";
-import { FIELDS } from "./types";
-import s from "./styles.module.scss";
 import { useAuthContext } from "@/app/providers/AuthProvider/provider";
+import s from "./styles.module.scss";
+import { Fields } from "./types";
 
-const Component = ({ popularStories, onClick }: FIELDS) => {
-  const {authFunctions} = useAuthContext()
+const Component = ({ popularStories, onClick }: Fields) => {
+  const { authFunctions } = useAuthContext();
   return (
     <div>
       <NavBar />
