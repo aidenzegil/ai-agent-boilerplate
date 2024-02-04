@@ -23,9 +23,7 @@ export const useAuthProviderFunctions = (
       !stateController.loading.loading
     ) {
       const authToken = await firebaseUser.getIdToken();
-      console.log("authToken", authToken);
       const userRes = await network.getAuthenticatedUser({
-        firebaseId: firebaseUser.uid,
         authToken,
       });
       if (userRes.isErr()) {
@@ -70,10 +68,8 @@ export const useAuthProviderFunctions = (
         password
       );
       const authToken = await firebaseUser.user.getIdToken();
-      console.log(authToken);
       const userRes = await network.createUser({
         email,
-        firebaseId: firebaseUser.user.uid,
         profilePictureUrl: "",
         username: "",
         authToken,
@@ -107,7 +103,6 @@ export const useAuthProviderFunctions = (
       );
       const authToken = await firebaseUser.user.getIdToken();
       const userRes = await network.getAuthenticatedUser({
-        firebaseId: firebaseUser.user.uid,
         authToken,
       });
       if (userRes.isErr()) {

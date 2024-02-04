@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Headers,
   Param,
   Post,
   Put,
@@ -14,6 +15,7 @@ import { ApiResponse } from "#controllers/types/response.dto";
 
 import * as InputDto from "./dto/input.dto";
 import { UserOutputDto } from "./dto/output.dto";
+import firebaseApp from "#lib/firebaseCLient";
 
 @ApiTags("users")
 @Controller("users")
@@ -23,8 +25,14 @@ export class UsersController {
   @Post()
   async CreateUser(
     @Body() inputDto: InputDto.CreateUser,
+    @Headers("authorization") authToken: string,
   ): ApiResponse<UserOutputDto> {
-    const user = await this.userService.CreateUser(inputDto);
+    const idToken = authToken.replace("Bearer ", "");
+    const firebaseUser = await firebaseApp.auth().verifyIdToken(idToken);
+    const user = await this.userService.CreateUser({
+      ...inputDto,
+      firebaseId: firebaseUser.uid,
+    });
     const dto = new UserOutputDto(user);
     return { data: dto };
   }
@@ -53,14 +61,17 @@ export class UsersController {
     return { data: dto };
   }
 
-  @Get("authenticatedUser/:firebaseId")
+  @Get("authenticatedUser")
   async GetAuthenticatedUser(
-    @Param("firebaseId") firebaseId: string,
+    @Headers("authorization") authToken: string,
   ): ApiResponse<UserOutputDto> {
+    const idToken = authToken.replace("Bearer ", "");
+    const firebaseUser = await firebaseApp.auth().verifyIdToken(idToken);
     const user = await this.userService.GetUser({
       discriminator: "firebaseId",
-      firebaseId,
+      firebaseId: firebaseUser.uid,
     });
+    console.log("user", user);
     const dto = new UserOutputDto(user);
     return { data: dto };
   }
