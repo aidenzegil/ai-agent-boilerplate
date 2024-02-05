@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
-export default function useLocalStorage<T>(
+export default function useSessionStorage<T>(
   key: string,
   defaultValue: T
 ): [T, Dispatch<SetStateAction<T>>] {
@@ -9,7 +9,7 @@ export default function useLocalStorage<T>(
 
   useEffect(() => {
     try {
-      const item = window.localStorage.getItem(key);
+      const item = window.sessionStorage.getItem(key);
       if (item) {
         setValue(JSON.parse(item));
       }
@@ -23,7 +23,7 @@ export default function useLocalStorage<T>(
 
   useEffect(() => {
     if (isMounted.current) {
-      window.localStorage.setItem(key, JSON.stringify(value));
+      window.sessionStorage.setItem(key, JSON.stringify(value));
     } else {
       isMounted.current = true;
     }

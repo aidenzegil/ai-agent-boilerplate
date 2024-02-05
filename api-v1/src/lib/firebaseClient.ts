@@ -1,9 +1,19 @@
-var admin = require("firebase-admin");
+import { Injectable } from "@nestjs/common";
+import * as firebase from "firebase-admin";
 
-var serviceAccount = process.env.FIREBASE_CONFIG;
+@Injectable()
+export class FirebaseApp {
+  private firebaseApp: firebase.app.App;
 
-const firebaseApp = admin.initializeApp({
-  credential: admin.credential.cert(JSON.parse(serviceAccount!)),
-});
+  constructor() {
+    this.firebaseApp = firebase.initializeApp({
+      credential: firebase.credential.cert(
+        JSON.parse(process.env.FIREBASE_CONFIG!),
+      ),
+    });
+  }
 
-export default firebaseApp;
+  getAuth = (): firebase.auth.Auth => {
+    return this.firebaseApp.auth();
+  };
+}

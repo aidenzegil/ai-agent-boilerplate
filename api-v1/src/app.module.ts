@@ -14,6 +14,9 @@ import { UsersController } from "./controllers/users/users.controller";
 import { AppService } from "./services/app.service";
 import { UserService } from "./services/domain/user/user.service";
 import { LoggerMiddleware } from "#controllers/middleware/requestLogger";
+import { PreauthMiddleware } from "#controllers/middleware/Auth/PreAuthMiddleware";
+import { authenticatedRoutes } from "#configs/authenticatedRoutes";
+import { FirebaseApp } from "#lib/firebaseCLient";
 
 @Module({
   controllers: [AppController, UsersController, StoriesController],
@@ -24,6 +27,7 @@ import { LoggerMiddleware } from "#controllers/middleware/requestLogger";
     StoryService,
     LiteratureService,
     UserService,
+    FirebaseApp,
   ],
 })
 export class AppModule implements NestModule {
@@ -31,5 +35,6 @@ export class AppModule implements NestModule {
     consumer
       .apply(LoggerMiddleware)
       .forRoutes({ path: "*", method: RequestMethod.ALL });
+    consumer.apply(PreauthMiddleware).forRoutes(...authenticatedRoutes);
   }
 }

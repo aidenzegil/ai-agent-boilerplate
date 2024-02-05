@@ -20,8 +20,10 @@ export const useAuthProviderFunctions = (
       firebaseUser &&
       firebaseUser.uid &&
       firebaseUser.email &&
-      !stateController.loading.loading
+      !stateController.loading.loading &&
+      !stateController.state.user?.id
     ) {
+      stateController.setLoading.setUserLoading(true);
       const authToken = await firebaseUser.getIdToken();
       const userRes = await network.getAuthenticatedUser({
         authToken,
@@ -29,13 +31,15 @@ export const useAuthProviderFunctions = (
       if (userRes.isErr()) {
         console.log("Womp Womp, user died");
       }
-      const wetUser = userRes.unwrap();
-      stateController.set.setUser({
-        email: wetUser.email,
-        username: wetUser.username,
-        id: wetUser.id,
-        profilePictureUrl: wetUser.profilePictureUrl,
-      });
+      if (userRes.isOk()) {
+        const wetUser = userRes.value;
+        stateController.set.setUser({
+          email: wetUser.email,
+          username: wetUser.username,
+          id: wetUser.id,
+          profilePictureUrl: wetUser.profilePictureUrl,
+        });
+      }
     } else {
       stateController.set.setUser(undefined);
     }
@@ -61,7 +65,6 @@ export const useAuthProviderFunctions = (
   const signUp = async (email: string, password: string) => {
     stateController.setLoading.setUserLoading(true);
     try {
-      console.log("signing up in firebase...");
       const firebaseUser = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -79,12 +82,10 @@ export const useAuthProviderFunctions = (
         stateController.setLoading.setUserLoading(false);
         return;
       }
-      console.log("created user in server");
       const user = userRes.unwrap();
       stateController.set.setUser({
         ...user,
       });
-      console.log(user);
     } catch (e) {
       console.error(e);
     }
