@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { AuthProviderStateController } from "./types";
 import { PrivateUser } from "@/app/common/types/user";
-import useSessionStorage from "../utils/useLocalStorage";
+import { useState } from "react";
 import safelyParseJSON from "../utils/safelyParseJson";
+import useSessionStorage from "../utils/useLocalStorage";
+import { AuthProviderStateController } from "./types";
 
 export const useAuthProviderStateController =
   (): AuthProviderStateController => {
@@ -17,9 +17,12 @@ export const useAuthProviderStateController =
         undefined
     );
 
+    const loggedIn = !!user?.id;
+
     return {
       state: {
         user,
+        loggedIn,
       },
       set: {
         setUser,

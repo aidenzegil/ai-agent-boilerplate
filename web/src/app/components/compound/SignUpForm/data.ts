@@ -21,7 +21,7 @@ export const useSignUpFormData = ({
   }) => {
     console.log(profilePictureUrl);
 
-    await signUp(email, password, profilePictureUrl, username);
+    await signUp(email, password, username, profilePictureUrl);
   };
 
   const onSubmit = async () => {

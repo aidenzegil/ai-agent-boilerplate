@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export type AuthProviderState = {
   user: PrivateUser | undefined;
+  loggedIn: boolean;
 };
 
 export type AuthProviderLoading = {

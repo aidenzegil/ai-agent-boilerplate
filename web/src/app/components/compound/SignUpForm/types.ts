@@ -26,7 +26,7 @@ export type UseSignUpFormDataParams = {
   signUp: (
     email: string,
     password: string,
-    profilePictureUrl: string,
-    username: string
+    username: string,
+    profilePictureUrl: string
   ) => Promise<void>;
 };
