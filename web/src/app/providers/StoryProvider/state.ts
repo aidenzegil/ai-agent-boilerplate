@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PrivateUser } from "@/app/common/types/user";
-import useLocalStorage from "../utils/useLocalStorage";
+import useSessionStorage from "../utils/useLocalStorage";
 import safelyParseJSON from "../utils/safelyParseJson";
 import { StoryProviderStateController } from "./types";
 import { StoryListItemOutputDto } from "@/app/common/types/outputDtos";
@@ -32,31 +32,37 @@ export const useStoryProviderStateController =
       updateStoryLoading ||
       deleteStoryLoading;
 
-    const [allStories, setAllStories] = useLocalStorage<
+    const [allStories, setAllStories] = useSessionStorage<
       StoryListItemOutputDto[] | undefined
     >(
       "StoryProviderAllStories",
-      safelyParseJSON<StoryListItemOutputDto[] | undefined>(
-        sessionStorage.getItem("StoryProviderAllStories") || ""
-      ) || undefined
+      (typeof window !== "undefined" &&
+        safelyParseJSON<StoryListItemOutputDto[] | undefined>(
+          sessionStorage.getItem("StoryProviderAllStories") || ""
+        )) ||
+        undefined
     );
 
-    const [likedStories, setLikedStories] = useLocalStorage<
+    const [likedStories, setLikedStories] = useSessionStorage<
       StoryListItemOutputDto[] | undefined
     >(
       "StoryProviderLikedStories",
-      safelyParseJSON<StoryListItemOutputDto[] | undefined>(
-        sessionStorage.getItem("StoryProviderLikedStories") || ""
-      ) || undefined
+      (typeof window !== "undefined" &&
+        safelyParseJSON<StoryListItemOutputDto[] | undefined>(
+          sessionStorage.getItem("StoryProviderLikedStories") || ""
+        )) ||
+        undefined
     );
 
-    const [authoredStories, setAuthoredStories] = useLocalStorage<
+    const [authoredStories, setAuthoredStories] = useSessionStorage<
       StoryListItemOutputDto[] | undefined
     >(
       "StoryProviderAuthoredStories",
-      safelyParseJSON<StoryListItemOutputDto[] | undefined>(
-        sessionStorage.getItem("StoryProviderAuthoredStories") || ""
-      ) || undefined
+      (typeof window !== "undefined" &&
+        safelyParseJSON<StoryListItemOutputDto[] | undefined>(
+          sessionStorage.getItem("StoryProviderAuthoredStories") || ""
+        )) ||
+        undefined
     );
 
     const activeStory = undefined; // TODO: Implement this

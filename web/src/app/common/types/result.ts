@@ -46,7 +46,7 @@ export function Ok<T, E>(value: T): Result<T, E> {
     unwrap: () => value,
     unwrapOr: () => value,
     unwrapOrElse: () => value,
-    value,
+    value: value,
   };
 }
 

@@ -48,9 +48,12 @@ export const GET = async <T>({
   }, "");
 
   const result: Result<T, WebError> = await axiosInstance
-    .get<T>(`${path}${queryString}`)
+    .get<{ data: T }>(`${path}${queryString}`)
     .then(
-      (val) => Ok(val.data),
+      (val) => {
+        const res = val.data;
+        return Ok(res.data);
+      },
       (e: AxiosError) => {
         adminLog({ axiosError: e });
         const apiErr = apiUtils.transformAxiosError(e);

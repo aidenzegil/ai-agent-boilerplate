@@ -1,13 +1,8 @@
 export namespace params {
   export type CreateUser = {
     email: string;
-    firebaseId: string;
     profilePictureUrl: string;
     username: string;
-  };
-
-  export type GetAuthenticatedUser = {
-    firebaseId: string;
   };
 
   export type SearchUsers = {

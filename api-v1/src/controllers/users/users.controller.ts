@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Headers,
   Param,
   Post,
   Put,
@@ -14,17 +15,43 @@ import { ApiResponse } from "#controllers/types/response.dto";
 
 import * as InputDto from "./dto/input.dto";
 import { UserOutputDto } from "./dto/output.dto";
+import { FirebaseApp } from "#lib/firebaseCLient";
+import { OriginatingUser } from "#util/customParamDecorators";
 
 @ApiTags("users")
 @Controller("users")
 export class UsersController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private firebaseApp: FirebaseApp,
+  ) {}
 
   @Post()
   async CreateUser(
-    @Body() inputDto: InputDto.CreateUser,
+    @Body()
+    inputDto: InputDto.CreateUser,
+    @Headers("authorization") authToken: string,
   ): ApiResponse<UserOutputDto> {
-    const user = await this.userService.CreateUser(inputDto);
+    const idToken = authToken.replace("Bearer ", "");
+    const firebaseUser = await this.firebaseApp
+      .getAuth()
+      .verifyIdToken(idToken);
+    const user = await this.userService.CreateUser({
+      ...inputDto,
+      firebaseId: firebaseUser.uid,
+    });
+    const dto = new UserOutputDto(user);
+    return { data: dto };
+  }
+
+  @Get("authenticatedUser")
+  async GetAuthenticatedUser(
+    @OriginatingUser() originatingUser: any,
+  ): ApiResponse<UserOutputDto> {
+    const user = await this.userService.GetUser({
+      discriminator: "firebaseId",
+      firebaseId: originatingUser.firebaseId,
+    });
     const dto = new UserOutputDto(user);
     return { data: dto };
   }
@@ -50,18 +77,6 @@ export class UsersController {
   async GetUsers(): ApiResponse<UserOutputDto[]> {
     const users = await this.userService.SearchUsers({});
     const dto = users.map((user) => new UserOutputDto(user));
-    return { data: dto };
-  }
-
-  @Get("authenticatedUser/:firebaseId")
-  async GetAuthenticatedUser(
-    @Param("firebaseId") firebaseId: string,
-  ): ApiResponse<UserOutputDto> {
-    const user = await this.userService.GetUser({
-      discriminator: "firebaseId",
-      firebaseId,
-    });
-    const dto = new UserOutputDto(user);
     return { data: dto };
   }
 

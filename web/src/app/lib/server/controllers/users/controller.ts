@@ -10,9 +10,7 @@ interface Dependencies {
 interface Methods {
   createUser: (params: params.CreateUser) => Promise<ApiResponse<PrivateUser>>;
   getUser: (params: params.GetUser) => Promise<ApiResponse<PublicUser>>;
-  getAuthenticatedUser: (
-    params: params.GetAuthenticatedUser
-  ) => Promise<ApiResponse<PrivateUser>>;
+  getAuthenticatedUser: () => Promise<ApiResponse<PrivateUser>>;
 }
 
 type UserController = (deps: Dependencies) => Methods;
@@ -34,12 +32,11 @@ export const userController: UserController = ({ authToken }) => ({
   createUser: async ({
     profilePictureUrl,
     email,
-    firebaseId,
     username,
   }): Promise<ApiResponse<PrivateUser>> => {
     const res = await POST<PrivateUser>({
       authToken,
-      body: { profilePictureUrl, email, firebaseId, username },
+      body: { profilePictureUrl, email, username },
       path: "/users",
       requiresAuth: true,
     });
@@ -77,12 +74,11 @@ export const userController: UserController = ({ authToken }) => ({
     return Err(res.error);
   },
 
-  getAuthenticatedUser: async ({
-    firebaseId,
-  }): Promise<ApiResponse<PrivateUser>> => {
+  getAuthenticatedUser: async (): Promise<ApiResponse<PrivateUser>> => {
     const res = await GET<PrivateUser>({
-      path: `/users/authenticatedUser/${firebaseId}`,
+      path: `/users/authenticatedUser`,
       requiresAuth: true,
+      authToken,
     });
     if (res.isOk()) {
       const privateUser: PrivateUser = {

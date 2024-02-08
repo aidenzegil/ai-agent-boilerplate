@@ -16,24 +16,30 @@ export const useAuthProviderFunctions = (
 ): AuthProviderFunctions => {
   // #region Background Actions
   const asyncAuthUpdates = async (firebaseUser: User | null) => {
-    if (firebaseUser && firebaseUser.uid && firebaseUser.email) {
-      console.log(firebaseUser.uid, firebaseUser.email, firebaseUser);
+    if (
+      firebaseUser &&
+      firebaseUser.uid &&
+      firebaseUser.email &&
+      !stateController.loading.loading &&
+      !stateController.state.user?.id
+    ) {
+      stateController.setLoading.setUserLoading(true);
       const authToken = await firebaseUser.getIdToken();
-      console.log(authToken);
       const userRes = await network.getAuthenticatedUser({
-        firebaseId: firebaseUser.uid,
         authToken,
       });
       if (userRes.isErr()) {
         console.log("Womp Womp, user died");
       }
-      const wetUser = userRes.unwrap();
-      stateController.set.setUser({
-        email: wetUser.email,
-        username: wetUser.username,
-        id: wetUser.id,
-        profilePictureUrl: wetUser.profilePictureUrl,
-      });
+      if (userRes.isOk()) {
+        const wetUser = userRes.value;
+        stateController.set.setUser({
+          email: wetUser.email,
+          username: wetUser.username,
+          id: wetUser.id,
+          profilePictureUrl: wetUser.profilePictureUrl,
+        });
+      }
     } else {
       stateController.set.setUser(undefined);
     }
@@ -69,12 +75,12 @@ export const useAuthProviderFunctions = (
         email,
         password
       );
+      const authToken = await firebaseUser.user.getIdToken();
       const userRes = await network.createUser({
         email,
-        firebaseId: firebaseUser.user.uid,
         profilePictureUrl,
         username,
-        authToken: await firebaseUser.user.getIdToken(),
+        authToken,
       });
       if (userRes.isErr()) {
         await firebaseUser.user.delete();
@@ -85,7 +91,6 @@ export const useAuthProviderFunctions = (
       stateController.set.setUser({
         ...user,
       });
-      console.log(user);
     } catch (e) {
       console.error(e);
     }
@@ -104,7 +109,6 @@ export const useAuthProviderFunctions = (
       );
       const authToken = await firebaseUser.user.getIdToken();
       const userRes = await network.getAuthenticatedUser({
-        firebaseId: firebaseUser.user.uid,
         authToken,
       });
       if (userRes.isErr()) {
