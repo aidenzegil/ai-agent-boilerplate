@@ -1,5 +1,7 @@
-import { useStoryProviderContext } from "@/app/providers/StoryProvider/provider";
 import { useForm } from "react-hook-form";
+
+import { useStoryProviderContext } from "@/app/providers/StoryProvider/provider";
+
 import Component from "./component";
 import { formConfig, useEditStoryFormData } from "./data";
 
@@ -8,10 +10,10 @@ const EditStoryForm = () => {
   const { storyFunctions, state: storyState } = useStoryProviderContext();
 
   const { onSubmit, errors } = useEditStoryFormData({
+    activeChapter: storyState.activeChapter,
+    activeStory: storyState.activeStory,
     form: form,
     storyFunctions,
-    activeStory: storyState.activeStory,
-    activeChapter: storyState.activeChapter,
   });
   return (
     <div>

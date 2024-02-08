@@ -1,6 +1,6 @@
 export type StoryCardProps = {
-  likes?: number;
-  title: string;
-  onClick: () => void;
   authorPicUrl?: string;
+  likes: number;
+  onClick: () => void;
+  title: string;
 };
