@@ -39,7 +39,7 @@ export const formConfig = {
     password: "",
     username: "",
     profilePictureUrl:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpapers.com%2Fwallpapers%2Fsmiley-default-pfp-0ujhadx5fhnhydlb.html&psig=AOvVaw28A4SEZBKsqGTcQHeuLRIP&ust=1707504793699000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCPCv4Zm1nIQDFQAAAAAdAAAAABAD",
+      "https://wallpapers.com/images/high/smiley-default-pfp-0ujhadx5fhnhydlb.webp",
   },
   mode: "onChange",
   resolver: yupResolver(

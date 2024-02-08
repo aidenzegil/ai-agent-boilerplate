@@ -1,9 +1,8 @@
-import React from "react";
+import Link from "next/link";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
-import Link from "next/link";
 
-const Component = ({ visible, currentUser }: Fields) => {
+const Component = ({ visible, isLoggedIn, user }: Fields) => {
   return (
     <div
       className={`${s.container} ${!visible && s.hidden} navbar bg-base-100`}
@@ -51,7 +50,16 @@ const Component = ({ visible, currentUser }: Fields) => {
         <Link href="/dashboard">
           <button className="btn btn-ghost btn-circle">
             <div className="indicator">
-              <img src={currentUser.profilePictureUrl || undefined} />
+              {isLoggedIn ? (
+                <img
+                  src={
+                    "https://wallpapers.com/images/high/smiley-default-pfp-0ujhadx5fhnhydlb.webp"
+                  }
+                />
+              ) : (
+                <img src={"/defaultProfilePicture"} />
+              )}
+
               <span className="badge badge-xs badge-primary indicator-item"></span>
             </div>
           </button>

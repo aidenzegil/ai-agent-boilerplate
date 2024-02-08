@@ -41,7 +41,9 @@ export const useAuthProviderFunctions = (
         });
       }
     } else {
-      stateController.set.setUser(undefined);
+      if (!firebaseUser?.uid) {
+        stateController.set.setUser(undefined);
+      }
     }
     stateController.setLoading.setUserLoading(false);
   };

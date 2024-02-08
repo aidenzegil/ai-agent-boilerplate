@@ -1,13 +1,21 @@
-import React from "react";
+import useScrollController from "@/app/hooks/useScrollDirection";
+import { useAuthProviderStateController } from "@/app/providers/AuthProvider/state";
+
 import Component from "./component";
 import { useNavBarData } from "./data";
-import useScrollController from "@/app/hooks/useScrollDirection";
-import { FAKE_USER_1 } from "@/app/fakeObjects/fakeUser";
 
 const NavBar = () => {
   const { scrollDirection } = useScrollController();
+  const { state } = useAuthProviderStateController();
   const { visible } = useNavBarData({ scrollDirection });
-  return <Component visible={visible} currentUser={FAKE_USER_1} />;
+
+  return (
+    <Component
+      visible={visible}
+      isLoggedIn={state.loggedIn}
+      user={state.user}
+    />
+  );
 };
 
 export default NavBar;

@@ -1,4 +1,4 @@
-import { FakeUser } from "@/app/fakeObjects/fakeUser";
+import { PrivateUser } from "@/app/common/types/user";
 import { ScrollDirection } from "@/app/hooks/useScrollDirection";
 
 export type UseNavBarDataProps = {
@@ -7,5 +7,6 @@ export type UseNavBarDataProps = {
 
 export type Fields = {
   visible: boolean;
-  currentUser: FakeUser;
+  isLoggedIn: boolean;
+  user: PrivateUser | undefined;
 };
