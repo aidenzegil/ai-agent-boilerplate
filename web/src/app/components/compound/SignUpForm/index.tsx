@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
+
+import { useAuthContext } from "@/app/providers/AuthProvider/provider";
+
 import Component from "./component";
 import { formConfig, useSignUpFormData } from "./data";
-import { useAuthContext } from "@/app/providers/AuthProvider/provider";
 
 const SignUpForm = () => {
   const form = useForm(formConfig);
@@ -9,7 +11,7 @@ const SignUpForm = () => {
   const signUp = authFunctions.signUp;
   const { onSubmit, errors } = useSignUpFormData({
     form: form,
-    signUp,
+    signUp: signUp,
   });
 
   return <Component form={form} onSubmit={onSubmit} />;

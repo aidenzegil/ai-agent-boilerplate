@@ -1,10 +1,9 @@
-import React from "react";
-import { LuBook } from "react-icons/lu";
 import Form from "@/app/components/common/forms/GenericForm/component";
 import Input from "@/app/components/common/inputs/Input/component";
+import Link from "next/link";
+import { LuBook } from "react-icons/lu";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
-import Link from "next/link";
 
 const Component = ({ onSubmit, form }: Fields) => {
   const { register } = form;
@@ -32,14 +31,14 @@ const Component = ({ onSubmit, form }: Fields) => {
               placeholder="shhh it's a secret"
               register={register("password")}
             />
-            <label className="label">
+            {/* <label className="label">
               <a
                 href="/login/forgotpassword"
                 className="label-text-alt link link-hover"
               >
                 Forgot password?
               </a>
-            </label>
+            </label> */}
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-primary" type="submit">

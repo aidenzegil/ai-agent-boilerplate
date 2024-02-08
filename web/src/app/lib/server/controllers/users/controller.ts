@@ -1,6 +1,6 @@
-import { Ok, Err } from "@/app/common/types/result";
+import { Err, Ok } from "@/app/common/types/result";
 import { PrivateUser, PublicUser } from "@/app/common/types/user";
-import { POST, GET } from "../../api/axiosInstance";
+import { GET, POST } from "../../api/axiosInstance";
 import { ApiResponse } from "../../types/apiResponse";
 import { params } from "./params";
 
@@ -10,7 +10,9 @@ interface Dependencies {
 interface Methods {
   createUser: (params: params.CreateUser) => Promise<ApiResponse<PrivateUser>>;
   getUser: (params: params.GetUser) => Promise<ApiResponse<PublicUser>>;
-  getAuthenticatedUser: (params: params.GetAuthenticatedUser) => Promise<ApiResponse<PrivateUser>>;
+  getAuthenticatedUser: (
+    params: params.GetAuthenticatedUser
+  ) => Promise<ApiResponse<PrivateUser>>;
 }
 
 type UserController = (deps: Dependencies) => Methods;
@@ -23,7 +25,7 @@ type UserController = (deps: Dependencies) => Methods;
 export const userController: UserController = ({ authToken }) => ({
   /**
    * Create a new user
-   * @param profilePictureUrl The URL of the user's profile picture
+   * @param profilePictureUrl The string of the user's profile picture
    * @param email The email address of the user
    * @param firebaseId The Firebase ID of the user
    * @param username The username of the user
@@ -75,7 +77,9 @@ export const userController: UserController = ({ authToken }) => ({
     return Err(res.error);
   },
 
-  getAuthenticatedUser: async ({firebaseId}): Promise<ApiResponse<PrivateUser>> => {
+  getAuthenticatedUser: async ({
+    firebaseId,
+  }): Promise<ApiResponse<PrivateUser>> => {
     const res = await GET<PrivateUser>({
       path: `/users/authenticatedUser/${firebaseId}`,
       requiresAuth: true,
@@ -90,5 +94,5 @@ export const userController: UserController = ({ authToken }) => ({
       return Ok(privateUser);
     }
     return Err(res.error);
-  }
+  },
 });

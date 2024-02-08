@@ -26,7 +26,12 @@ export type AuthProviderSet = {
 };
 
 export type AuthProviderFunctions = {
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (
+    email: string,
+    password: string,
+    username: string,
+    profilePictureUrl: string
+  ) => Promise<void>;
   // signInWithGoogle: () => Promise<void>;
   logIn: (email: string, password: string) => Promise<void>;
   logOut: () => Promise<void>;

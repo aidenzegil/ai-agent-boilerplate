@@ -3,6 +3,7 @@ import { UseFormReturn } from "react-hook-form";
 export type Fields = {
   form: UseFormReturn<
     {
+      profilePictureUrl: string;
       email: string;
       password: string;
       username: string;
@@ -15,11 +16,17 @@ export type Fields = {
 export type UseSignUpFormDataParams = {
   form: UseFormReturn<
     {
+      profilePictureUrl: string;
       email: string;
       password: string;
       username: string;
     },
     undefined
   >;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (
+    email: string,
+    password: string,
+    profilePictureUrl: string,
+    username: string
+  ) => Promise<void>;
 };
