@@ -9,11 +9,13 @@ $charcoal-100: #f9f9fb;
 $charcoal-200: #e6e6e8;
 $charcoal-300: #cbcbcb;
 $charcoal-400: #8c8f92;
-$charcoal-450: #3C3C3F;
+$charcoal-450: #3c3c3f;
 $charcoal-500: #2d2d2d;
 $charcoal-600: #222222;
 $charcoal-600-transparent: #22222205;
 
 /* pink */
-$pink: #FFA7BA
+$pink: #ffa7ba;
+$draculaPink: oklch(var(--p));
 
+$purple: oklch(var(--s));

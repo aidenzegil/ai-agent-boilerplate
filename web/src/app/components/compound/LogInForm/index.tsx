@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
+
+import { useAuthContext } from "@/app/providers/AuthProvider/provider";
+
 import Component from "./component";
 import { formConfig, useLogInFormData } from "./data";
-import { useAuthContext } from "@/app/providers/AuthProvider/provider";
 
 const LogInForm = () => {
   const form = useForm(formConfig);

@@ -1,15 +1,15 @@
 import { auth } from "@/app/lib/firebase/config";
-import { AuthProviderFunctions, AuthProviderStateController } from "./types";
 import {
-  sendPasswordResetEmail as sendFirebasePasswordResetEmail,
+  User,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  sendPasswordResetEmail as sendFirebasePasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
-  User,
 } from "firebase/auth";
 import { useEffect } from "react";
 import { network } from "./network";
+import { AuthProviderFunctions, AuthProviderStateController } from "./types";
 
 export const useAuthProviderFunctions = (
   stateController: AuthProviderStateController
@@ -62,7 +62,12 @@ export const useAuthProviderFunctions = (
    * @param password - The password of the user.
    * @returns A Promise that resolves when the user is signed up successfully.
    */
-  const signUp = async (email: string, password: string) => {
+  const signUp = async (
+    email: string,
+    password: string,
+    username: string,
+    profilePictureUrl: string
+  ) => {
     stateController.setLoading.setUserLoading(true);
     try {
       const firebaseUser = await createUserWithEmailAndPassword(
@@ -73,8 +78,8 @@ export const useAuthProviderFunctions = (
       const authToken = await firebaseUser.user.getIdToken();
       const userRes = await network.createUser({
         email,
-        profilePictureUrl: "",
-        username: "",
+        profilePictureUrl,
+        username,
         authToken,
       });
       if (userRes.isErr()) {

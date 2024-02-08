@@ -1,13 +1,20 @@
-import React from "react";
+import { useForm } from "react-hook-form";
+
+import { useStoryProviderContext } from "@/app/providers/StoryProvider/provider";
+
 import Component from "./component";
 import { formConfig, useEditStoryFormData } from "./data";
-import { useForm } from "react-hook-form";
-import { EDITSTORY } from "@/app/fakeObjects/fakeStory";
 
 const EditStoryForm = () => {
   const form = useForm(formConfig);
-  const editStory = EDITSTORY;
-  const { onSubmit, errors } = useEditStoryFormData({ form: form, editStory });
+  const { storyFunctions, state: storyState } = useStoryProviderContext();
+
+  const { onSubmit, errors } = useEditStoryFormData({
+    activeChapter: storyState.activeChapter,
+    activeStory: storyState.activeStory,
+    form: form,
+    storyFunctions,
+  });
   return (
     <div>
       <Component form={form} onSubmit={onSubmit} />

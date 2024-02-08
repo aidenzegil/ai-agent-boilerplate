@@ -33,34 +33,34 @@ export type StoryListItemOutputDto = {
 };
 
 export const FAKE_CHAPTER_1: ChapterOutputDto = {
-  content: "some string 1",
+  content: "fake chapter one content here!",
   id: "fakechapter1",
   index: 0,
   storyId: "some string 1",
-  title: "some string 1",
+  title: "fake chapter one title",
 };
 
 export const FAKE_CHAPTER_2: ChapterOutputDto = {
-  content: "some string 2",
+  content: "fake chapter two content here!",
   id: "fakechapter2",
   index: 1,
   storyId: "some string 2",
-  title: "some string 2",
+  title: "fake chapter two title",
 };
 
 export const FAKE_CHAPTER_3: ChapterOutputDto = {
-  content: "some string 3",
+  content: "fake chapter three content here!",
   id: "fakechapter3",
   index: 2,
   storyId: "some string 3",
-  title: "some string 3",
+  title: "fake chapter three title",
 };
 
 export const STORY_REACTION_1: StoryReactionOutputDto = {
   opinion: Opinion.LIKE,
 };
 
-export const FAKE_CHAPTER_ARRAY = [
+export const FAKE_CHAPTER_ARRAY: ChapterOutputDto[] = [
   FAKE_CHAPTER_3,
   FAKE_CHAPTER_2,
   FAKE_CHAPTER_1,

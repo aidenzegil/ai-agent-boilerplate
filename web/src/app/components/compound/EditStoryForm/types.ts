@@ -1,3 +1,8 @@
+import {
+  ChapterOutputDto,
+  StoryOutputDto,
+} from "@/app/common/types/outputDtos";
+import { StoryProviderFunctions } from "@/app/providers/StoryProvider/types";
 import { UseFormReturn } from "react-hook-form";
 
 export type Fields = {
@@ -21,9 +26,7 @@ export type UseEditStoryFormData = {
     },
     undefined
   >;
-  editStory: (
-    storyTitle: string,
-    chapterTitle: string,
-    markdown: string
-  ) => Promise<void>;
+  storyFunctions: StoryProviderFunctions;
+  activeStory?: StoryOutputDto;
+  activeChapter?: ChapterOutputDto;
 };

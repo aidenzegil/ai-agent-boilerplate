@@ -1,10 +1,9 @@
-import React from "react";
-import { Fields } from "./types";
-import s from "./styles.module.scss";
-import { LuBook } from "react-icons/lu";
-import Input from "@/app/components/common/inputs/Input/component";
 import Form from "@/app/components/common/forms/GenericForm/component";
+import Input from "@/app/components/common/inputs/Input/component";
 import Link from "next/link";
+import { LuBook } from "react-icons/lu";
+import s from "./styles.module.scss";
+import { Fields } from "./types";
 
 const Component = ({ onSubmit, form }: Fields) => {
   const { register } = form;

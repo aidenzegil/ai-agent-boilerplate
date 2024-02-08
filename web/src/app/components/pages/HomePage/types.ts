@@ -1,6 +1,6 @@
 import { StoryListItemOutputDto } from "@/app/fakeObjects/fakeStory";
 
-export type FIELDS = {
+export type Fields = {
   popularStories: StoryListItemOutputDto[];
   onClick: (storyId: string) => void;
 };

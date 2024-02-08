@@ -1,7 +1,7 @@
+import { Opinion } from "@/app/common/types/outputDtos";
 import { auth } from "@/app/lib/firebase/config";
 import { network } from "./network";
 import { StoryProviderStateController } from "./types";
-import { Opinion } from "@/app/common/types/outputDtos";
 
 export const useStoryProviderFunctions = (
   stateController: StoryProviderStateController
@@ -14,6 +14,7 @@ export const useStoryProviderFunctions = (
       const res = await network.searchStories({});
       if (res.isErr()) {
         console.error(res.error);
+        stateController.setLoading.setAllStoriesLoading(false);
         return;
       }
       const wetStories = res.value;
@@ -21,6 +22,7 @@ export const useStoryProviderFunctions = (
     } catch (e) {
       console.error(e);
     }
+    stateController.setLoading.setAllStoriesLoading(false);
   };
 
   const createStory = async ({ title }: { title: string }) => {
@@ -28,19 +30,22 @@ export const useStoryProviderFunctions = (
     const firebaseUser = auth.currentUser;
     if (!firebaseUser) {
       console.error("No user logged in");
+      stateController.setLoading.setCreateStoryLoading(false);
       return;
     }
-    const authToken = await firebaseUser.getIdToken();
     try {
+      const authToken = await firebaseUser.getIdToken();
       const res = await network.createStory({ title, authToken });
       if (res.isErr()) {
         console.error(res.error);
+        stateController.setLoading.setCreateStoryLoading(false);
         return;
       }
       refreshAuthoredStories();
     } catch (e) {
       console.error(e);
     }
+    stateController.setLoading.setCreateStoryLoading(false);
   };
 
   const createChapter = async ({
@@ -58,10 +63,11 @@ export const useStoryProviderFunctions = (
     const firebaseUser = auth.currentUser;
     if (!firebaseUser) {
       console.error("No user logged in");
+      stateController.setLoading.setCreateChapterLoading(false);
       return;
     }
-    const authToken = await firebaseUser.getIdToken();
     try {
+      const authToken = await firebaseUser.getIdToken();
       const res = await network.createChapter({
         title,
         content,
@@ -71,38 +77,45 @@ export const useStoryProviderFunctions = (
       });
       if (res.isErr()) {
         console.error(res.error);
+        stateController.setLoading.setCreateChapterLoading(false);
         return;
       }
       refreshAuthoredStories();
     } catch (e) {
       console.error(e);
     }
+    stateController.setLoading.setCreateChapterLoading(false);
   };
 
   const deleteStory = async ({ id }: { id: string }) => {
     stateController.setLoading.setDeleteStoryLoading(true);
     const firebaseUser = auth.currentUser;
     if (!firebaseUser) {
+      stateController.setLoading.setDeleteStoryLoading(false);
+
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken();
     try {
+      const authToken = await firebaseUser.getIdToken();
       const res = await network.deleteStory({ id, authToken });
       if (res.isErr()) {
         console.error(res.error);
+        stateController.setLoading.setDeleteStoryLoading(false);
         return;
       }
       refreshAuthoredStories();
     } catch (e) {
       console.error(e);
     }
+    stateController.setLoading.setDeleteStoryLoading(false);
   };
 
   const deleteChapter = async ({ id }: { id: string }) => {
     stateController.setLoading.setDeleteChapterLoading(true);
     const firebaseUser = auth.currentUser;
     if (!firebaseUser) {
+      stateController.setLoading.setDeleteChapterLoading(false);
       console.error("No user logged in");
       return;
     }
@@ -111,12 +124,14 @@ export const useStoryProviderFunctions = (
       const res = await network.deleteChapter({ id, authToken });
       if (res.isErr()) {
         console.error(res.error);
+        stateController.setLoading.setDeleteChapterLoading(false);
         return;
       }
       refreshAuthoredStories();
     } catch (e) {
       console.error(e);
     }
+    stateController.setLoading.setDeleteChapterLoading(false);
   };
 
   const updateStory = async ({ id, title }: { id: string; title: string }) => {
@@ -124,6 +139,7 @@ export const useStoryProviderFunctions = (
     const firebaseUser = auth.currentUser;
     if (!firebaseUser) {
       console.error("No user logged in");
+      stateController.setLoading.setUpdateStoryLoading(false);
       return;
     }
     const authToken = await firebaseUser.getIdToken();
@@ -131,12 +147,15 @@ export const useStoryProviderFunctions = (
       const res = await network.updateStory({ id, title, authToken });
       if (res.isErr()) {
         console.error(res.error);
+        stateController.setLoading.setUpdateStoryLoading(false);
+
         return;
       }
       refreshAuthoredStories();
     } catch (e) {
       console.error(e);
     }
+    stateController.setLoading.setUpdateStoryLoading(false);
   };
 
   const updateChapter = async ({
@@ -154,10 +173,11 @@ export const useStoryProviderFunctions = (
     const firebaseUser = auth.currentUser;
     if (!firebaseUser) {
       console.error("No user logged in");
+      stateController.setLoading.setUpdateChapterLoading(false);
       return;
     }
-    const authToken = await firebaseUser.getIdToken();
     try {
+      const authToken = await firebaseUser.getIdToken();
       const res = await network.updateChapter({
         id,
         title,
@@ -167,12 +187,14 @@ export const useStoryProviderFunctions = (
       });
       if (res.isErr()) {
         console.error(res.error);
+        stateController.setLoading.setUpdateChapterLoading(false);
         return;
       }
       refreshAuthoredStories();
     } catch (e) {
       console.error(e);
     }
+    stateController.setLoading.setUpdateChapterLoading(false);
   };
 
   const reactToStory = async ({
@@ -187,8 +209,8 @@ export const useStoryProviderFunctions = (
       console.error("No user logged in");
       return;
     }
-    const authToken = await firebaseUser.getIdToken();
     try {
+      const authToken = await firebaseUser.getIdToken();
       const res = await network.reactToStory({ id, opinion, authToken });
       if (res.isErr()) {
         console.error(res.error);

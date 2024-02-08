@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html data-theme="retro" lang="en">
+    <html data-theme="dracula" lang="en">
       <body className={inter.className}>
         <Providers>
           <>
