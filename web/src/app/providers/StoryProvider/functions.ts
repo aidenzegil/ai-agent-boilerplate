@@ -2,10 +2,16 @@ import { Opinion } from "@/app/common/types/outputDtos";
 import { auth } from "@/app/lib/firebase/config";
 import { network } from "./network";
 import { StoryProviderStateController } from "./types";
+import { useEffect } from "react";
 
 export const useStoryProviderFunctions = (
   stateController: StoryProviderStateController
 ) => {
+  useEffect(() => {
+    if (stateController.state.allStories === undefined) {
+      refreshAllStories();
+    }
+  }, []);
   const refreshLikedStories = async () => {};
   const refreshAuthoredStories = async () => {};
   const refreshAllStories = async () => {
