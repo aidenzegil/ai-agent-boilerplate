@@ -1,6 +1,19 @@
 import Link from "next/link";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
+import { useEffect, useState } from "react";
+
+const ClientWrapper = <P,>(Component: React.ComponentType<P>) => {
+  const WrappedComponent = (props: P & JSX.IntrinsicAttributes) => {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+      setMounted(true);
+    }, []);
+    if (!mounted) return null;
+    return <Component {...props} />;
+  };
+  return WrappedComponent;
+};
 
 const Component = ({ visible, isLoggedIn, user }: Fields) => {
   return (
@@ -46,27 +59,9 @@ const Component = ({ visible, isLoggedIn, user }: Fields) => {
           WetPages
         </a>
       </div>
-      <div className="navbar-end">
-        <Link href="/dashboard">
-          <button className="btn btn-ghost btn-circle">
-            <div className="indicator">
-              {isLoggedIn ? (
-                <img
-                  src={
-                    "https://wallpapers.com/images/high/smiley-default-pfp-0ujhadx5fhnhydlb.webp"
-                  }
-                />
-              ) : (
-                <img src={"/defaultProfilePicture"} />
-              )}
-
-              <span className="badge badge-xs badge-primary indicator-item"></span>
-            </div>
-          </button>
-        </Link>
-      </div>
+      <div className="navbar-end">{isLoggedIn && <div>hi there</div>}</div>
     </div>
   );
 };
 
-export default Component;
+export default ClientWrapper(Component);
