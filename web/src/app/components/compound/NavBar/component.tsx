@@ -1,7 +1,7 @@
+import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
 import Link from "next/link";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
-import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
 
 const Component = ({ visible, isLoggedIn, user }: Fields) => {
   return (
@@ -47,7 +47,17 @@ const Component = ({ visible, isLoggedIn, user }: Fields) => {
           WetPages
         </a>
       </div>
-      <div className="navbar-end">{isLoggedIn && <div>hi there</div>}</div>
+      <div className="navbar-end">
+        {isLoggedIn && (
+          <button className="btn btn-ghost btn-circle">
+            <div className="indicator">
+              <Link href={`/dashboard/${user?.username}`}>
+                <img src={user?.profilePictureUrl} />
+              </Link>
+            </div>
+          </button>
+        )}
+      </div>
     </div>
   );
 };

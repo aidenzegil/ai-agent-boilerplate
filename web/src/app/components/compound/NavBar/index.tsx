@@ -1,7 +1,8 @@
 import useScrollController from "@/app/hooks/useScrollDirection";
+import { useAuthContext } from "@/app/providers/AuthProvider/provider";
+
 import Component from "./component";
 import { useNavBarData } from "./data";
-import { useAuthContext } from "@/app/providers/AuthProvider/provider";
 
 const NavBar = () => {
   const { scrollDirection } = useScrollController();
