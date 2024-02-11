@@ -1,17 +1,20 @@
 "use client";
-import React from "react";
+
+import { FAKE_STORY_LIST } from "@/app/fakeObjects/fakeStory";
+import { useAuthContext } from "@/app/providers/AuthProvider/provider";
+
 import Component from "./component";
 import { useDashboardPageData } from "./data";
-import { FAKE_STORY_LIST } from "@/app/fakeObjects/fakeStory";
-import { FAKE_USER_1 } from "@/app/fakeObjects/fakeUser";
 
 const Dashboard = () => {
   const { onClick } = useDashboardPageData();
+  const { state } = useAuthContext();
 
   return (
     <div>
       <Component
-        currentUser={FAKE_USER_1}
+        user={state.user}
+        isLoggedIn={state.loggedIn}
         onClick={onClick}
         likedStories={FAKE_STORY_LIST}
         authoredStories={FAKE_STORY_LIST}

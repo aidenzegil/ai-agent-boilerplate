@@ -50,11 +50,9 @@ const Component = ({ visible, isLoggedIn, user }: Fields) => {
       <div className="navbar-end">
         {isLoggedIn && (
           <button className="btn btn-ghost btn-circle">
-            <div className="indicator">
-              <Link href={`/dashboard/${user?.username}`}>
-                <img src={user?.profilePictureUrl} />
-              </Link>
-            </div>
+            <Link href={`/dashboard/${user?.username}`}>
+              <img src={user?.profilePictureUrl} className="rounded-full" />
+            </Link>
           </button>
         )}
       </div>
