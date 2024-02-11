@@ -1,19 +1,7 @@
 import Link from "next/link";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
-import { useEffect, useState } from "react";
-
-const ClientWrapper = <P,>(Component: React.ComponentType<P>) => {
-  const WrappedComponent = (props: P & JSX.IntrinsicAttributes) => {
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => {
-      setMounted(true);
-    }, []);
-    if (!mounted) return null;
-    return <Component {...props} />;
-  };
-  return WrappedComponent;
-};
+import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
 
 const Component = ({ visible, isLoggedIn, user }: Fields) => {
   return (
