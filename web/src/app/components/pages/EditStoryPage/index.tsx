@@ -1,10 +1,14 @@
-import React from "react";
+"use client";
+
+import { useAuthContext } from "@/app/providers/AuthProvider/provider";
+
 import Component from "./component";
 
 const EditStoryPage = () => {
+  const { state } = useAuthContext();
   return (
     <div>
-      <Component />
+      <Component isLoggedIn={state.loggedIn} />
     </div>
   );
 };

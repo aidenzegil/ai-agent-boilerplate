@@ -5,4 +5,5 @@ export type Fields = {
   story: StoryOutputDto;
   chapter?: ChapterOutputDto;
   onClick: (chapterId: string) => void;
+  isLoggedIn: boolean;
 };
