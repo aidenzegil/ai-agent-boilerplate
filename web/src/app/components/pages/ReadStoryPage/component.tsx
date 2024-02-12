@@ -1,6 +1,7 @@
 import ChapterReader from "@/app/components/compound/ChapterReader";
 import NavBar from "@/app/components/compound/NavBar";
 import { Fields } from "@/app/components/pages/ReadStoryPage/types";
+import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
 import Link from "next/link";
 
 const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
@@ -59,4 +60,4 @@ const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
   );
 };
 
-export default Component;
+export default ClientWrapper(Component);

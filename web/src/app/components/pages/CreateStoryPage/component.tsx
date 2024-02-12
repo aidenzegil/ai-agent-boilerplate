@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import CreateStoryForm from "@/app/components/compound/CreateStoryForm";
 import NavBar from "@/app/components/compound/NavBar";
+import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
 import { Fields } from "./types";
 
 const Component = ({ isLoggedIn }: Fields) => {
@@ -29,4 +30,4 @@ const Component = ({ isLoggedIn }: Fields) => {
   );
 };
 
-export default Component;
+export default ClientWrapper(Component);
