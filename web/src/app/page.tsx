@@ -1,7 +1,7 @@
 "use client";
 
 import HomePage from "./components/pages/HomePage";
-import { useAuthContext } from "./providers/AuthProvider/provider";
+// import { useAuthContext } from "./providers/AuthProvider/provider";
 
 export default function Home() {
   return <HomePage />;

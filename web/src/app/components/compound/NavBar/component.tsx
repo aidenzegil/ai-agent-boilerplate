@@ -1,9 +1,12 @@
 import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
+import { useAuthContext } from "@/app/providers/AuthProvider/provider";
 import Link from "next/link";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
 
 const Component = ({ visible, isLoggedIn, user }: Fields) => {
+  const { authFunctions } = useAuthContext();
+
   return (
     <div
       className={`${s.container} ${!visible && s.hidden} navbar bg-base-100`}
@@ -26,26 +29,37 @@ const Component = ({ visible, isLoggedIn, user }: Fields) => {
               />
             </svg>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a href="/">Homepage</a>
-            </li>
-            <li>
-              <a href="/signup">Sign Up</a>
-            </li>
-            <li>
-              <a href="/login">Log In</a>
-            </li>
-          </ul>
+          {!isLoggedIn && (
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link href="/signup">Sign Up</Link>
+              </li>
+              <li>
+                <Link href="/login">Log In</Link>
+              </li>
+            </ul>
+          )}
+          {isLoggedIn && (
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link href="/" onClick={() => authFunctions.logOut()}>
+                  Log Out
+                </Link>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl" href="/">
+        <Link className="btn btn-ghost text-xl" href="/">
           WetPages
-        </a>
+        </Link>
       </div>
       <div className="navbar-end">
         {isLoggedIn && (
