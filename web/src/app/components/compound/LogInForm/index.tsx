@@ -17,6 +17,6 @@ const LogInForm = () => {
     router,
   });
 
-  return <Component form={form} onSubmit={onSubmit} />;
+  return <Component form={form} onSubmit={onSubmit} errors={errors} />;
 };
 export default LogInForm;

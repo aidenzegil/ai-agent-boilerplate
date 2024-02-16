@@ -97,7 +97,7 @@ export const useAuthProviderFunctions = (
     } catch (e) {
       stateController.setLoading.setUserLoading(false);
       console.error(e);
-      throw new Error(`Could not create new user: ${e}`);
+      throw new Error("Could not create new user");
     }
     stateController.setLoading.setUserLoading(false);
     return;

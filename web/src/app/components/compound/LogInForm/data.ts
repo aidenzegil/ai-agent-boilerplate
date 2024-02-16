@@ -20,8 +20,10 @@ export const useLogInFormData = ({ form, logIn, router }: UseLogInFormData) => {
 
   const onSubmit = async () => {
     try {
-      await form.handleSubmit(fireOffForm)();
-      router.push("/dashboard");
+      if (!errors) {
+        await form.handleSubmit(fireOffForm)();
+        router.push("/dashboard");
+      }
     } catch (error) {
       console.error(error);
       toast("User not found, double check login");
@@ -40,8 +42,8 @@ export const formConfig = {
   mode: "onChange",
   resolver: yupResolver(
     object({
-      email: string().trim(),
-      password: string().trim(),
+      email: string().trim().email().required(),
+      password: string().trim().required().min(8).max(32),
     })
   ),
 } as const;

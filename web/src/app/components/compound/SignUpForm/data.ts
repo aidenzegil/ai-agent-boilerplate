@@ -21,25 +21,24 @@ export const useSignUpFormData = ({
     username: string;
     profilePictureUrl: string;
   }) => {
-    console.log(profilePictureUrl);
-
     await signUp(email, password, username, profilePictureUrl);
   };
 
   const onSubmit = async () => {
     try {
-      await form.handleSubmit(fireOffForm)();
-      router.push("/dashboard");
+      if (!errors) {
+        await form.handleSubmit(fireOffForm)();
+        router.push("/dashboard");
+      }
     } catch (e) {
       console.error(e);
-      toast("Could not create user");
+      toast("Could not create user, username may be unavailable");
     }
   };
 
   return { onSubmit, errors };
 };
 
-/* NOTE: config should include form: "". However, currently it works without it */
 export const formConfig = {
   defaultValues: {
     form: "",
@@ -53,8 +52,8 @@ export const formConfig = {
   resolver: yupResolver(
     object({
       email: string().trim().email().required(),
-      password: string().trim().required().min(8),
-      username: string().min(6).required(),
+      password: string().trim().required().min(8).max(32),
+      username: string().min(6).required().max(32),
       profilePictureUrl: string().required(),
     })
   ),

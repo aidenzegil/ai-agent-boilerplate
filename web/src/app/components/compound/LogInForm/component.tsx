@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
 
-const Component = ({ onSubmit, form }: Fields) => {
+const Component = ({ onSubmit, form, errors }: Fields) => {
   const { register } = form;
   return (
     <div>
@@ -25,6 +25,9 @@ const Component = ({ onSubmit, form }: Fields) => {
                 placeholder="example@email.com"
                 register={register("email")}
               />
+              <label className="input-error text-primary">
+                {errors?.email?.message}
+              </label>
             </div>
             <div className="form-control">
               <label className="label">
@@ -32,8 +35,12 @@ const Component = ({ onSubmit, form }: Fields) => {
               </label>
               <Input
                 placeholder="shhh it's a secret"
+                type="password"
                 register={register("password")}
               />
+              <label className="input-error text-primary">
+                {errors?.password?.message}
+              </label>
               {/* <label className="label">
               <a
                 href="/login/forgotpassword"
