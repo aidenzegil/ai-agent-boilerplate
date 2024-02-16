@@ -1,4 +1,5 @@
 import { auth } from "@/app/lib/firebase/config";
+import { throwExpectedError } from "@/app/lib/util/throwExpectedError";
 import {
   User,
   createUserWithEmailAndPassword,
@@ -114,6 +115,7 @@ export const useAuthProviderFunctions = (
         authToken,
       });
       if (userRes.isErr()) {
+        throwExpectedError(userRes.error);
         console.log("Womp Womp, user died");
       }
       const wetUser = userRes.unwrap();
@@ -124,7 +126,9 @@ export const useAuthProviderFunctions = (
         profilePictureUrl: wetUser.profilePictureUrl,
       });
     } catch (e) {
+      stateController.setLoading.setUserLoading(false);
       console.error(e);
+      throw new Error("User not found, double check login");
     }
     stateController.setLoading.setUserLoading(false);
     return;

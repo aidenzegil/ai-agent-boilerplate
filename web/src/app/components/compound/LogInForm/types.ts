@@ -1,3 +1,4 @@
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { UseFormReturn } from "react-hook-form";
 
 export type Fields = {
@@ -20,4 +21,5 @@ export type UseLogInFormData = {
     undefined
   >;
   logIn: (email: string, password: string) => Promise<void>;
+  router: AppRouterInstance;
 };

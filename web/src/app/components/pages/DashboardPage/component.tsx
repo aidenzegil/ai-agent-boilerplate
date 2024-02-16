@@ -38,7 +38,7 @@ const Component = ({
               <h1 className="text-2xl font-bold mt-2 mb-4">{user?.username}</h1>
               {/* TODO: Make button link to create story page */}
               <Link href={`/dashboard/${user?.id}/createstory`}>
-                <button className="btn">Create a Story</button>
+                <button className="btn btn-neutral">Create a Story</button>
               </Link>
             </div>
           </div>

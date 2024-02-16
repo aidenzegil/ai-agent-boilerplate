@@ -15,7 +15,6 @@ export const network = {
     });
   },
   getAuthenticatedUser: ({ authToken }: { authToken: string }) => {
-    console.log("Fetching authenticated user", authToken);
     return userController({ authToken }).getAuthenticatedUser();
   },
 };

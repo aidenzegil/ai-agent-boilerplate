@@ -25,7 +25,7 @@ const StoryCard = ({ likes, title, onClick }: StoryCardProps) => {
         </p>
         <div className="card-actions justify-end">
           <Link href="/readstory/story/chapter">
-            <button className="btn" onClick={onClick}>
+            <button className="btn btn-neutral" onClick={onClick}>
               Read
             </button>
           </Link>

@@ -64,7 +64,7 @@ const Component = ({ visible, isLoggedIn, user }: Fields) => {
       <div className="navbar-end">
         {isLoggedIn && (
           <button className="btn btn-ghost btn-circle">
-            <Link href={`/dashboard/${user?.username}`}>
+            <Link href={"/dashboard"}>
               <img src={user?.profilePictureUrl} className="rounded-full" />
             </Link>
           </button>

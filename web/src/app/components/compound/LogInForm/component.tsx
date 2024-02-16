@@ -2,36 +2,39 @@ import Form from "@/app/components/common/forms/GenericForm/component";
 import Input from "@/app/components/common/inputs/Input/component";
 import Link from "next/link";
 import { LuBook } from "react-icons/lu";
+import { ToastContainer } from "react-toastify";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
 
 const Component = ({ onSubmit, form }: Fields) => {
   const { register } = form;
   return (
-    <div className={s.container}>
-      <Link className={s.link} href={"/"}>
-        <LuBook className={s.logo} />
-      </Link>
-      <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-        <Form className="card-body" onSubmit={onSubmit}>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <Input
-              placeholder="example@email.com"
-              register={register("email")}
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Password</span>
-            </label>
-            <Input
-              placeholder="shhh it's a secret"
-              register={register("password")}
-            />
-            {/* <label className="label">
+    <div>
+      <ToastContainer />
+      <div className={s.container}>
+        <Link className={s.link} href={"/"}>
+          <LuBook className={s.logo} />
+        </Link>
+        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <Form className="card-body" onSubmit={onSubmit}>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <Input
+                placeholder="example@email.com"
+                register={register("email")}
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <Input
+                placeholder="shhh it's a secret"
+                register={register("password")}
+              />
+              {/* <label className="label">
               <a
                 href="/login/forgotpassword"
                 className="label-text-alt link link-hover"
@@ -39,13 +42,14 @@ const Component = ({ onSubmit, form }: Fields) => {
                 Forgot password?
               </a>
             </label> */}
-          </div>
-          <div className="form-control mt-6">
-            <button className="btn btn-primary" type="submit">
-              Log In
-            </button>
-          </div>
-        </Form>
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn btn-primary" type="submit">
+                Log In
+              </button>
+            </div>
+          </Form>
+        </div>
       </div>
     </div>
   );
