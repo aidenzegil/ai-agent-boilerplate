@@ -1,10 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 import { object, string } from "yup";
 import { UseSignUpFormDataParams } from "./types";
 
 export const useSignUpFormData = ({
   form,
   signUp,
+  router,
 }: UseSignUpFormDataParams) => {
   const errors = form.formState.errors;
 
@@ -25,7 +27,13 @@ export const useSignUpFormData = ({
   };
 
   const onSubmit = async () => {
-    await form.handleSubmit(fireOffForm)();
+    try {
+      await form.handleSubmit(fireOffForm)();
+      router.push("/dashboard");
+    } catch (e) {
+      console.error(e);
+      toast("Could not create user");
+    }
   };
 
   return { onSubmit, errors };

@@ -40,8 +40,8 @@ export const formConfig = {
   mode: "onChange",
   resolver: yupResolver(
     object({
-      email: string().trim().email().required(),
-      password: string().trim().required().min(8),
+      email: string().trim(),
+      password: string().trim(),
     })
   ),
 } as const;
