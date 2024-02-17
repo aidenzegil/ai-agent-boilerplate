@@ -26,7 +26,7 @@ export const useSignUpFormData = ({
 
   const onSubmit = async () => {
     try {
-      if (!errors) {
+      if (!errors.email && !errors.username && !errors.password) {
         await form.handleSubmit(fireOffForm)();
         router.push("/dashboard");
       }

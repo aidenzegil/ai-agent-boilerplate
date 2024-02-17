@@ -20,7 +20,8 @@ export const useLogInFormData = ({ form, logIn, router }: UseLogInFormData) => {
 
   const onSubmit = async () => {
     try {
-      if (!errors) {
+      console.log(errors);
+      if (!errors.email && !errors.password) {
         await form.handleSubmit(fireOffForm)();
         router.push("/dashboard");
       }
