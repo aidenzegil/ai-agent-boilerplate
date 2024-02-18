@@ -7,7 +7,10 @@ import { useHomePageData } from "./data";
 
 const HomePage = () => {
   const router = useRouter();
-  const { onClick } = useHomePageData({ router });
+
+  const { onClick } = useHomePageData({
+    router,
+  });
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import Form from "@/app/components/common/forms/GenericForm/component";
 import Input from "@/app/components/common/inputs/Input/component";
+import LogoIcon from "@/app/components/common/presentational/iconFactory/LogoIcon/component";
 import Link from "next/link";
-import { LuBook } from "react-icons/lu";
 import { ToastContainer } from "react-toastify";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
@@ -13,7 +13,7 @@ const Component = ({ onSubmit, form, errors }: Fields) => {
       <ToastContainer />
       <div className={s.container}>
         <Link className={s.link} href={"/"}>
-          <LuBook className={s.logo} />
+          <LogoIcon className={s.logo} />
         </Link>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <Form className="card-body" onSubmit={onSubmit}>
