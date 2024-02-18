@@ -1,4 +1,3 @@
-import Link from "next/link";
 import s from "./styles.module.scss";
 import { StoryCardProps } from "./types";
 
@@ -24,11 +23,9 @@ const StoryCard = ({ likes, title, onClick }: StoryCardProps) => {
           {likes}
         </p>
         <div className="card-actions justify-end">
-          <Link href="/readstory/story/chapter">
-            <button className="btn btn-neutral" onClick={onClick}>
-              Read
-            </button>
-          </Link>
+          <button className="btn btn-neutral" onClick={onClick}>
+            Read
+          </button>
         </div>
       </div>
     </div>

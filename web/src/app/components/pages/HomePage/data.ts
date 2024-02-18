@@ -1,7 +1,11 @@
-export const useHomePageData = () => {
+import { useHomePageDataProps } from "@/app/components/pages/HomePage/types";
+
+export const useHomePageData = ({ router }: useHomePageDataProps) => {
   const onClick = (storyId: string) => {
-    console.log(storyId);
+    router.push(`/readstory/${storyId}`);
   };
+
+  const fetchAllStories = () => {};
 
   return { onClick };
 };
