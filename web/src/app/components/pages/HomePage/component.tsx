@@ -16,18 +16,22 @@ const Component = ({ popularStories, onClick }: Fields) => {
       <SectionHeader children="Popular Titles" />
 
       <div className={s.mapContainer}>
-        {Object.values(popularStories).map((story) => (
-          <StoryCard
-            key={story.id}
-            likes={
-              story.reactions.filter(
-                (reaction) => reaction.opinion == Opinion.LIKE
-              ).length
-            }
-            title={story.title}
-            onClick={() => onClick(story.id)}
-          />
-        ))}
+        {popularStories ? (
+          Object.values(popularStories).map((story) => (
+            <StoryCard
+              key={story.id}
+              likes={
+                story.reactions.filter(
+                  (reaction) => reaction.opinion == Opinion.LIKE
+                ).length
+              }
+              title={story.title}
+              onClick={() => onClick(story.id)}
+            />
+          ))
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
