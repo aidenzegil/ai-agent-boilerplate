@@ -4,7 +4,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 
 export type Fields = {
   popularStories: StoryListItemOutputDto[] | undefined;
-  onClick: (storyId: string) => void;
+  onClick: (storyId: string, chapterIds: string[]) => void;
 };
 
 export type useHomePageDataProps = {

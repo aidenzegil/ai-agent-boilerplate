@@ -26,7 +26,7 @@ const Component = ({ popularStories, onClick }: Fields) => {
                 ).length
               }
               title={story.title}
-              onClick={() => onClick(story.id)}
+              onClick={() => onClick(story.id, story.chapterIds)}
             />
           ))
         ) : (

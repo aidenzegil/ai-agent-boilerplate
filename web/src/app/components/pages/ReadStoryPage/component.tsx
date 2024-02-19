@@ -20,15 +20,16 @@ const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
                 </div>
                 <div className="collapse-content">
                   <ul className="menu p-4 overflow-scroll text-base-content text-base">
-                    {storyChapters.map((chapter) => (
-                      <button
-                        key={chapter.id}
-                        className="btn btn-secondary shadow w-full place-items-center rounded-full mb-3"
-                        onClick={() => onClick(chapter.id)}
-                      >
-                        {chapter.title}
-                      </button>
-                    ))}
+                    {storyChapters &&
+                      storyChapters.map((chapter) => (
+                        <button
+                          key={chapter.id}
+                          className="btn btn-secondary shadow w-full place-items-center rounded-full mb-3"
+                          onClick={() => onClick(chapter.id)}
+                        >
+                          {chapter.title}
+                        </button>
+                      ))}
                     <Link href="/dashboard/editstory/story/chapter">
                       <button className="btn btn-secondary shadow w-full place-items-center rounded-full">
                         Add Chapter +
@@ -57,15 +58,16 @@ const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
                 </div>
                 <div className="collapse-content">
                   <ul className="menu p-4 overflow-scroll text-base-content text-base">
-                    {storyChapters.map((chapter) => (
-                      <button
-                        key={chapter.id}
-                        className="btn btn-secondary shadow w-full place-items-center rounded-full mb-3"
-                        onClick={() => onClick(chapter.id)}
-                      >
-                        {chapter.title}
-                      </button>
-                    ))}
+                    {storyChapters &&
+                      storyChapters.map((chapter) => (
+                        <button
+                          key={chapter.id}
+                          className="btn btn-secondary shadow w-full place-items-center rounded-full mb-3"
+                          onClick={() => onClick(chapter.id)}
+                        >
+                          {chapter.title}
+                        </button>
+                      ))}
                   </ul>
                 </div>
               </div>
