@@ -7,6 +7,7 @@ import Link from "next/link";
 const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
   return (
     <div>
+      {/* should be isAuthor here, not isLoggedIn */}
       {isLoggedIn && (
         <div>
           <NavBar />
