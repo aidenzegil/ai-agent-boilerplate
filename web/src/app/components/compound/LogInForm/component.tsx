@@ -2,7 +2,6 @@ import Form from "@/app/components/common/forms/GenericForm/component";
 import Input from "@/app/components/common/inputs/Input/component";
 import LogoIcon from "@/app/components/common/presentational/iconFactory/LogoIcon/component";
 import Link from "next/link";
-import { ToastContainer } from "react-toastify";
 import s from "./styles.module.scss";
 import { Fields } from "./types";
 
@@ -10,7 +9,6 @@ const Component = ({ onSubmit, form, errors }: Fields) => {
   const { register } = form;
   return (
     <div>
-      <ToastContainer />
       <div className={s.container}>
         <Link className={s.link} href={"/"}>
           <LogoIcon className={s.logo} />

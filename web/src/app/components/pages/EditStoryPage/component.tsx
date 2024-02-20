@@ -1,5 +1,3 @@
-import NavBar from "@/app/components/compound/NavBar";
-
 import EditStoryForm from "@/app/components/compound/EditStoryForm";
 import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
 import Link from "next/link";
@@ -22,7 +20,7 @@ const Component = ({ isLoggedIn }: Fields) => {
       )}
       {isLoggedIn && (
         <div>
-          <NavBar />
+          {/* <NavBar /> */}
           <EditStoryForm />
         </div>
       )}

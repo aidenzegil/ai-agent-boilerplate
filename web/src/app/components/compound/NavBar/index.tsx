@@ -1,3 +1,5 @@
+"use client";
+
 import useScrollController from "@/app/hooks/useScrollDirection";
 import { useAuthContext } from "@/app/providers/AuthProvider/provider";
 

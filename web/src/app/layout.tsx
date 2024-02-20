@@ -1,11 +1,14 @@
+import "react-toastify/dist/ReactToastify.css";
 import "./assets/globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 
 import FacebookIcon from "@/app/components/common/presentational/iconFactory/FacebookIcon/component";
 import TwitterIcon from "@/app/components/common/presentational/iconFactory/TwitterIcon/component";
 import YouTubeIcon from "@/app/components/common/presentational/iconFactory/YouTubeIcon/component";
+import NavBar from "@/app/components/compound/NavBar";
 
 import Providers from "./providers/providers";
 
@@ -26,6 +29,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <>
+            <NavBar />
+            <ToastContainer />
             {children}
             <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded mt-8">
               <nav className="grid grid-flow-col gap-4">

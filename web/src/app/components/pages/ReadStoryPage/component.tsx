@@ -1,5 +1,4 @@
 import ChapterReader from "@/app/components/compound/ChapterReader";
-import NavBar from "@/app/components/compound/NavBar";
 import { Fields } from "@/app/components/pages/ReadStoryPage/types";
 import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
 import Link from "next/link";
@@ -10,7 +9,7 @@ const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
       {/* should be isAuthor here, not isLoggedIn */}
       {isLoggedIn && (
         <div>
-          <NavBar />
+          {/* <NavBar /> */}
           <h2 className="card-title pl-4 pb-6">{story.title}</h2>
           <div className="flex mx-4">
             <div className="grid flex-grow card w-[20%] overflow-scroll rounded-box place-items-start">
@@ -48,7 +47,7 @@ const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
       )}
       {!isLoggedIn && (
         <div>
-          <NavBar />
+          {/* <NavBar /> */}
           <h2 className="card-title pl-4 pb-6">{story.title}</h2>
           <div className="flex mx-4">
             <div className="grid flex-grow card w-[20%] overflow-scroll rounded-box place-items-start">
