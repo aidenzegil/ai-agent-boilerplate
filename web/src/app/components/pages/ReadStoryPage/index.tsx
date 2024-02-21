@@ -1,5 +1,3 @@
-"use client";
-
 import Component from "@/app/components/pages/ReadStoryPage/component";
 import { useReadStoryPageData } from "@/app/components/pages/ReadStoryPage/data";
 import { useAuthContext } from "@/app/providers/AuthProvider/provider";

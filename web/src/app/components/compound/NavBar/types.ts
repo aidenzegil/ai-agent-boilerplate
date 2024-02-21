@@ -8,5 +8,5 @@ export type UseNavBarDataProps = {
 export type Fields = {
   visible: boolean;
   isLoggedIn: boolean;
-  user: PrivateUser | undefined;
+  user?: PrivateUser;
 };

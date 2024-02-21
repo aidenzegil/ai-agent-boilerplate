@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import { object, string } from "yup";
 import { UseLogInFormData } from "./types";
@@ -20,7 +19,6 @@ export const useLogInFormData = ({ form, logIn, router }: UseLogInFormData) => {
 
   const onSubmit = async () => {
     try {
-      console.log(errors);
       if (!errors.email && !errors.password) {
         await form.handleSubmit(fireOffForm)();
         router.push("/dashboard");
@@ -44,7 +42,7 @@ export const formConfig = {
   resolver: yupResolver(
     object({
       email: string().trim().email().required(),
-      password: string().trim().required().min(8).max(32),
+      password: string().trim().required().min(8).max(24),
     })
   ),
 } as const;

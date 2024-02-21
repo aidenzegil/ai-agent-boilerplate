@@ -9,7 +9,6 @@ const Component = ({ popularStories, onClick }: Fields) => {
   console.log(popularStories);
   return (
     <div>
-      {/* <NavBar /> */}
       <SectionHeader children="Popular Titles" />
 
       <div className={s.mapContainer}>

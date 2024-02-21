@@ -7,9 +7,8 @@ const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
   return (
     <div>
       {/* should be isAuthor here, not isLoggedIn */}
-      {isLoggedIn && (
+      {isLoggedIn ? (
         <div>
-          {/* <NavBar /> */}
           <h2 className="card-title pl-4 pb-6">{story.title}</h2>
           <div className="flex mx-4">
             <div className="grid flex-grow card w-[20%] overflow-scroll rounded-box place-items-start">
@@ -44,10 +43,8 @@ const Component = ({ onClick, storyChapters, story, isLoggedIn }: Fields) => {
             <ChapterReader />
           </div>
         </div>
-      )}
-      {!isLoggedIn && (
+      ) : (
         <div>
-          {/* <NavBar /> */}
           <h2 className="card-title pl-4 pb-6">{story.title}</h2>
           <div className="flex mx-4">
             <div className="grid flex-grow card w-[20%] overflow-scroll rounded-box place-items-start">

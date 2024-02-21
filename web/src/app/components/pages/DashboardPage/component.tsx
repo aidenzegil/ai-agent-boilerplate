@@ -15,22 +15,8 @@ const Component = ({
 }: Fields) => {
   return (
     <div>
-      {!isLoggedIn && (
-        <div className="flex justify-center mt-[10%]">
-          <ul className="menu menu-horizontal bg-base-200 rounded-box space-x-2">
-            <Link href={"/signup"}>
-              <li className="btn btn-primary">Sign Up</li>
-            </Link>
-            <Link href={"/login"}>
-              <li className="btn btn-primary">Log In</li>
-            </Link>
-          </ul>
-        </div>
-      )}
-      {isLoggedIn && (
+      {isLoggedIn ? (
         <div>
-          {/* <NavBar /> */}
-
           <div className={s.container}>
             <img src={user?.profilePictureUrl} className={s.userProfile} />
             <div className={s.secondContainer}>
@@ -75,6 +61,17 @@ const Component = ({
               />
             ))}
           </div>
+        </div>
+      ) : (
+        <div className="flex justify-center mt-[10%]">
+          <ul className="menu menu-horizontal bg-base-200 rounded-box space-x-2">
+            <Link href={"/signup"}>
+              <li className="btn btn-primary">Sign Up</li>
+            </Link>
+            <Link href={"/login"}>
+              <li className="btn btn-primary">Log In</li>
+            </Link>
+          </ul>
         </div>
       )}
     </div>

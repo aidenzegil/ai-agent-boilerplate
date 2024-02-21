@@ -7,7 +7,11 @@ import { Fields } from "./types";
 const Component = ({ isLoggedIn }: Fields) => {
   return (
     <div>
-      {!isLoggedIn && (
+      {isLoggedIn ? (
+        <div>
+          <CreateStoryForm />
+        </div>
+      ) : (
         <div className="flex justify-center mt-[10%]">
           <ul className="menu menu-horizontal bg-base-200 rounded-box space-x-2">
             <Link href={"/signup"}>
@@ -17,12 +21,6 @@ const Component = ({ isLoggedIn }: Fields) => {
               <li className="btn btn-primary">Log In</li>
             </Link>
           </ul>
-        </div>
-      )}
-      {isLoggedIn && (
-        <div>
-          {/* <NavBar /> */}
-          <CreateStoryForm />
         </div>
       )}
     </div>

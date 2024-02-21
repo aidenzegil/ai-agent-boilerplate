@@ -3,7 +3,7 @@ import { StoryListItemOutputDto } from "@/app/fakeObjects/fakeStory";
 
 export type Fields = {
   isLoggedIn: boolean;
-  user: PrivateUser | undefined;
+  user?: PrivateUser;
   likedStories: StoryListItemOutputDto[];
   authoredStories: StoryListItemOutputDto[];
   onClick: (storyId: string) => void;

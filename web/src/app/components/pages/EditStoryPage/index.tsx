@@ -1,5 +1,3 @@
-"use client";
-
 import { useAuthContext } from "@/app/providers/AuthProvider/provider";
 
 import Component from "./component";
