@@ -1,4 +1,5 @@
-import { UseFormReturn } from "react-hook-form";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { FieldErrors, UseFormReturn } from "react-hook-form";
 
 export type Fields = {
   form: UseFormReturn<
@@ -9,6 +10,10 @@ export type Fields = {
     undefined
   >;
   onSubmit: () => void;
+  errors: FieldErrors<{
+    email: string;
+    password: string;
+  }>;
 };
 
 export type UseLogInFormData = {
@@ -20,4 +25,5 @@ export type UseLogInFormData = {
     undefined
   >;
   logIn: (email: string, password: string) => Promise<void>;
+  router: AppRouterInstance;
 };

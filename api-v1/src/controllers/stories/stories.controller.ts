@@ -79,6 +79,19 @@ export class StoriesController {
     return { data: dto };
   }
 
+  @Get("/search")
+  async SearchStories(
+    @Query("page") page?: number,
+    @Query("limit") limit?: number,
+  ): ApiResponse<StoryListItemOutputDto[]> {
+    const stories = await this.service.SearchStories({
+      limit,
+      page,
+    });
+    const dto = stories.map((story) => new StoryListItemOutputDto(story));
+    return { data: dto };
+  }
+
   @Get(":storyId")
   async GetStory(
     @Param("storyId") storyId: string,
@@ -100,19 +113,6 @@ export class StoriesController {
       userId,
     });
     const dto = new StoryOutputDto(story);
-    return { data: dto };
-  }
-
-  @Get()
-  async SearchStories(
-    @Query("page") page?: number,
-    @Query("limit") limit?: number,
-  ): ApiResponse<StoryListItemOutputDto[]> {
-    const stories = await this.service.SearchStories({
-      limit,
-      page,
-    });
-    const dto = stories.map((story) => new StoryListItemOutputDto(story));
     return { data: dto };
   }
 

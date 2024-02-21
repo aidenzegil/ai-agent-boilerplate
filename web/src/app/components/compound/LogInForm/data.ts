@@ -1,8 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
+
 import { object, string } from "yup";
 import { UseLogInFormData } from "./types";
 
-export const useLogInFormData = ({ form, logIn }: UseLogInFormData) => {
+export const useLogInFormData = ({ form, logIn, router }: UseLogInFormData) => {
   const errors = form.formState.errors;
 
   const fireOffForm = async ({
@@ -16,7 +18,15 @@ export const useLogInFormData = ({ form, logIn }: UseLogInFormData) => {
   };
 
   const onSubmit = async () => {
-    await form.handleSubmit(fireOffForm)();
+    try {
+      if (!errors.email && !errors.password) {
+        await form.handleSubmit(fireOffForm)();
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+      toast("User not found, double check login");
+    }
   };
 
   return { onSubmit, errors };
@@ -32,7 +42,7 @@ export const formConfig = {
   resolver: yupResolver(
     object({
       email: string().trim().email().required(),
-      password: string().trim().required().min(8),
+      password: string().trim().required().min(8).max(24),
     })
   ),
 } as const;
