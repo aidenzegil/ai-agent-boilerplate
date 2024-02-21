@@ -1,6 +1,6 @@
 import Form from "@/app/components/common/forms/GenericForm/component";
+import LogoIcon from "@/app/components/common/icons/LogoIcon";
 import Input from "@/app/components/common/inputs/Input/component";
-import LogoIcon from "@/app/components/common/presentational/iconFactory/LogoIcon/component";
 import Link from "next/link";
 import s from "./styles.module.scss";
 import { Fields } from "./types";

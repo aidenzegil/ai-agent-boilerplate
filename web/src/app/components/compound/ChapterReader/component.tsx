@@ -1,5 +1,5 @@
-import EnterFullscreenIcon from "@/app/components/common/presentational/iconFactory/EnterFullscreenIcon/component";
-import ExitFullscreenIcon from "@/app/components/common/presentational/iconFactory/ExitFullscreenIcon/component";
+import EnterFullscreenIcon from "@/app/components/common/icons/EnterFullscreenIcon";
+import ExitFullscreenIcon from "@/app/components/common/icons/ExitFullscreenIcon";
 import Footer from "@/app/components/common/surfaces/Footer/component";
 import { Fields } from "@/app/components/compound/ChapterReader/types";
 import classNames from "classnames";

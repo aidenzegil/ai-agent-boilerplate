@@ -5,9 +5,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 
-import FacebookIcon from "@/app/components/common/presentational/iconFactory/FacebookIcon/component";
-import TwitterIcon from "@/app/components/common/presentational/iconFactory/TwitterIcon/component";
-import YouTubeIcon from "@/app/components/common/presentational/iconFactory/YouTubeIcon/component";
+import FacebookIcon from "@/app/components/common/icons/FacebookIcon";
+import TwitterIcon from "@/app/components/common/icons/TwitterIcon";
+import YouTubeIcon from "@/app/components/common/icons/YouTubeIcon";
 import NavBar from "@/app/components/compound/NavBar";
 
 import Providers from "./providers/providers";

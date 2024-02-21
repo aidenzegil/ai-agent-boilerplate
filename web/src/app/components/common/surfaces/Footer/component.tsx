@@ -1,6 +1,6 @@
-import HeartIcon from "@/app/components/common/presentational/iconFactory/HeartIcon/component";
-import LeftArrowIcon from "@/app/components/common/presentational/iconFactory/LeftArrowIcon/component";
-import RightArrowIcon from "@/app/components/common/presentational/iconFactory/RightArrowIcon/component";
+import HeartIcon from "@/app/components/common/icons/HeartIcon";
+import LeftArrowIcon from "@/app/components/common/icons/LeftArrowIcon";
+import RightArrowIcon from "@/app/components/common/icons/RightArrowIcon";
 import s from "./styles.module.scss";
 import { FooterProps } from "./types";
 

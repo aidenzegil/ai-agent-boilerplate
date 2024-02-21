@@ -1,4 +1,4 @@
-import HeartIcon from "@/app/components/common/presentational/iconFactory/HeartIcon/component";
+import HeartIcon from "@/app/components/common/icons/HeartIcon";
 import s from "./styles.module.scss";
 import { StoryCardProps } from "./types";
 
