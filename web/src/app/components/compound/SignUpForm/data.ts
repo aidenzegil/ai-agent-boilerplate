@@ -1,5 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { object, string } from "yup";
 import { UseSignUpFormDataParams } from "./types";
 

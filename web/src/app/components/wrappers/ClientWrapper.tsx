@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ClientWrapper = <P,>(Component: React.ComponentType<P>) => {
-  const WrappedComponent = (props: P & JSX.IntrinsicAttributes) => {
+  const WrappedComponent = (props: JSX.IntrinsicAttributes & P) => {
     const [mounted, setMounted] = useState(false);
     useEffect(() => {
       setMounted(true);

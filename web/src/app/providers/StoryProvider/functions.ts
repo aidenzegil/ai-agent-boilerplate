@@ -1,17 +1,70 @@
 import { Opinion } from "@/app/common/types/outputDtos";
 import { auth } from "@/app/lib/firebase/config";
+import useReadStoryUrlParser from "@/app/providers/utils/useReadStoryUrlParser";
+import { useEffect } from "react";
 import { network } from "./network";
 import { StoryProviderStateController } from "./types";
-import { useEffect } from "react";
 
 export const useStoryProviderFunctions = (
-  stateController: StoryProviderStateController
+  stateController: StoryProviderStateController,
+  currentUrl: string
 ) => {
   useEffect(() => {
+    const { chapterId, storyId } = useReadStoryUrlParser(currentUrl);
+    console.log(chapterId, storyId);
+
+    const storyOutOfSync =
+      storyId && storyId !== stateController.state.activeStory?.id;
+    const chapterOutOfSync =
+      chapterId && chapterId !== stateController.state.activeChapter?.id;
+
     if (stateController.state.allStories === undefined) {
       refreshAllStories();
     }
+    if (storyOutOfSync) {
+      refreshActiveStory(storyId);
+    }
+    if (chapterOutOfSync) {
+      refreshActiveChapter(chapterId);
+    }
   }, []);
+
+  const refreshActiveStory = async (storyId: string) => {
+    stateController.setLoading.setActiveStoryLoading(true);
+
+    try {
+      const activeStoryRes = await network.getStory({ id: storyId });
+      if (activeStoryRes.isErr()) {
+        console.error(activeStoryRes.error);
+        stateController.setLoading.setActiveStoryLoading(false);
+        return;
+      }
+      const activeStory = activeStoryRes.value;
+      stateController.set.setActiveStory(activeStory);
+    } catch (e) {
+      console.error(e);
+    }
+    stateController.setLoading.setActiveStoryLoading(false);
+  };
+
+  const refreshActiveChapter = async (chapterId: string) => {
+    stateController.setLoading.setActiveChapterLoading(true);
+
+    try {
+      const activeChapterRes = await network.getChapter({ id: chapterId });
+      if (activeChapterRes.isErr()) {
+        console.error(activeChapterRes.error);
+        stateController.setLoading.setActiveChapterLoading(false);
+        return;
+      }
+      const activeChapter = activeChapterRes.value;
+      stateController.set.setActiveChapter(activeChapter);
+    } catch (e) {
+      console.error(e);
+    }
+    stateController.setLoading.setActiveChapterLoading(false);
+  };
+
   const refreshLikedStories = async () => {};
   const refreshAuthoredStories = async () => {};
   const refreshAllStories = async () => {

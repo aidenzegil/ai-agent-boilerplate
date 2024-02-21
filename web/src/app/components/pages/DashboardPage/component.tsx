@@ -1,6 +1,5 @@
 import StoryCard from "@/app/components/common/dataDisplay/StoryCard/component";
 import SectionHeader from "@/app/components/common/presentational/SectionHeader/component";
-import NavBar from "@/app/components/compound/NavBar";
 import ClientWrapper from "@/app/components/wrappers/ClientWrapper";
 import { Opinion } from "@/app/fakeObjects/fakeStory";
 import Link from "next/link";
@@ -30,7 +29,7 @@ const Component = ({
       )}
       {isLoggedIn && (
         <div>
-          <NavBar />
+          {/* <NavBar /> */}
 
           <div className={s.container}>
             <img src={user?.profilePictureUrl} className={s.userProfile} />

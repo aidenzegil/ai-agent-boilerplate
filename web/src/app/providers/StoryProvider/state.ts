@@ -1,9 +1,13 @@
+import {
+  ChapterOutputDto,
+  StoryListItemOutputDto,
+  StoryOutputDto,
+} from "@/app/common/types/outputDtos";
+
 import { useState } from "react";
-import { PrivateUser } from "@/app/common/types/user";
-import useSessionStorage from "../utils/useLocalStorage";
 import safelyParseJSON from "../utils/safelyParseJson";
+import useSessionStorage from "../utils/useLocalStorage";
 import { StoryProviderStateController } from "./types";
-import { StoryListItemOutputDto } from "@/app/common/types/outputDtos";
 
 export const useStoryProviderStateController =
   (): StoryProviderStateController => {
@@ -65,8 +69,8 @@ export const useStoryProviderStateController =
         undefined
     );
 
-    const activeStory = undefined; // TODO: Implement this
-    const activeChapter = undefined; // TODO: Implement this
+    const [activeStory, setActiveStory] = useState<StoryOutputDto>();
+    const [activeChapter, setActiveChapter] = useState<ChapterOutputDto>();
 
     return {
       state: {
@@ -80,8 +84,9 @@ export const useStoryProviderStateController =
         setAllStories,
         setLikedStories,
         setAuthoredStories,
-        setActiveStory: () => {}, // TODO: Implement this
-        setActiveChapter: () => {}, // TODO: Implement this
+
+        setActiveStory,
+        setActiveChapter,
       },
       // Network State
       setLoading: {
