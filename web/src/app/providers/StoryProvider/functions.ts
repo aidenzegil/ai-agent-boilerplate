@@ -11,7 +11,6 @@ export const useStoryProviderFunctions = (
 ) => {
   useEffect(() => {
     const { chapterId, storyId } = useReadStoryUrlParser(currentUrl);
-    console.log(chapterId, storyId);
 
     const storyOutOfSync =
       storyId && storyId !== stateController.state.activeStory?.id;
@@ -27,7 +26,7 @@ export const useStoryProviderFunctions = (
     if (chapterOutOfSync) {
       refreshActiveChapter(chapterId);
     }
-  }, []);
+  }, [currentUrl]);
 
   const refreshActiveStory = async (storyId: string) => {
     stateController.setLoading.setActiveStoryLoading(true);

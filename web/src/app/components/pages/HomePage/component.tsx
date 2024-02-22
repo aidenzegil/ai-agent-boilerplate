@@ -6,7 +6,6 @@ import s from "./styles.module.scss";
 import { Fields } from "./types";
 
 const Component = ({ popularStories, onClick }: Fields) => {
-  console.log(popularStories);
   return (
     <div>
       <SectionHeader children="Popular Titles" />
