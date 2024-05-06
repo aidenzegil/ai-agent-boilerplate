@@ -1,13 +1,13 @@
 import React, { useContext, useMemo } from "react";
-import { useAuthProviderStateController } from "./state";
+import { createRegisteredContext } from "react-singleton-context";
 import { useAuthProviderFunctions } from "./functions";
+import { useAuthProviderStateController } from "./state";
 import {
   AuthProviderFunctions,
   AuthProviderLoading,
   AuthProviderState,
   AuthProviderStateController,
 } from "./types";
-import { createRegisteredContext } from "react-singleton-context";
 
 type AuthProviderContext = Omit<
   AuthProviderStateController,
@@ -19,6 +19,7 @@ type AuthProviderContext = Omit<
 const defaultProvider: AuthProviderContext = {
   state: {
     user: undefined,
+    loggedIn: false,
   },
   loading: {
     loading: false,

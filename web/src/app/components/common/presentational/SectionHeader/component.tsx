@@ -1,4 +1,3 @@
-import React from "react";
 import { SectionHeaderProps } from "./types";
 
 const SectionHeader = ({ children }: SectionHeaderProps) => {

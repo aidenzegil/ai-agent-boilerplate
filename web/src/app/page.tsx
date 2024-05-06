@@ -1,17 +1,10 @@
 "use client";
 
 import HomePage from "./components/pages/HomePage";
-import {
-  AuthContextProvider,
-  useAuthContext,
-} from "./providers/AuthProvider/provider";
+// import { useAuthContext } from "./providers/AuthProvider/provider";
 
 export default function Home() {
-  return (
-    <AuthContextProvider>
-      {/* <Thing /> */} <HomePage />
-    </AuthContextProvider>
-  );
+  return <HomePage />;
 }
 
 // const Thing = () => {

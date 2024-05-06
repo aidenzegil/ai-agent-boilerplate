@@ -59,8 +59,8 @@ export type StoryProviderSet = {
     SetStateAction<StoryListItemOutputDto[] | undefined>
   >;
   setAllStories: Dispatch<SetStateAction<StoryListItemOutputDto[] | undefined>>;
-  setActiveStory: Dispatch<SetStateAction<StoryListItemOutputDto | undefined>>;
-  setActiveChapter: Dispatch<SetStateAction<string | undefined>>;
+  setActiveStory: Dispatch<SetStateAction<StoryOutputDto | undefined>>;
+  setActiveChapter: Dispatch<SetStateAction<ChapterOutputDto | undefined>>;
 };
 
 export type StoryProviderFunctions = {

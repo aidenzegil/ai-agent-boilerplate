@@ -1,15 +1,21 @@
-import { FAKE_STORY_LIST } from "@/app/fakeObjects/fakeStory";
-import { AuthContextProvider } from "@/app/providers/AuthProvider/provider";
+import { useRouter } from "next/navigation";
+
+import { useStoryProviderContext } from "@/app/providers/StoryProvider/provider";
+
 import Component from "./component";
 import { useHomePageData } from "./data";
 
 const HomePage = () => {
-  const { onClick } = useHomePageData();
+  const router = useRouter();
+  const { state } = useStoryProviderContext();
+  const { onClick } = useHomePageData({
+    router,
+    state,
+  });
+
   return (
     <div>
-      <AuthContextProvider>
-        <Component onClick={onClick} popularStories={FAKE_STORY_LIST} />
-      </AuthContextProvider>
+      <Component onClick={onClick} popularStories={state.allStories} />
     </div>
   );
 };

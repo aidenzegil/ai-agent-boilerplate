@@ -1,3 +1,4 @@
+import { usePathname } from "next/navigation";
 import { useContext, useMemo } from "react";
 import { createRegisteredContext } from "react-singleton-context";
 import { useStoryProviderFunctions } from "./functions";
@@ -62,8 +63,10 @@ export const StoryContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const currentUrl = usePathname();
+
   const stateController = useStoryProviderStateController();
-  const storyFunctions = useStoryProviderFunctions(stateController);
+  const storyFunctions = useStoryProviderFunctions(stateController, currentUrl);
 
   const value = useProviderInterface(
     stateController.state,
