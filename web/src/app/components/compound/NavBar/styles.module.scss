@@ -1,0 +1,10 @@
+@use "@/app/assets/atoms/colors" as c;
+@use "@/app/assets/molecules/text" as text;
+
+.container {
+  transition: transform 0.5s ease-out;
+}
+
+// .container.hidden {
+//   transform: translateY(-100%);
+// }

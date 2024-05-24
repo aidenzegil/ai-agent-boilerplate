@@ -31,6 +31,8 @@ export class UserService implements UserApi {
           return queries.getUserById(params.id);
         case "username":
           return queries.getUserByUsername(params.username);
+        case "firebaseId":
+          return queries.getUserByFirebaseId(params.firebaseId);
       }
     })();
     if (!dbUser) {

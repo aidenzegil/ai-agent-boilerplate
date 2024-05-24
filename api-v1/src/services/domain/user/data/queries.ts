@@ -26,4 +26,12 @@ export const queries = {
     });
     return user;
   },
+
+  getUserByFirebaseId: async (firebaseId: string): Promise<DBUser | null> => {
+    const user = await wetDBClient.user.findUnique({
+      where: { firebaseId },
+      ...typesafeUser,
+    });
+    return user;
+  },
 };

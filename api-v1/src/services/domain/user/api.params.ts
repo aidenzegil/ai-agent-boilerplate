@@ -11,7 +11,7 @@ export namespace params {
     page?: number;
   };
 
-  export type GetUser = GetUserByEmail | GetUserById | GetUserByUsername;
+  export type GetUser = GetUserByEmail | GetUserById | GetUserByUsername | GetUserByFirebaseId;
 
   export type UpdateUser = {
     email?: string;
@@ -36,4 +36,8 @@ type GetUserByEmail = {
 type GetUserByUsername = {
   discriminator: "username";
   username: string;
+};
+type GetUserByFirebaseId = {
+  discriminator: "firebaseId";
+  firebaseId: string;
 };

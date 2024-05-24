@@ -1,0 +1,22 @@
+@use "@/app/assets/atoms/colors" as c;
+
+.bottomNav {
+  position: relative;
+  transition: transform 0.3s ease-out;
+}
+
+.bottomNav.hidden {
+  transform: translateY(100%);
+}
+
+.arrows {
+  height: 50%;
+  width: 50%;
+  color: c.$purple;
+}
+
+.heart {
+  height: 70%;
+  width: 70%;
+  color: c.$purple;
+}
