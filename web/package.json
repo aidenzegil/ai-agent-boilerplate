@@ -8,9 +8,9 @@
     "lint": "next lint",
     "build": "npx next build && npx next export && npm run ci:generate:sitemap",
     "build:dryrun": "npx tsc --noEmit",
-    "generate-provider": "ts-node src/app/scripts/generateProvider.ts",
-    "generate-component": "ts-node src/app/scripts/generateComponent.ts",
-    "generate-controller": "ts-node src/app/scripts/generateController.ts"
+    "generate-provider": "ts-node src/scripts/generateProvider.ts",
+    "generate-component": "ts-node src/scripts/generateComponent.ts",
+    "generate-controller": "ts-node src/scripts/generateController.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
