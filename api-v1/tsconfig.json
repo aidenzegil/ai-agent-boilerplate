@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "outDir": "./dist"
-  },
-  "exclude": [],
-  "extends": "./config/typescript/tsconfig.base.json",
-  "include": ["src", "prisma/seed", "test"]
-}
